@@ -31,7 +31,6 @@ class EditUserInfoForm(forms.ModelForm):
     
     date_of_birth= forms.DateField(label='Date of Birth',widget=forms.SelectDateWidget(years=range(datetime.now().year, 1900, -1),
                                                                                        attrs={'class': 'form-select',
-                                                                                            
                                                                                             'size': '1',
                                                                                             'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
                                                                                             'onfocus': 'this.style.borderColor="#019cbb";', 
