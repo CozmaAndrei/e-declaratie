@@ -46,7 +46,6 @@ def user_view_profile(request, username):
 '''Update the user info, like username, first name, last name, etc'''
 def update_user_info(request, username):
     user = User.objects.get(username=username)
-    extra_info = user.extrainfo
     if request.method == "POST":
         form = EditUserInfoForm(request.POST, instance=user)
         if form.is_valid():
