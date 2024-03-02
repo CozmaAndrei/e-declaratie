@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from authentication_app.models import Company
-from .models import ExtraUserInfo
-from .forms import ExtraUserForm
 from .forms import EditUserInfoForm
 from .forms import EditCompanyInfoForm
 from django.contrib.auth import logout

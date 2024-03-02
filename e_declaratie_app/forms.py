@@ -2,18 +2,6 @@ from django import forms
 from django.contrib.auth.models import User
 from authentication_app.models import Company
 from datetime import datetime
-from .models import ExtraUserInfo
-
-class ExtraUserForm(forms.ModelForm):
-    date_of_birth= forms.DateField(label='Date of Birth',widget=forms.DateInput(attrs={'class': 'form-control', 
-                                                               'size': '30', 
-                                                               'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
-                                                               'onfocus': 'this.style.borderColor="#019cbb";', 
-                                                               'onfocusout': 'this.style.borderColor="";'}))
-    
-    class Meta:
-        model = ExtraUserInfo
-        fields = ['date_of_birth']
         
 
 '''The user profile editing form'''
@@ -49,7 +37,7 @@ class EditUserInfoForm(forms.ModelForm):
                                                                                             'onfocus': 'this.style.borderColor="#019cbb";', 
                                                                                             'onfocusout': 'this.style.borderColor="";'}))
     class Meta:
-        model = ExtraUserInfo
+        model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'date_of_birth']
 
 '''The company profile editing form'''
