@@ -6,6 +6,7 @@ from .forms import EditCompanyInfoForm
 from .forms import AddNewManagerForm
 from django.contrib import messages
 
+'''Return the first page of e-declaration website'''
 def home(request):
     return render(request, "e_declaratie_html_files/mainpage.html")
 
