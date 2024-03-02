@@ -1,0 +1,19 @@
+{% extends 'e_declaratie_html_files/homepage.html' %}
+{% load static %}
+
+
+{% block content %}
+    <form method="post" action="{% url 'register_company' %}" class="registerCompanyForm">
+        {% csrf_token %}
+        <h3 class="titleEdit">Company registration</h3>
+        {{ form.as_p }}
+        <div class="btnContainer">
+            <button type="submit" class="btn" onclick="history.back()">Back</button>
+            <button type="submit" class="btn">Register</button>
+        </div>
+    </form>
+
+    <!--CSS style-->
+    <link rel="stylesheet" href="{% static 'auth_css_files/register_company.css' %}">
+{% endblock %}
+

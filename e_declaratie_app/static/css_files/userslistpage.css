@@ -1,0 +1,49 @@
+.usersListPage {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 0 auto;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+    overflow:hidden;
+}
+
+.tab-content {
+    max-height: 75vh;
+    padding: 0.5rem;
+    overflow:auto;
+    flex-wrap: wrap
+}
+
+#nav-home {
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.btn {
+    background-color:orange;
+}
+
+.col-md-1 {
+    display:flex;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profilePicture {
+    border: 0.1px solid gainsboro;
+    width: 50px;
+    height: 50px;
+}
+
+/* vizualizare pentru telefon */

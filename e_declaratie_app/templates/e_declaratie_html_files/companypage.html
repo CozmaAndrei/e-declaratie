@@ -1,0 +1,97 @@
+{% extends 'e_declaratie_html_files/homepage.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="card mainCompanyPage">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="true">My company</a>
+                </li>
+            </ul>
+        </div>
+        <div class="text-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show m-0" role="alert">
+                        <span>{{ message }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="card-body companyPage">
+            <div class="leftSideCompanyPage">
+                <!--get_company_name from def company_profile-->
+                <h4 class="companyName">{{ get_company_name.company_name }}</h4>
+                <br>
+                {% if get_company_name.managers.count == 1 %}
+                    <span> You are the manager of this company</span>
+                {% else %}
+                    <ul><span> You are the manager of this company together with:</span>
+                        {% for manager in get_company_name.managers.all %}
+                            {% if manager != request.user %}
+                                <li>
+                                    <a style="color:#019cbb" href="{% url 'user_view_profile' manager.username %}">
+                                        {{ manager.first_name }} {{ manager.last_name}}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <br>
+                <div class="imgLogo">
+                    <img class="rounded-circle" src="/static/images/defaultCompanyLogo.png">
+                </div>
+                <br>
+                <div class="editBtnsLogo">
+                    <button type="button" class="btn btn-sm">Add logo</button>
+                    <button type="button" class="btn btn-sm">Delete logo</button>
+                </div>
+            </div>
+            <div class="rightSideCompanyPage">
+                    <div class="leftTop">
+                        <h5>Name:</h5>
+                            <span>{{ get_company_name.company_name }}</span>
+                        <br><br>
+                        <h5>Email:</h5>
+                            <span>{{ get_company_name.company_email }}</span>
+                        <br><br>
+                        <h5>Fiscal Code:</h5>
+                            <span>{{ get_company_name.company_cui }}</span>
+                        <br><br>
+                        <h5>Register number:</h5>
+                            <span>{{ get_company_name.company_register_number }}</span>
+                    </div>
+                    <div class="rightTop">
+                        <h5>Address:</h5>
+                            <span>{{ get_company_name.company_address }}</span>
+                        <br><br>
+                        <h5>City:</h5>
+                            <span>{{ get_company_name.company_city }}</span>
+                        <br><br>
+                        <h5>Contact:</h5>
+                            <span>{{ get_company_name.contact_person_phone }}</span>
+                    </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <div>
+            <a type="submit" class="btn btn btn-sm" href="{% url 'update_company_info' get_company_name.company_name %}">Edit company profile</a>
+            <a type="submit" class="btn btn btn-sm" href="{% url 'add_manager' get_company_name.company_name %}">Add manager</a>
+            <a type="submit" class="btn btn btn-sm" href="{% url 'register_company' %}">Add company</a>
+            </div>
+            <div>
+            <a type="submit" class="btn btn btn-sm" style="background-color:red" href="#">Remove manager</a>
+            <a type="submit" class="btn btn btn-sm" style="background-color:red" href="{% url 'delete-company-account' get_company_name.company_name %}" onclick="return confirm('Are you sure you want to delete the company {{ get_company_name.company_name }}?')">Delete company</a>
+            </div>
+        </div>
+</div>
+
+    <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <!--CSS style-->
+    <link rel="stylesheet" href="{% static 'css_files/companypage.css' %}">
+{% endblock %}

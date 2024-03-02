@@ -1,0 +1,60 @@
+{% extends 'e_declaratie_html_files/homepage.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="viewProfilePage">
+        <div class="topViewProfilePage">
+            <div class="topLeftViewProfilePage">
+                <h3><strong>{{view_user.first_name}} {{view_user.last_name}}</strong></h3>
+            </div>
+            <br>
+            <div class="topRightViewProfilePage">
+                <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}" alt="Profile pic"> <!--img fluid nu lasa cercul sa iasa din div-->
+            </div>
+        </div>
+        <div class="bottomViewProfilePageContainer1">
+            <!--view_user from def user_view_profile-->
+            {% if view_user.companies.count == 1 %}
+                <ul>
+                    <span><strong>Manager at the company:</strong></span>
+                    {% for company in view_user.companies.all %}
+                        <li>
+                            <a href="{% url 'company_view_profile' company.company_name %}">{{company.company_name}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% elif view_user.companies.count > 1 %}
+                <ul>
+                    <span><strong>Manager at the companies:</strong></span>
+                    {% for company in view_user.companies.all %}
+                        <li>
+                            <a href="{% url 'company_view_profile' company.company_name %}">{{company.company_name}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <span><strong>He does not manage any company</strong></span>
+            {% endif %} 
+        </div>
+        <div class="bottomViewProfilePageContainer2">
+            <div class="leftbtn">
+                <a class="btn btn-sm btn-primary" href="#">Favorite</a>
+            </div>
+            <div class="rightbtn">
+                <a class="btn btn-sm btn-danger" href="#">Report</a>
+            </div>
+        </div>
+        <div class="bottomViewProfilePageContainer3">
+            <h3><strong>User Info</strong></h3>
+            <ul>
+                <li><span><strong>Username:</strong> {{view_user.username}}</span></li>
+                <li><span><strong>First Name:</strong> {{view_user.first_name}}</span></li>
+                <li><span><strong>Last Name:</strong> {{view_user.last_name}}</span></li> 
+                <li><span><strong>Email:</strong> {{view_user.email}}</span></li>
+            </ul>
+        </div>
+    </div>
+    <!--CSS-->
+    <link rel="stylesheet" href="{% static 'css_files/viewprofilepage.css' %}">
+{% endblock %}

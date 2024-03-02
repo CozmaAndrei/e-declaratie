@@ -1,0 +1,99 @@
+{% extends 'e_declaratie_html_files/homepage.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="card mainProfilePage">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="true">My profile</a>
+        </li>
+        </ul>
+    </div>
+    <div class="text-center">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-dismissible fade show m-0
+                            {% if message.tags == 'success' %} 
+                                alert-success
+                            {% elif message.tags == 'warning' %}
+                                alert-warning
+                            {% endif %}" alert-info role=" alert">
+                    <span>{{ message }}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="card-body profilePage">
+        <div class="leftSideUserPage">
+            <h4 class="userFullName">{{ the_user_name.first_name }} {{ the_user_name.last_name}}</h4>
+            <br>
+            <!--the_user_name from def user_profile-->
+            {% if the_user_name.companies.exists %}
+                {% if the_user_name.companies.count == 1 %}
+                    <ul>You are the manager of the company:
+                        {% for company in the_user_name.companies.all %}
+                            <li>
+                                <a style="color:#019cbb" href="{% url 'company_profile' company.company_name %}">{{ company }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <ul>You are the manager of the companies:
+                        {% for company in the_user_name.companies.all %}
+                            <li>
+                                <a style="color:#019cbb" href="{% url 'company_profile' company.company_name %}">{{ company }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>   
+                {% endif %}
+            {% else %}
+                <p>You are not the manager of any company</p>
+            {% endif %}
+            <br>
+            <div class="imgContainer">
+                <img class="rounded-circle" src="/static/images/defaultprofilepic.jpg">
+            </div>
+            <br>
+            <div class="editBtnsImage">
+                <button type="button" class="btn btn-sm">Add picture</button>
+                <button type="button" class="btn btn-sm">Delete picture</button>
+            </div>
+        </div>
+        <div class="rightSideUserPage">
+            <div class="leftUserEdit">
+                <h5>Username:</h5>
+                    <span>{{ the_user_name.username }}<span>
+                <br><br>
+                <h5>First name:</h5>
+                    <span>{{ the_user_name.first_name }}<span>
+                <br><br>
+                <h5>Last name:</h5>
+                    <span>{{ the_user_name.last_name }}</span>
+            </div>
+            <div class="rightUserEdit">
+                <h5>Email:</h5>
+                    <span>{{ the_user_name.email }}</span>
+                <br><br>
+                <h5>Date of birth:</h5>
+                    <span>{{ the_user_name.user.date_of_birth }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <div>
+            <a type="submit" class="btn btn btn-sm" href="{% url 'update_user_info' request.user.username%}">Edit user profile</a>
+            <a type="submit" class="btn btn btn-sm" href="#">Change password</a>
+        </div>
+        <div>
+            <a type="submit" class="btn btn-sm" style="background-color:red" href="{% url 'delete-user-account' request.user.id %}" onclick="return confirm('Are you sure you want to delete the user {{ request.user.username }}?')">Delete user</a>
+        </div>
+    </div>
+</div>
+    <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <!--CSS style-->
+    <link rel="stylesheet" href="{% static 'css_files/profilepage.css' %}">
+{% endblock %}

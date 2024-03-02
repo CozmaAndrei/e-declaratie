@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.wrapper {
+    display: flex;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    margin-bottom: 0; /* scoate spatiul de la lista */
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: auto;
+}
+
+hr {
+    margin: 0 auto; /* pune linia in mijloc */
+    width: 80%; /* lungimea liniei */
+    color: white; 
+}
+
+.sidebar {
+    display: flex;
+    width: 180px; 
+    min-width: 180px; 
+    transition: all 0.5s ease-in-out; /* face tranzitia cand trecem cu cursorul peste acel buton */
+    background-color: #019cbb;
+    flex-direction: column; /* daca am o lista o afiseza in jos */
+}
+
+.sidebar-logo {
+    margin: auto; /* pune logo-ul in mijloc */
+    padding: 1.5rem 1.5rem; /* spatiul dintre logo si margini */
+}
+
+.sidebar-logo span {
+    white-space: nowrap; /* face ca textul sa nu se mute pe linie noua */
+    color: white;
+}
+
+.sidebar-nav {
+    padding: 1rem 0; /* spatiul dintre butoane */
+}
+
+a.sidebar-link {
+    padding: 0.5rem 0.9rem;
+    color: white;
+    display: block;
+    font-size: 1.0rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent; /* face un border la stanga si ajuta pe a.sidebar-link:hover*/
+    background-color: #019cbb;
+    transition: all 0.5s ease-in-out; /* face tranzitia cand trecem cu cursorul peste acel buton */
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .100); /* face ca butonul sa devina transparent cand trecem cu cursorul peste el */
+    border-left: 3px solid white;
+}
+
+.dropdown-menu {
+    padding: 0rem;
+    background-color: #019cbb;
+    border: none;
+    border-radius: 0rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-item {
+    position: relative; 
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+.sidebar-nav:last-child {
+    margin-top: auto;
+}
+
+.mainPage {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:whitesmoke;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+
+    flex-wrap: wrap;
+}

@@ -1,0 +1,157 @@
+<aside class="sidebar">
+    <div class="d-flex">
+        <div class="sidebar-logo">
+            <a href="{% url 'home' %}">                       
+                <span>E-declaratie</span>
+            </a>
+        </div>
+    </div>
+    <hr>
+    <ul class="sidebar-nav">
+        <!-- if user is authenticated -->
+        {% if user.is_authenticated %}
+            <li class="sidebar-item">
+                <a href="{% url 'user_profile' request.user.username %}" class="sidebar-link">
+                    <i class="bi-person-circle"></i>
+                    <span>My profile</span>
+                </a>
+            </li>
+            <!-- if user has companies -->
+            {% if user.companies.all %}
+                <li class="sidebar-item">
+                    <div class="dropend">
+                        <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi-briefcase"></i>
+                            <span>My company</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!--used for loop to find the user companies and display the name of the company in URL-->
+                            {% for company in user.companies.all %}
+                                <li class="sidebar-item">
+                                    <a href="{% url 'company_profile' company.company_name %}" class="sidebar-link">
+                                        <span>{{company.company_name}}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-item">
+                    <div class="dropend">
+                        <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
+                            <i class="bi-file-earmark-text"></i>
+                            <span>Create e-dec</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!--used for loop to find the user companies and display the name of the company in URL-->
+                            {% for company in user.companies.all %}
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">
+                                        <span>{{company.company_name}}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            {% else %}
+                <!-- if user has no companies -->
+                <li class="sidebar-item">
+                    <a href="{% url 'register_company' %}" class="sidebar-link">
+                        <i class="bi-briefcase"></i>
+                        <span>My company</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{% url 'register_company' %}" class="sidebar-link">
+                        <i class="bi-file-earmark-text"></i>
+                        <span>Create e-dec</span>
+                    </a>
+                </li>
+            {% endif %}
+            <li class="sidebar-item">
+                <a href="{% url 'companies_list' %}" class="sidebar-link">
+                    <i class="bi-card-list"></i>
+                    <span>Companies list</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'users_list' %}" class="sidebar-link">
+                    <i class="bi-people"></i>
+                    <span>Users list</span>
+                </a>
+            </li>
+        {% else %}
+        <!-- if user is not authenticated -->
+            <li class="sidebar-item">
+                <a href="{% url 'login_user' %}" class="sidebar-link">
+                    <i class="bi-person-circle"></i>
+                    <span>My profile</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'login_user' %}" class="sidebar-link">
+                    <i class="bi-briefcase"></i>
+                    <span>My company</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'login_user' %}" class="sidebar-link">
+                    <i class="bi-file-earmark-text"></i>
+                    <span>Create e-dec</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'login_user' %}" class="sidebar-link">
+                    <i class="bi-card-list"></i>
+                    <span>Companies list</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'login_user' %}" class="sidebar-link">
+                    <i class="bi-people"></i>
+                    <span>Users list</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+    <hr>
+    <ul class="sidebar-nav">
+        {% if user.is_authenticated %}
+            <li class="sidebar-item">
+                <a href="{% url 'login_user' %}" class="sidebar-link">
+                    <i class="bi-arrow-left-right"></i>
+                    <span>Switch account</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'logout_user' %}" class="sidebar-link">
+                    <i class="bi-box-arrow-left"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="sidebar-item">
+                <a href="{% url 'login_user' %}" class="sidebar-link">
+                    <i class="bi-box-arrow-in-right"></i>
+                    <span>Login</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'register_user' %}" class="sidebar-link">
+                    <i class="bi-person-plus"></i>
+                    <span>Register</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+    <hr>
+    <ul class="sidebar-nav">
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="bi-person-lines-fill"></i>
+                <span>Contact</span>
+            </a>
+        </li>
+    </ul>
+</aside>
