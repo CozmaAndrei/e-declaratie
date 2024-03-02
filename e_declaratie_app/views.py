@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from authentication_app.models import Company
 from .forms import EditUserInfoForm
 from .forms import EditCompanyInfoForm
-from django.contrib.auth import logout
 from .forms import AddNewManagerForm
 from django.contrib import messages
 
