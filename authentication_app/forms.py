@@ -3,8 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from user_company_app.models import Company
+from datetime import datetime
 
-        
+
 class UserRegisterForm(UserCreationForm):
     first_name = forms.CharField(min_length=3, 
                                  max_length=50, 
@@ -25,17 +26,15 @@ class UserRegisterForm(UserCreationForm):
                                                                'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
                                                                'onfocus': 'this.style.borderColor="#019cbb";', 
                                                                'onfocusout': 'this.style.borderColor="";'}))
-    # date_of_birth= forms.DateField(label='Date of Birth',widget=forms.SelectDateWidget(years=range(datetime.now().year, 1900, -1),
-    #                                                                                    attrs={'class': 'form-select',
-                                                                                            
-    #                                                                                         'size': '1',
-    #                                                                                         'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
-    #                                                                                         'onfocus': 'this.style.borderColor="#019cbb";', 
-    #                                                                                         'onfocusout': 'this.style.borderColor="";'}))
-    
+    date_of_birth= forms.DateField(label='Date of Birth',widget=forms.SelectDateWidget(years=range(datetime.now().year, 1900, -1),
+                                                                                       attrs={'class': 'form-select',
+                                                                                            'size': '1',
+                                                                                            'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                                                                                            'onfocus': 'this.style.borderColor="#019cbb";', 
+                                                                                            'onfocusout': 'this.style.borderColor="";'}))
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'email', 'date_of_birth', 'password1', 'password2']
         
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
