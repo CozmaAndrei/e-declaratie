@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from authentication_app.models import Company
-from .forms import EditUserInfoForm
-from e_declaratie_app.forms import EditCompanyInfoForm
-from e_declaratie_app.forms import AddNewManagerForm
 from django.contrib import messages
+from authentication_app.models import Company
+from user_company_app.forms import EditCompanyInfoForm
+from user_company_app.forms import AddNewManagerForm
+from .forms import EditUserInfoForm
+
 
 
 '''Return user profile with his username in URL and user information in profilepage.html'''
