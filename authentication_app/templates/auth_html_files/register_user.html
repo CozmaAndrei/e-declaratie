@@ -17,8 +17,9 @@
         </div>
         <h3 class="titleEdit">User registration</h3>
         {{ form.as_p }}
-        <br>
-        <button type="submit" class="btn" href="{% url 'login_user' %}">Register</button>
+        <div class="btnContainer">
+            <button type="submit" class="btn" href="{% url 'login_user' %}">Register</button>
+        </div>
         <br>
         <p>Already have an account? <a style="color:#019cbb" href="{% url 'login_user' %}">Login</a></p>
     </form>

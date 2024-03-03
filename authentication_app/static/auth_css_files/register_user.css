@@ -12,15 +12,23 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.btn {
-    background-color: #019cbb;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    color:white;
-}
-
 .titleEdit {
     color: #019cbb;
     font-size: 2rem;
     margin-bottom: 2rem;
 }
+
+.btn {
+    background-color: #019cbb;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color:white;
+    margin: 1rem;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
 
