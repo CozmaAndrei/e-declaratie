@@ -52,7 +52,9 @@
                 <li><span><strong>First Name:</strong> {{view_user.first_name}}</span></li>
                 <li><span><strong>Last Name:</strong> {{view_user.last_name}}</span></li> 
                 <li><span><strong>Email:</strong> {{view_user.email}}</span></li>
-                <li><span><strong>Date of birth:</strong> {{extra_view_user_info.date_of_birth}}</span></li>
+                {% if extra_view_user_info.date_of_birth%}
+                    <li><span><strong>Date of birth:</strong> {{extra_view_user_info.date_of_birth}}</span></li>
+                {% endif %}
             </ul>
         </div>
     </div>

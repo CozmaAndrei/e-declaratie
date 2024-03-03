@@ -7,25 +7,16 @@ from datetime import datetime
 
 
 class UserRegisterForm(UserCreationForm):
-    first_name = forms.CharField(min_length=3, 
-                                 max_length=50, 
-                                 widget=forms.TextInput(attrs={'class': 'form-control', 
-                                                               'size': '30', 
-                                                               'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
-                                                               'onfocus': 'this.style.borderColor="#019cbb";', 
-                                                               'onfocusout': 'this.style.borderColor="";'}))
-    last_name = forms.CharField(min_length=3, 
-                                max_length=50, 
-                                widget=forms.TextInput(attrs={'class': 'form-control', 
-                                                              'size': '30', 
-                                                              'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
-                                                              'onfocus': 'this.style.borderColor="#019cbb";', 
-                                                              'onfocusout': 'this.style.borderColor="";'}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 
-                                                               'size': '30', 
-                                                               'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
-                                                               'onfocus': 'this.style.borderColor="#019cbb";', 
-                                                               'onfocusout': 'this.style.borderColor="";'}))
+    
+    user_widget_register_form = {'class': 'form-control', 
+                                'size': '30', 
+                                'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                                'onfocus': 'this.style.borderColor="#019cbb";', 
+                                'onfocusout': 'this.style.borderColor="";'}
+    
+    first_name = forms.CharField(min_length=3, max_length=50, widget=forms.TextInput(attrs=user_widget_register_form))
+    last_name = forms.CharField(min_length=3, max_length=50, widget=forms.TextInput(attrs=user_widget_register_form))
+    email = forms.EmailField(widget=forms.EmailInput(attrs=user_widget_register_form))
     date_of_birth= forms.DateField(label='Date of Birth',widget=forms.SelectDateWidget(years=range(datetime.now().year, 1900, -1),
                                                                                        attrs={'class': 'form-select',
                                                                                             'size': '1',
