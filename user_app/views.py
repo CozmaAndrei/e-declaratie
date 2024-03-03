@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from authentication_app.models import Company
+from user_company_app.models import Company
 from user_company_app.forms import EditCompanyInfoForm
 from user_company_app.forms import AddNewManagerForm
 from .forms import EditUserInfoForm

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from .forms import UserRegisterForm
 from .forms import CustomAuthenticationForm
 from .forms import CompanyRegisterForm
-from .models import Company
+from user_company_app.models import Company
 
 '''Login function'''
 def login_user(request):
@@ -40,11 +40,11 @@ def register_user(request):
             first_name = form.cleaned_data['first_name'] 
             last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
-            date_of_birth = form.cleaned_data['date_of_birth']
+            # date_of_birth = form.cleaned_data['date_of_birth']
             password1 = form.cleaned_data['password1']
             # password2 = form.cleaned_data['password2']
             
-            user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, date_of_birth=date_of_birth, password=password1)
+            user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, password=password1)
             user.save()
             messages.info(request, "Your user account was created, please Login!")
             return redirect('login_user')

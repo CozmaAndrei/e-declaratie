@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from authentication_app.models import Company
+from user_company_app.models import Company
 from django.contrib import messages
 
 '''Return the first page of e-declaration website'''
