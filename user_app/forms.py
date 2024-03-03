@@ -45,3 +45,14 @@ class EditUserInfoForm(forms.ModelForm):
             extra_info.date_of_birth = self.cleaned_data['date_of_birth']
             extra_info.save()
         return user
+    
+    '''We check if the user have at least 18 years'''  
+    def clean_date_of_birth(self):
+        birth_date = self.cleaned_data["date_of_birth"]
+        actual_date = datetime.now().date()
+        dif = actual_date - birth_date
+        age = dif.days // 365
+        if age < 18:
+            raise forms.ValidationError("You must be at least 18 years old to create an account.")
+        
+        return birth_date

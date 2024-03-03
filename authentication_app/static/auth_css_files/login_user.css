@@ -24,3 +24,14 @@
     margin-bottom: 2rem;
 }
 
+/* adding style for forms.ValidationError */
+.errorlist {
+    text-align: center;
+    max-width:299px;
+    padding: 0.5rem;
+    background-color: #f44336b4; 
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+

@@ -52,6 +52,17 @@ class UserRegisterForm(UserCreationForm):
         self.fields['password1'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
         self.fields['password2'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['password2'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
+    
+    '''We check if the user have at least 18 years'''  
+    def clean_date_of_birth(self):
+        birth_date = self.cleaned_data["date_of_birth"]
+        actual_date = datetime.now().date()
+        dif = actual_date - birth_date
+        age = dif.days // 365
+        if age < 18:
+            raise forms.ValidationError("You must be at least 18 years old to create an account.")
+        
+        return birth_date
 
 class CustomAuthenticationForm(AuthenticationForm):
      def __init__(self, *args, **kwargs):

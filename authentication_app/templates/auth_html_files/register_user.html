@@ -3,26 +3,29 @@
 
 
 {% block content %}
-    <form method="POST" action="{% url 'register_user'%}" class="registerUserForm">
-        {% csrf_token %}
-        <div class="text-center">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-success alert-dismissible fade show m-0" role="alert">
-                        <span>{{ message }}</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-        <h3 class="titleEdit">User registration</h3>
-        {{ form.as_p }}
-        <div class="btnContainer">
-            <button type="submit" class="btn" href="{% url 'login_user' %}">Register</button>
-        </div>
-        <br>
-        <p>Already have an account? <a style="color:#019cbb" href="{% url 'login_user' %}">Login</a></p>
-    </form>
+    <div class="registerUserForm">
+        <form method="POST" action="{% url 'register_user'%}">
+            {% csrf_token %}
+            <div class="text-center">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show m-0" role="alert">
+                            <span>{{ message }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <h3 class="titleEdit">User registration</h3>
+            {{ form.as_p }}
+            <div class="btnContainer">
+                <button type="submit" class="btn" href="{% url 'login_user' %}">Register</button>
+            </div>
+            <div class="text-center">
+            <p>Already have an account? <a style="color:#019cbb" href="{% url 'login_user' %}">Login</a></p>
+            </div>
+        </form>
+    </div>
 
     <!--CSS style-->
     <link rel="stylesheet" href="{% static 'auth_css_files/register_user.css' %}">
