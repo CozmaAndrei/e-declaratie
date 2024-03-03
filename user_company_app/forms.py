@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from authentication_app.models import Company
+from models import Company
 
 '''The company profile editing form'''
 class EditCompanyInfoForm(forms.ModelForm):

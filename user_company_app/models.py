@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
     
 '''Table for company registration'''
 class Company(models.Model):
-    # the columns of the Company table
     managers = models.ManyToManyField(User, related_name='companies', blank=True) # the user that is associated with the company
     company_name = models.CharField(max_length=100)
     company_email = models.CharField(max_length=100, unique=True)

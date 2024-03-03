@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from authentication_app.models import Company
+from .models import Company
 from .forms import EditCompanyInfoForm
 from .forms import AddNewManagerForm
 
