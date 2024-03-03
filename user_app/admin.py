@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import ExtraUserInformations
 
-# Register your models here.
+'''Register ExtraUserInformations in admin interface'''
+admin.site.register(ExtraUserInformations)
