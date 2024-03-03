@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'e_declaratie_app',
     'authentication_app',
+    'user_app',
+    'user_company_app',
     
 ]
 

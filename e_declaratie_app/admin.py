@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User, Group
 from authentication_app.models import Company
-from .models import ExtraUserInformations
+from user_app.models import ExtraUserInformations
 
 '''Unregister the Group model from the admin interface, as we won't be using it.'''
 admin.site.unregister(Group)
