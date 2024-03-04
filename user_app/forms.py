@@ -56,3 +56,42 @@ class EditUserInfoForm(forms.ModelForm):
             raise forms.ValidationError("You must be at least 18 years old to create an account.")
         
         return birth_date
+    
+# class ChangeUserPassForm():
+    
+#     change_pass_widget_form = {'class': 'form-control',
+#                         'type': 'password',
+#                         'size': '30', 
+#                         'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+#                         'onfocus': 'this.style.borderColor="#019cbb";', 
+#                         'onfocusout': 'this.style.borderColor="";'}
+    
+#     new_pass = forms.CharField(min_length = 8, label = 'New password', widget=forms.PasswordInput(attrs=change_pass_widget_form))
+#     re_new_pass = forms.CharField(min_length = 8, label = 'Confirm new password', widget=forms.PasswordInput(attrs=change_pass_widget_form))
+    
+#     class Meta:
+#         model = User
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
