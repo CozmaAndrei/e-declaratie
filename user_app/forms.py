@@ -1,9 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from user_company_app.models import Company
 from datetime import datetime
 from .models import ExtraUserInformations
-from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
+from django.contrib.auth.forms import PasswordChangeForm
         
 
 '''The user profile editing form'''
@@ -57,9 +56,9 @@ class EditUserInfoForm(forms.ModelForm):
             raise forms.ValidationError("You must be at least 18 years old to create an account.")
         
         return birth_date
-    
+
+'''The change password Form using the PasswordChangeForm imported from django.contrib.auth.forms'''
 class ChangeUserPassForm(PasswordChangeForm):
-    
     class Meta:
         model = User
         fields = ['old_password', 'new_password1', 'new_password2']
