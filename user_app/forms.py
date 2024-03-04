@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from user_company_app.models import Company
 from datetime import datetime
 from .models import ExtraUserInformations
+from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
         
 
 '''The user profile editing form'''
@@ -57,20 +58,36 @@ class EditUserInfoForm(forms.ModelForm):
         
         return birth_date
     
-# class ChangeUserPassForm():
+class ChangeUserPassForm(PasswordChangeForm):
     
-#     change_pass_widget_form = {'class': 'form-control',
-#                         'type': 'password',
-#                         'size': '30', 
-#                         'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
-#                         'onfocus': 'this.style.borderColor="#019cbb";', 
-#                         'onfocusout': 'this.style.borderColor="";'}
-    
-#     new_pass = forms.CharField(min_length = 8, label = 'New password', widget=forms.PasswordInput(attrs=change_pass_widget_form))
-#     re_new_pass = forms.CharField(min_length = 8, label = 'Confirm new password', widget=forms.PasswordInput(attrs=change_pass_widget_form))
-    
-#     class Meta:
-#         model = User
+    class Meta:
+        model = User
+        fields = ['old_password', 'new_password1', 'new_password2']
+        
+    def __init__(self, *args, **kwargs):
+        super(ChangeUserPassForm, self).__init__(*args, **kwargs)
+        
+        self.fields['old_password'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password1'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password2'].widget.attrs['class'] = 'form-control'
+        
+        self.fields['new_password1'].help_text = None
+        self.fields['new_password2'].help_text = None
+        
+        self.fields['old_password'].widget.attrs['size'] = '30'
+        self.fields['new_password1'].widget.attrs['size'] = '30'
+        self.fields['new_password2'].widget.attrs['size'] = '30'
+        
+        self.fields['old_password'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
+        self.fields['new_password1'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
+        self.fields['new_password2'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
+        
+        self.fields['old_password'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
+        self.fields['old_password'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
+        self.fields['new_password1'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
+        self.fields['new_password1'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
+        self.fields['new_password2'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
+        self.fields['new_password2'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
     
     
     

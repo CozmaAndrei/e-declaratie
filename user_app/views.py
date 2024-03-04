@@ -2,10 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from user_company_app.models import Company
-from user_company_app.forms import EditCompanyInfoForm
-from user_company_app.forms import AddNewManagerForm
-from .forms import EditUserInfoForm
+from .forms import EditUserInfoForm, ChangeUserPassForm
 from .models import ExtraUserInformations
+from django.contrib.auth import login, logout
 
 
 
@@ -30,7 +29,7 @@ def update_user_info(request, username):
             return redirect ('user_profile', user.username)
     else:
         form = EditUserInfoForm(instance=user)
-    return render(request, 'user_html/updateuserprofileinfo.html', { "form": form})
+    return render(request, 'user_html/updateuserprofileinfo.html', {"form": form})
 
 '''Delete the user account with conditions'''
 def delete_user_account(request, user_id):
@@ -66,7 +65,18 @@ def user_view_profile(request, username):
     return render(request, 'user_html/viewprofilepage.html', {"view_user": view_user, "extra_view_user_info": extra_view_user_info})
 
 def change_pass(request,username):
-    return render(request, 'user_html/changeuserpass.html/', {})
+    user = User.objects.get(username=username)
+    if request.method == 'POST':
+        form = ChangeUserPassForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your password has been updated, Please log in again!")
+            logout(request)
+            return redirect('login_user')
+    else:
+        form = ChangeUserPassForm(request.user)   
+           
+    return render(request, 'user_html/changeuserpass.html', {"user": user, "form": form})
 
 
 
