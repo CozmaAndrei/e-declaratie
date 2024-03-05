@@ -73,7 +73,11 @@
                             <span>{{ get_company_name.company_city }}</span>
                         <br><br>
                         <h5>Contact:</h5>
-                            <span>{{ get_company_name.contact_person_phone }}</span>
+                        {% if get_company_name.contact_person_phone %}
+                            <span>{{ get_company_name.contact_person_phone}}</span>
+                        {% else %}
+                            <span> - </span>
+                        {% endif %}
                     </div>
             </div>
         </div>

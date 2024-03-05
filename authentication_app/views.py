@@ -6,7 +6,7 @@ from .forms import UserRegisterForm
 from .forms import CustomAuthenticationForm
 from .forms import CompanyRegisterForm
 from user_company_app.models import Company
-# from users.models import ExtraUserInformations
+from users.models import ExtraUserInformations
 
 '''Login function'''
 def login_user(request):
@@ -37,18 +37,10 @@ def register_user(request):
     if request.method == 'POST': 
         form = UserRegisterForm(request.POST) 
         if form.is_valid(): 
-            user = form.save()
+            user = form.save(commit=False)
+            user.save()
             date_of_birth = form.cleaned_data['date_of_birth']
-            # ExtraUserInformations.objects.create(user=user,date_of_birth=date_of_birth)
-            # username = form.cleaned_data['username'] 
-            # first_name = form.cleaned_data['first_name'] 
-            # last_name = form.cleaned_data['last_name']
-            # email = form.cleaned_data['email']
-            # date_of_birth = form.cleaned_data['date_of_birth']
-            # password1 = form.cleaned_data['password1']
-            
-            # user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, date_of_birth=date_of_birth, password=password1)
-            # user.save()
+            ExtraUserInformations.objects.create(user=user,date_of_birth=date_of_birth)
             messages.info(request, "Your user account was created, please Login!")
             return redirect('login_user')
     else:
