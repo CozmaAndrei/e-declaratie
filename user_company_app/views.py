@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import Company
 from .forms import EditCompanyInfoForm
 from .forms import AddNewManagerForm
+from users.models import ExtraUserInformations
 
 
 '''Return all users asociated to company in companypage.html and the company name in URL '''
@@ -31,6 +32,9 @@ def add_manager(request, company_name):
         if form.is_valid():
             manager = form.cleaned_data['manager']
             get_company_name.managers.add(manager) #add the new manager at the company
+            extra_info = ExtraUserInformations.objects.get(user=manager)
+            extra_info.user_company.add(get_company_name)
+            extra_info.save()
             return redirect('company_profile', get_company_name.company_name)
     else:
         form = AddNewManagerForm()

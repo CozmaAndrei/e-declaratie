@@ -55,6 +55,8 @@ def register_company(request):
             company = form.save()
             company.managers.add(request.user)
             company.save()
+            extra_info, created = ExtraUserInformations.objects.get_or_create(user=request.user)
+            extra_info.user_company.add(company)
             logout(request)
             messages.success(request, "Your company account was created, please Login!")
             return redirect('login_user')
