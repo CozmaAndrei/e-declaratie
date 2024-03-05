@@ -98,14 +98,4 @@ class CompanyRegisterForm(forms.ModelForm):
     contact_person_phone = forms.CharField(required=False, label='Contact phone', widget=forms.TextInput(attrs=register_widget_form))    
     class Meta:
         model = Company
-        fields = ['company_name', 'company_email', 'company_cui', 'company_register_number', 'company_address', 'company_city', 'contact_person_phone']  
-    
-    # def __init__(self, *args, **kwargs):
-    #     super(CompanyRegisterForm, self).__init__(*args, **kwargs)
-    #     self.fields['company_name'].label = 'Company name'
-    #     self.fields['company_email'].label = 'Company email'
-    #     self.fields['company_cui'].label = 'Fiscal Identification Code'
-    #     self.fields['company_register_number'].label = 'Registry Number'
-    #     self.fields['company_address'].label = 'Company address'
-    #     self.fields['company_city'].label = 'City'
-    #     self.fields['contact_person_phone'].label = 'Contact phone'
+        fields = ['company_name', 'company_email', 'company_cui', 'company_register_number', 'company_address', 'company_city', 'contact_person_phone']

@@ -52,16 +52,9 @@ def register_company(request):
     if request.method == 'POST':
         form = CompanyRegisterForm(request.POST)
         if form.is_valid():
-            company_name = form.cleaned_data['company_name']
-            company_email = form.cleaned_data['company_email']
-            company_cui = form.cleaned_data['company_cui']
-            company_register_number = form.cleaned_data['company_register_number']
-            company_address = form.cleaned_data['company_address']
-            company_city = form.cleaned_data['company_city']
-            contact_person_phone = form.cleaned_data['contact_person_phone']
-    
-            company = Company.objects.create(company_name=company_name,company_email=company_email,company_cui=company_cui,company_register_number=company_register_number,company_address=company_address,company_city=company_city,contact_person_phone=contact_person_phone)
+            company = form.save()
             company.managers.add(request.user)
+            company.save()
             logout(request)
             messages.success(request, "Your company account was created, please Login!")
             return redirect('login_user')
