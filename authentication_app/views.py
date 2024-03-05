@@ -6,7 +6,7 @@ from .forms import UserRegisterForm
 from .forms import CustomAuthenticationForm
 from .forms import CompanyRegisterForm
 from user_company_app.models import Company
-from users.models import ExtraUserInformations
+# from users.models import ExtraUserInformations
 
 '''Login function'''
 def login_user(request):
@@ -39,7 +39,7 @@ def register_user(request):
         if form.is_valid(): 
             user = form.save()
             date_of_birth = form.cleaned_data['date_of_birth']
-            ExtraUserInformations.objects.create(user=user,date_of_birth=date_of_birth)
+            # ExtraUserInformations.objects.create(user=user,date_of_birth=date_of_birth)
             # username = form.cleaned_data['username'] 
             # first_name = form.cleaned_data['first_name'] 
             # last_name = form.cleaned_data['last_name']
