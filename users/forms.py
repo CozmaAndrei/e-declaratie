@@ -62,7 +62,8 @@ class ChangeUserPassForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ['old_password', 'new_password1', 'new_password2']
-        
+    
+    #applied Bootstrap
     def __init__(self, *args, **kwargs):
         super(ChangeUserPassForm, self).__init__(*args, **kwargs)
         

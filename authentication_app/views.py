@@ -6,7 +6,7 @@ from .forms import UserRegisterForm
 from .forms import CustomAuthenticationForm
 from .forms import CompanyRegisterForm
 from user_company_app.models import Company
-from user_app.models import ExtraUserInformations
+from users.models import ExtraUserInformations
 
 '''Login function'''
 def login_user(request):
