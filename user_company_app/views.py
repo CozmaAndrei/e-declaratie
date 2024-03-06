@@ -66,16 +66,16 @@ def company_view_profile(request, company_name):
 def delete_manager(request, company_name):
     get_company_name = Company.objects.get(company_name=company_name)
     if request.method == 'POST':
-        form = DeleteManagerForm(request.POST)
+        form = DeleteManagerForm(request.POST, company=get_company_name)
         if form.is_valid():
-            manager = form.cleaned_data['delete_manager']
+            manager = form.cleaned_data['delete_managers']
             get_company_name.managers.remove(manager) #remove the mananger
             extra_info = ExtraUserInformations.objects.get(user=manager)
-            extra_info.user_company.remove(get_company_name)
+            extra_info.user_company.remove(get_company_name) #remove company from user_company field from ExtraUserInformations model
             return redirect('company_profile', get_company_name.company_name)
     else:
-        form = DeleteManagerForm()
-    return render(request, 'company_html/addmanagerpage.html', {'form': form, "get_company_name": get_company_name})
+        form = DeleteManagerForm(company=get_company_name)
+    return render(request, 'company_html/deletemanagerpage.html', {'form': form, "get_company_name": get_company_name})
 
 
 

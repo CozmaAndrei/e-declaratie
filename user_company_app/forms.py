@@ -2,7 +2,9 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Company
 
-'''The company profile editing form'''
+
+
+'''Edit the Company model info form'''
 class EditCompanyInfoForm(forms.ModelForm):
     #company_widget_form style all the fields
     company_widget_form = {'class': 'form-control', 
@@ -22,7 +24,7 @@ class EditCompanyInfoForm(forms.ModelForm):
         model = Company
         fields = ['company_name', 'company_email', 'company_cui', 'company_register_number', 'company_address', 'company_city', 'contact_person_phone']
         
-'''The new manager adding form'''    
+'''Add the new manager to the company form'''    
 class AddNewManagerForm(forms.Form):
     manager = forms.ModelChoiceField(queryset=User.objects.exclude(username='admin'),
                                      widget=forms.Select(attrs={'class': 'form-control',
@@ -30,15 +32,20 @@ class AddNewManagerForm(forms.Form):
                                                                 'onfocus': 'this.style.borderColor="#019cbb";', 
                                                                 'onfocusout': 'this.style.borderColor="";'}))
 
-
+'''Delete the managers from the company form'''
 class DeleteManagerForm(forms.Form):
-    delete_manager = forms.ModelChoiceField(queryset=User.objects.exclude(username="admin"),
-                                            widget=forms.Select(attrs={'class': 'form-control',
-                                                                'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
-                                                                'onfocus': 'this.style.borderColor="#019cbb";', 
-                                                                'onfocusout': 'this.style.borderColor="";'}))        
-        
-        
+    
+    def __init__(self, *args, company=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        if company:
+            self.fields['delete_managers'].queryset = User.objects.filter(companies=company)
+
+    delete_managers = forms.ModelChoiceField(queryset=User.objects.none(),
+                                      widget=forms.Select(attrs={'class': 'form-control',
+                                                                 'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                                                                 'onfocus': 'this.style.borderColor="#019cbb";', 
+                                                                 'onfocusout': 'this.style.borderColor="";'}))
+   
         
         
         
