@@ -33,6 +33,7 @@ def add_manager(request, company_name):
             get_company_name.managers.add(manager) #add the new manager at the company
             extra_info = ExtraUserInformations.objects.get(user=manager)
             extra_info.user_company.add(get_company_name) #added in user_company field from ExtraUserInformations the new company
+            messages.success(request, f"The {manager} manager was successfully added!")
             return redirect('company_profile', get_company_name.company_name)
     else:
         form = AddNewManagerForm()
@@ -63,6 +64,7 @@ def company_view_profile(request, company_name):
     displayCompanyInViewCompanyPage = Company.objects.get(company_name=company_name) #used in viewcompanyprofile.html
     return render(request, 'company_html/viewcompanyprofile.html', {"displayCompanyInViewCompanyPage": displayCompanyInViewCompanyPage})
 
+'''This function checked if the DeleteManagerForm is POST, take the input value and remove from the managers field from Company table and return to the company page'''
 def delete_manager(request, company_name):
     get_company_name = Company.objects.get(company_name=company_name)
     if request.method == 'POST':
@@ -72,6 +74,7 @@ def delete_manager(request, company_name):
             get_company_name.managers.remove(manager) #remove the mananger
             extra_info = ExtraUserInformations.objects.get(user=manager)
             extra_info.user_company.remove(get_company_name) #remove company from user_company field from ExtraUserInformations model
+            messages.success(request, f"The {manager} manager was successfully deleted!")
             return redirect('company_profile', get_company_name.company_name)
     else:
         form = DeleteManagerForm(company=get_company_name)

@@ -14,7 +14,12 @@
         <div class="text-center">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="alert alert-warning alert-dismissible fade show m-0" role="alert">
+                    <div class="alert alert-dismissible fade show m-0
+                                {% if message.tags == 'success' %} 
+                                    alert-success
+                                {% elif message.tags == 'warning' %}
+                                    alert-warning
+                                {% endif %}" alert-info role=" alert">
                         <span>{{ message }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>

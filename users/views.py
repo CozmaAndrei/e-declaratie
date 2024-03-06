@@ -64,6 +64,7 @@ def user_view_profile(request, username):
     extra_view_user_info = ExtraUserInformations.objects.get(user=view_user) #request in ExtraUserInformations model for table fields
     return render(request, 'user_html/viewprofilepage.html', {"view_user": view_user, "extra_view_user_info": extra_view_user_info})
 
+'''Change the user password'''
 def change_pass(request,username):
     user = User.objects.get(username=username)
     if request.method == 'POST':
