@@ -6,8 +6,11 @@
     <div class="companiesListPage">
         <nav>
             <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                <button class="nav-link active" id="nav-all_companies-tab" data-bs-toggle="tab" data-bs-target="#nav-all_companies" type="button" role="tab" aria-controls="nav-all_companies" aria-selected="true">
                     All companies
+                </button>
+                <button class="nav-link" id="nav-favorite_companies-tab" data-bs-toggle="tab" data-bs-target="#nav-favorite_companies" type="button" role="tab" aria-controls="nav-favorite_companies" aria-selected="true">
+                    Favorite companies
                 </button>
                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
                     Online companies
@@ -17,29 +20,58 @@
                 </button>
             </div>
         </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                {% for company in all_companies %} <!--all_companies from def companies_list-->
-                    <div class="card mb-1">
-                        <div class="row g-0">
-                            <div class="col-md-1">
-                                <img src="/static/images/defaultCompanyLogo.png" class="companyLogo img-fluid rounded">
-                            </div>
-                            <div class="col-md-11">
-                                <div class="card-body">
-                                    <span>{{ company.company_name }}</span>
-                                    <a class="btn btn-sm btn-outline-light" href="{% url 'company_view_profile' company.company_name %}">
-                                        View profile
-                                    </a>
+            <div class="tab-content" id="nav-tabContent">
+                <!--All companies tab-->
+                <div class="tab-pane fade show active" id="nav-all_companies" role="tabpanel" aria-labelledby="nav-all_companies-tab" tabindex="0">
+                    <!--all_companies from def companies_list-->
+                    {% for company in all_companies %}
+                        <div class="card mb-1">
+                            <div class="row g-0">
+                                <div class="col-md-1">
+                                    <img src="/static/images/defaultCompanyLogo.png" class="companyLogo img-fluid rounded">
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="card-body">
+                                        <span>{{ company.company_name }}</span>
+                                        <a class="btn btn-sm btn-outline-light" href="{% url 'company_view_profile' company.company_name %}">
+                                            View profile
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+                <!--All favorite companies-->
+                <div class="tab-pane fade" id="nav-favorite_companies" role="tabpanel" aria-labelledby="nav-favorite_companies-tab" tabindex="0">
+                    {% for company in favorite_companies %}
+                        <div class="card mb-1">
+                            <div class="row g-0">
+                                <div class="col-md-1">
+                                    <img src="/static/images/defaultCompanyLogo.png" class="companyLogo img-fluid rounded">
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="card-body">
+                                        <span>{{ company.company_name }}</span>
+                                        <a class="btn btn-sm btn-outline-light" href="{% url 'company_view_profile' company.company_name %}">
+                                            View profile
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!--Online companies-->
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                    page under maintenance
+                </div>
+                <!--Offline companies-->
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                    page under maintenance
+                </div>
             </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">...</div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
-          </div>
         
     </div>
     <!--Bootstrap JS-->
