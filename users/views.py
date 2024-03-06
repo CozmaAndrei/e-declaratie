@@ -53,10 +53,11 @@ def delete_user_account(request, user_id):
     
     return redirect('register_user')
 
-'''Return all the users without the current user and admin in userlistpage.html'''
-def users_list(request):
-    all_users = User.objects.exclude(username=request.user).exclude(username='admin') #used in userlistpage.html
-    return render(request, 'user_html/userslistpage.html', {"all_users": all_users})
+def users_lists(request):
+    all_users = User.objects.exclude(username=request.user).exclude(username='admin') #used in userlistpage.html (All users)
+    extra_info = ExtraUserInformations.objects.get(user=request.user) #used in userlistpage.html (Favorite users)
+    all_favorite_users = extra_info.favorite_user.all() #used in userlistpage.html (Favorite users)
+    return render(request, 'user_html/listspage.html',{"all_users": all_users, "all_favorite_users": all_favorite_users})
 
 '''Return the user view profile in viewprofilepage.html for all the users'''
 def user_view_profile(request, username):

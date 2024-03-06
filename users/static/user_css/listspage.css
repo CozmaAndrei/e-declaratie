@@ -23,6 +23,11 @@
     padding: 0.5rem;
 }
 
+#nav-favorite {
+    justify-content: center;
+    padding: 0.5rem;
+}
+
 .btn {
     background-color:orange;
 }
@@ -44,6 +49,10 @@
     border: 0.1px solid gainsboro;
     width: 50px;
     height: 50px;
+}
+
+.col-md-11 {
+    background-color:whitesmoke;
 }
 
 /* vizualizare pentru telefon */
