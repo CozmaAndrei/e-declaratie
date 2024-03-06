@@ -88,7 +88,7 @@
             <a type="submit" class="btn btn btn-sm" href="{% url 'register_company' %}">Add company</a>
             </div>
             <div>
-            <a type="submit" class="btn btn btn-sm" style="background-color:red" href="#">Remove manager</a>
+            <a type="submit" class="btn btn btn-sm" style="background-color:red" href="{% url 'delete_manager' get_company_name.company_name %}">Remove manager</a>
             <a type="submit" class="btn btn btn-sm" style="background-color:red" href="{% url 'delete-company-account' get_company_name.company_name %}" onclick="return confirm('Are you sure you want to delete the company {{ get_company_name.company_name }}?')">Delete company</a>
             </div>
         </div>

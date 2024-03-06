@@ -24,17 +24,19 @@ class EditCompanyInfoForm(forms.ModelForm):
         
 '''The new manager adding form'''    
 class AddNewManagerForm(forms.Form):
-    manager = forms.ModelChoiceField(queryset=User.objects.all(),
+    manager = forms.ModelChoiceField(queryset=User.objects.exclude(username='admin'),
                                      widget=forms.Select(attrs={'class': 'form-control',
                                                                 'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
                                                                 'onfocus': 'this.style.borderColor="#019cbb";', 
-                                                                'onfocusout': 'this.style.borderColor="";'}))      
-        
-        
-        
-        
-        
-        
+                                                                'onfocusout': 'this.style.borderColor="";'}))
+
+
+class DeleteManagerForm(forms.Form):
+    delete_manager = forms.ModelChoiceField(queryset=User.objects.exclude(username="admin"),
+                                            widget=forms.Select(attrs={'class': 'form-control',
+                                                                'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                                                                'onfocus': 'this.style.borderColor="#019cbb";', 
+                                                                'onfocusout': 'this.style.borderColor="";'}))        
         
         
         

@@ -1,0 +1,23 @@
+{% extends 'e_declaratie_html_files/homepage.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="deleteManager">
+    <h3 class="titleEdit"> Delete manager </h3>
+    <form method="POST" action="{% url 'delete_manager' get_company_name.company_name %}"> <!--get_company_name used also in def delete_manager-->
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="btnContainer">
+            <a type="button" class="btn" href="{% url 'company_profile' get_company_name.company_name %}">Back</a>
+            <br>
+            <button type="submit" class="btn">Delete</button>
+        </div>
+    </form>
+</div>
+
+<!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <!--CSS style-->
+    <link rel="stylesheet" href="{% static 'company_css/deletemanagerpage.css' %}">
+{% endblock %}

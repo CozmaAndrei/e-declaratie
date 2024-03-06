@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Company
-from .forms import EditCompanyInfoForm
-from .forms import AddNewManagerForm
+from .forms import AddNewManagerForm, DeleteManagerForm, EditCompanyInfoForm
 from users.models import ExtraUserInformations
 
 
@@ -33,8 +32,7 @@ def add_manager(request, company_name):
             manager = form.cleaned_data['manager']
             get_company_name.managers.add(manager) #add the new manager at the company
             extra_info = ExtraUserInformations.objects.get(user=manager)
-            extra_info.user_company.add(get_company_name)
-            extra_info.save()
+            extra_info.user_company.add(get_company_name) #added in user_company field from ExtraUserInformations the new company
             return redirect('company_profile', get_company_name.company_name)
     else:
         form = AddNewManagerForm()
@@ -65,8 +63,19 @@ def company_view_profile(request, company_name):
     displayCompanyInViewCompanyPage = Company.objects.get(company_name=company_name) #used in viewcompanyprofile.html
     return render(request, 'company_html/viewcompanyprofile.html', {"displayCompanyInViewCompanyPage": displayCompanyInViewCompanyPage})
 
-
-
+def delete_manager(request, company_name):
+    get_company_name = Company.objects.get(company_name=company_name)
+    if request.method == 'POST':
+        form = DeleteManagerForm(request.POST)
+        if form.is_valid():
+            manager = form.cleaned_data['delete_manager']
+            get_company_name.managers.remove(manager) #remove the mananger
+            extra_info = ExtraUserInformations.objects.get(user=manager)
+            extra_info.user_company.remove(get_company_name)
+            return redirect('company_profile', get_company_name.company_name)
+    else:
+        form = DeleteManagerForm()
+    return render(request, 'company_html/addmanagerpage.html', {'form': form, "get_company_name": get_company_name})
 
 
 
