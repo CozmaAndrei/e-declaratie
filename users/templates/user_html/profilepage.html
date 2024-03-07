@@ -54,12 +54,20 @@
             {% endif %}
             <br>
             <div class="imgContainer">
-                <img class="rounded-circle" src="/static/images/defaultprofilepic.jpg">
+                {% if extra_info.user_pic %}
+                    <img class="rounded-circle" src="{{ extra_info.user_pic.url }}">
+                {% else %}
+                    <img class="rounded-circle" src="{% static 'images/defaultprofilepic.jpg' %}">
+                {% endif %}
             </div>
             <br>
             <div class="editBtnsImage">
-                <button type="button" class="btn btn-sm">Add picture</button>
-                <button type="button" class="btn btn-sm">Delete picture</button>
+                <form method="POST" enctype="multipart/form-data">
+                
+                    {% csrf_token %}
+                    {{ photo_form.as_p }}
+                
+                </form>
             </div>
         </div>
         <div class="rightSideUserPage">
