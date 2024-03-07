@@ -63,8 +63,16 @@ def companies_list(request):
 
 '''Return the company view profile for the rest of the users in viewcompanyprofile.html'''
 def company_view_profile(request, company_name):
-    displayCompanyInViewCompanyPage = Company.objects.get(company_name=company_name) #used in viewcompanyprofile.html
-    return render(request, 'company_html/viewcompanyprofile.html', {"displayCompanyInViewCompanyPage": displayCompanyInViewCompanyPage})
+    company = Company.objects.get(company_name=company_name) #used in viewcompanyprofile.html
+    current_user_profile = ExtraUserInformations.objects.get(user=request.user)  # Get the ExtraUserInformations instance for the current user
+    if request.method == "POST":
+        action = request.POST.get("follow")
+        if action == "unfollow":
+            current_user_profile.favorite_company.remove(company)
+        elif action == "follow":
+            current_user_profile.favorite_company.add(company)
+        current_user_profile.save()
+    return render(request, 'company_html/viewcompanyprofile.html', {"company": company,"current_user_profile": current_user_profile})
 
 '''This function checked if the DeleteManagerForm is POST, take the input value and remove from the managers field from Company table and return to the company page'''
 def delete_manager(request, company_name):
