@@ -47,7 +47,11 @@ class DeleteManagerForm(forms.Form):
                                                                  'onfocusout': 'this.style.borderColor="";'}))
    
         
-        
+class CompanyLogoForm(forms.ModelForm):
+    company_logo = forms.ImageField(label='Company Logo', required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = Company
+        fields = ['company_logo']
         
         
         

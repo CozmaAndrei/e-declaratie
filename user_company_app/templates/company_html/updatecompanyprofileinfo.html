@@ -5,9 +5,10 @@
     <div class="updateCompanyInfo">
 
         <h3 class="titleEdit">Update company profile</h3>
-        <form method="POST" action="{% url 'update_company_info' the_company.company_name %}"> <!--the_company from update_company_info-->
+        <form method="POST" action="{% url 'update_company_info' the_company.company_name %}" enctype="multipart/form-data"> <!--the_company from update_company_info-->
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ company_form.as_p }}
+            {{ company_logo_form.as_p }}
             <div class="btnContainer">
                 <button type="button" class="btn btn-sm" onclick="history.back()">Back</button>
                 <br>

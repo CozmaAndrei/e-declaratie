@@ -6,7 +6,11 @@
     <div class="viewCompanyPage">
         <div class="topViewCompanyPage">
             <div class="topLeftViewCompanyPage">
-                <img class="img-fluid rounded-circle" src="{% static 'images/defaultCompanyLogo.png' %}" alt="Company Logo"> <!--img fluid nu lasa cercul sa iasa din div-->
+                {% if company.company_logo %}
+                    <img class="img-fluid rounded-circle" alt="Company Logo" src="{{ company.company_logo.url }}">
+                {% else %}
+                    <img class="img-fluid rounded-circle" alt="Default Company Logo"src="/static/images/defaultCompanyLogo.png">
+                {% endif %}
             </div>
             <br>
             <div class="topRightViewCompanyPage">

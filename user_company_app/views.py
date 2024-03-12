@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Company
-from .forms import AddNewManagerForm, DeleteManagerForm, EditCompanyInfoForm
+from .forms import AddNewManagerForm, DeleteManagerForm, EditCompanyInfoForm, CompanyLogoForm
 from users.models import ExtraUserInformations
 
 
@@ -10,18 +10,27 @@ def company_profile(request, company_name):
     get_company_name = Company.objects.get(company_name=company_name) #used for companypage.html
     return render(request, 'company_html/companypage.html', {"get_company_name": get_company_name})
 
-'''Update the company info, like name, email, etc'''
+'''Update the company info, like name, email, logo, etc'''
 def update_company_info(request, company_name):
     the_company = Company.objects.get(company_name=company_name) #used in updatecompanyprofileinfo.html
     if request.method == "POST":
-        form = EditCompanyInfoForm(request.POST, instance=the_company)
-        if form.is_valid():
-            form.save()
+        company_form = EditCompanyInfoForm(request.POST, instance=the_company)
+        company_logo_form = CompanyLogoForm(request.POST, request.FILES, instance=the_company)
+        if company_form.is_valid() and company_logo_form.is_valid():
+            company_logo_form.save()
+            company_form.save()
             messages.success(request, "Your company was edited with success!")
             return redirect ('company_profile', the_company.company_name)
     else:
-        form = EditCompanyInfoForm(instance=the_company)
-    return render(request, 'company_html/updatecompanyprofileinfo.html', {"form": form, "the_company": the_company})
+        company_form = EditCompanyInfoForm(instance=the_company)
+        company_logo_form = CompanyLogoForm(instance=the_company)
+    
+    context = {
+        "company_form": company_form, 
+        "the_company": the_company, 
+        "company_logo_form": company_logo_form
+        }
+    return render(request, 'company_html/updatecompanyprofileinfo.html', context)
 
 '''This function checked if the AddNewManagerForm is POST, take the input value and add to the managers field from Company table and return to the company page'''
 def add_manager(request, company_name):

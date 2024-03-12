@@ -48,13 +48,16 @@
                 {% endif %}
                 <br>
                 <div class="imgLogo">
-                    <img class="rounded-circle" src="/static/images/defaultCompanyLogo.png">
+                    {% if get_company_name.company_logo %}
+                        <img class="rounded-circle" src="{{ get_company_name.company_logo.url }}">
+                    {% else %}
+                        <img class="rounded-circle" src="/static/images/defaultCompanyLogo.png">
+                    {% endif %}
                 </div>
-                <br>
-                <div class="editBtnsLogo">
+                {% comment %} <div class="editBtnsLogo">
                     <button type="button" class="btn btn-sm">Add logo</button>
                     <button type="button" class="btn btn-sm">Delete logo</button>
-                </div>
+                </div> {% endcomment %}
             </div>
             <div class="rightSideCompanyPage">
                     <div class="leftTop">
