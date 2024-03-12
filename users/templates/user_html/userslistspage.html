@@ -29,7 +29,11 @@
                     <div class="card mb-1">
                         <div class="row g-0">
                             <div class="col-md-1">
-                                <img src="/static/images/defaultprofilepic.jpg" class="profilePicture img-fluid rounded">
+                                {% if users.extrauserinformations.user_pic %}
+                                    <img class="profilePicture img-fluid rounded" src="{{ users.extrauserinformations.user_pic.url }}">
+                                {% else %}
+                                    <img class="profilePicture img-fluid rounded" src="{% static 'images/defaultprofilepic.jpg' %}">
+                                {% endif %}
                             </div>
                             <div class="col-md-11">
                                 <div class="card-body">
@@ -50,7 +54,11 @@
                     <div class="card mb-1">
                         <div class="row g-0">
                             <div class="col-md-1">
-                                <img src="/static/images/defaultprofilepic.jpg" class="profilePicture img-fluid rounded">
+                                {% if users.extrauserinformations.user_pic %}
+                                    <img class="profilePicture img-fluid rounded" src="{{ users.extrauserinformations.user_pic.url }}">
+                                {% else %}
+                                    <img class="profilePicture img-fluid rounded" src="{% static 'images/defaultprofilepic.jpg' %}">
+                                {% endif %}
                             </div>
                             <div class="col-md-11">
                                 <div class="card-body">

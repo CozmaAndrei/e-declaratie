@@ -89,7 +89,11 @@ class ChangeUserPassForm(PasswordChangeForm):
         self.fields['new_password2'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['new_password2'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
     
-    
+class UserPicForm(forms.ModelForm):
+     user_pic = forms.ImageField(label='Profile Picture', required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
+     class Meta:
+         model = ExtraUserInformations
+         fields = ['user_pic']
     
     
     

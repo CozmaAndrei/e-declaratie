@@ -10,7 +10,11 @@
             </div>
             <br>
             <div class="topRightViewProfilePage">
-                <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}" alt="Profile pic"> <!--img fluid nu lasa cercul sa iasa din div-->
+                {% if extra_view_user_info.user_pic %}
+                    <img class="rounded-circle img-fluid" src="{{ extra_view_user_info.user_pic.url }}"> <!--img fluid nu lasa cercul sa iasa din div-->
+                {% else %}
+                    <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}">
+                {% endif %}
             </div>
         </div>
         <div class="bottomViewProfilePageContainer1">

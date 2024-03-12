@@ -20,9 +20,11 @@
 }
 
 .rounded-circle {
-    width: 10em;
-    height: 10em;
+    width: 15em;
+    height: 15em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    object-fit: cover;
 }
 
 .btn {

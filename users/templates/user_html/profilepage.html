@@ -55,9 +55,9 @@
             <br>
             <div class="imgContainer">
                 {% if extra_info.user_pic %}
-                    <img class="rounded-circle" src="{{ extra_info.user_pic.url }}">
+                    <img class="rounded-circle img-fluid" src="{{ extra_info.user_pic.url }}">
                 {% else %}
-                    <img class="rounded-circle" src="{% static 'images/defaultprofilepic.jpg' %}">
+                    <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}">
                 {% endif %}
             </div>
             <br>
