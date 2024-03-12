@@ -8,15 +8,20 @@ from django.contrib.auth import login, logout
 
 
 
-'''Return user profile with his username in URL and user information in profilepage.html'''
 def user_profile(request, username): #used for profilepage.html
+    '''Return the user profile with his username in URL and user information in profilepage.html'''
     username = request.user
     the_user_name = User.objects.get(username=username)
     extra_info = ExtraUserInformations.objects.get(user=the_user_name) #used to get informations from ExtraUserInformations model
-    return render(request, 'user_html/profilepage.html', {"the_user_name": the_user_name, "extra_info": extra_info})
+    
+    context = {
+        "the_user_name": the_user_name,
+        "extra_info": extra_info
+    }
+    return render(request, 'user_html/profilepage.html', context)
 
-'''Update the user info, like username, first name, last name, etc'''
 def update_user_info(request, username):
+    '''Update the user info like username, first name, last name, etc with conditions and return the user profile in updateuserprofileinfo.html'''
     user = User.objects.get(username=username)
     extra_info = ExtraUserInformations.objects.get(user=user)
     if request.method == "POST":
@@ -31,11 +36,18 @@ def update_user_info(request, username):
             return redirect ('user_profile', user.username)
     else:
         form = EditUserInfoForm(instance=user)
-        user_pic_form = UserPicForm(instance=extra_info) # Add this line to initialize the user_pic_form
-    return render(request, 'user_html/updateuserprofileinfo.html', {"form": form, "user_pic_form": user_pic_form, "user": user, "extra_info": extra_info})
+        user_pic_form = UserPicForm(instance=extra_info)
+        
+    context = {
+        "form": form,
+        "user_pic_form": user_pic_form,
+        "user": user,
+        "extra_info": extra_info
+    }
+    return render(request, 'user_html/updateuserprofileinfo.html', context)
 
-'''Delete the user account with conditions'''
 def delete_user_account(request, user_id):
+    '''Delete the user account with conditions and return the register_user.html page after the user account was deleted'''
     user = User.objects.get(pk=user_id)
     user_companies = Company.objects.filter(managers=user)
 
@@ -57,15 +69,21 @@ def delete_user_account(request, user_id):
     return redirect('register_user')
 
 def users_lists(request):
+    '''Return all the users in the userslistspage.html and the favorite users in the userlistspage.html for the current user'''
     all_users = User.objects.exclude(username=request.user).exclude(username='admin') #used in userlistpage.html (All users)
-    username = request.user
-    users = User.objects.get(username=username)
+    users = User.objects.get(username=request.user)
     extra_info = ExtraUserInformations.objects.get(user=users) #used in userlistpage.html (Favorite users)
     all_favorite_users = extra_info.favorite_user.all() #used in userlistpage.html (Favorite users)
-    return render(request, 'user_html/userslistspage.html',{"all_users": all_users, "all_favorite_users": all_favorite_users, "extra_info": extra_info})
+    
+    context = {
+        "all_users": all_users,
+        "all_favorite_users": all_favorite_users,
+        "extra_info": extra_info
+    }
+    return render(request, 'user_html/userslistspage.html', context)
 
-'''Return the user view profile in viewprofilepage.html for all the users'''
 def user_view_profile(request, username):
+    '''Return the user view profile in viewprofilepage.html for all the users and the current user profile in viewprofilepage.html for the current user'''
     view_user = User.objects.get(username=username) #used in viewprofilepage.html
     extra_view_user_info = ExtraUserInformations.objects.get(user=view_user) #request in ExtraUserInformations model for table fields
     current_user_profile = request.user.extrauserinformations
@@ -84,8 +102,8 @@ def user_view_profile(request, username):
     }
     return render(request, 'user_html/viewprofilepage.html', context)
 
-'''Change the user password'''
 def change_pass(request,username):
+    '''Change the user password and return to the login page after the password was changed with success!'''
     user = User.objects.get(username=username)
     if request.method == 'POST':
         form = ChangeUserPassForm(request.user, request.POST)
@@ -96,8 +114,12 @@ def change_pass(request,username):
             return redirect('login_user')
     else:
         form = ChangeUserPassForm(request.user)   
-           
-    return render(request, 'user_html/changeuserpass.html', {"user": user, "form": form})
+    
+    context = {
+        "user": user,
+        "form": form
+    }      
+    return render(request, 'user_html/changeuserpass.html', context)
 
 
 
