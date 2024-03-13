@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from user_company_app.models import Company
 from PIL import Image
+from django.contrib.auth.models import User
 
 
 def user_directory_path(instance, filename):
@@ -25,9 +26,7 @@ class ExtraUserInformations(models.Model):
     
     def __str__(self):
         return self.user.username
- 
- 
- 
+
 
 
        

@@ -18,6 +18,10 @@
     flex-wrap: wrap
 }
 
+.container-fluid {
+    padding: 0.5rem;
+}
+
 #nav-home {
     justify-content: center;
     padding: 0.5rem;
@@ -30,6 +34,7 @@
 
 .btn {
     background-color:orange;
+    color:white;
 }
 
 .col-md-1 {
@@ -53,6 +58,11 @@
 
 .col-md-11 {
     background-color:whitesmoke;
+}
+
+.form-control:focus {
+    border-color: orange;
+    box-shadow: none;
 }
 
 /* vizualizare pentru telefon */

@@ -15,15 +15,26 @@
                 <button class="nav-link" id="nav-online_users-tab" data-bs-toggle="tab" data-bs-target="#nav-online_users" type="button" role="tab" aria-controls="nav-online_users" aria-selected="false">
                     Online users
                 </button>
-              <button class="nav-link" id="nav-offline_users-tab" data-bs-toggle="tab" data-bs-target="#nav-offline_users" type="button" role="tab" aria-controls="nav-offline_users" aria-selected="false">
+                <button class="nav-link" id="nav-offline_users-tab" data-bs-toggle="tab" data-bs-target="#nav-offline_users" type="button" role="tab" aria-controls="nav-offline_users" aria-selected="false">
                     Offline users
+                </button>
+                <button class="nav-link" id="nav-search_user-tab" data-bs-toggle="tab" data-bs-target="#nav-search_user" type="button" role="tab" aria-controls="nav-search_user" aria-selected="false">
+                    Search user
                 </button>
             </div>
         </nav>
-
         <div class="tab-content" id="nav-tabContent">
+            
             <!--All users tab-->
             <div class="tab-pane fade show active" id="nav-all_users" role="tabpanel" aria-labelledby="nav-all_users-tab" tabindex="0">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <button class="btn" type="button">abc</button>
+                            <button class="btn" type="button">cba</button>
+                        </div>
+                    </div>
+                </div>
                 <!--all_users from def users_list-->
                 {% for users in all_users %}
                     <div class="card mb-1">
@@ -47,8 +58,17 @@
                     </div>
                 {% endfor %}
             </div>
+
             <!--All favorite users tab-->
             <div class="tab-pane fade" id="nav-favorite_users" role="tabpanel" aria-labelledby="nav-favorite_users-tab" tabindex="0">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <button class="btn" type="button">abc</button>
+                            <button class="btn" type="button">cba</button>
+                        </div>
+                    </div>
+                </div>
                 <!--favorite_users from def users_list-->
                 {% for users in all_favorite_users %}
                     <div class="card mb-1">
@@ -72,12 +92,22 @@
                     </div>
                 {% endfor %}
             </div>
-
             <div class="tab-pane fade" id="nav-online_users" role="tabpanel" aria-labelledby="nav-online_users-tab" tabindex="0">
                 page under maintenance
             </div>
             <div class="tab-pane fade" id="nav-offline_users" role="tabpanel" aria-labelledby="nav-offline_users-tab" tabindex="0">
                 page under maintenance
+            </div>
+            <!--Search user tab-->
+            <div class="tab-pane fade" id="nav-search_user" role="tabpanel" aria-labelledby="nav-search_user-tab" tabindex="0">
+                <div class="container-fluid">
+                    <div class="d-flex">
+                        <form class="d-flex col-4" role="search" method="GET" action="#">
+                            <input class="form-control me-2" type="search" name="username" placeholder="Search" aria-label="Search">
+                            <button class="btn" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -121,6 +121,20 @@ def change_pass(request,username):
     }      
     return render(request, 'user_html/changeuserpass.html', context)
 
+# def user_search(request):
+#     '''Search for users based on a query and return the search results in usersearchpage.html'''
+#     query = request.GET.get('q')
+#     if query:
+#         results = User.objects.filter(username__icontains=query)
+#     else:
+#         results = User.objects.none()
+    
+#     context = {
+#         'results': results,
+#         'query': query
+#     }
+#     return render(request, 'user_html/userslistspage.html', context)
+
 
 
 
