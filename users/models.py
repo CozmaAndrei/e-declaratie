@@ -1,9 +1,7 @@
 import os
-from PIL import Image
 from django.db import models
 from django.contrib.auth.models import User
 from user_company_app.models import Company
-from PIL import Image
 from django.contrib.auth.models import User
 
 
