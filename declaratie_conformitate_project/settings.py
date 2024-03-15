@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'authentication_app',
     'users',
     'user_company_app',
+    'create_declaration',
     
 ]
 

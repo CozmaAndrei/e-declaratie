@@ -46,7 +46,7 @@
                             <!--used for loop to find the user companies and display the name of the company in URL-->
                             {% for company in user.companies.all %}
                                 <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">
+                                    <a href = "{% url 'create_declaration' company.company_name %}" class="sidebar-link">
                                         <span>{{company.company_name}}</span>
                                     </a>
                                 </li>
