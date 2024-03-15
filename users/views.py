@@ -70,10 +70,10 @@ def delete_user_account(request, user_id):
 
 def users_lists(request):
     '''Return all the users in the userslistspage.html and the favorite users in the userlistspage.html for the current user'''
-    all_users = User.objects.exclude(username=request.user).exclude(username='admin') #used in userlistpage.html (All users)
+    all_users = User.objects.exclude(username=request.user).exclude(username='admin').order_by("username") #used in userlistpage.html (All users)
     users = User.objects.get(username=request.user)
     extra_info = ExtraUserInformations.objects.get(user=users) #used in userlistpage.html (Favorite users)
-    all_favorite_users = extra_info.favorite_user.all() #used in userlistpage.html (Favorite users)
+    all_favorite_users = extra_info.favorite_user.all().order_by("username") #used in userlistpage.html (Favorite users)
     
     context = {
         "all_users": all_users,
