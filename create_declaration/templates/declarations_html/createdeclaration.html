@@ -2,5 +2,5 @@
 {% load static %}
 
 {% block content %}
-    pagina de creare PDF
+    <a class="btn btn-outline-primary" href="{% url 'preview_default_pdf' company.id %}">Preview default PDF and download it</a>
 {% endblock %}
