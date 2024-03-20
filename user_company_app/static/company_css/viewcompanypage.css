@@ -50,6 +50,7 @@
     height: 10em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     background-color: white;
+    object-fit: contain;
 }
 
 .bottomViewCompanyPageContainer1 {
