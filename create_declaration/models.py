@@ -19,8 +19,7 @@ def pdf_declaration_path(instance, filename):
 class ExtendCompanyModel(models.Model):
     '''This model is used to extend the Company model'''
     extend_company_info = models.OneToOneField(Company, on_delete=models.CASCADE)
-    default_content = models.TextField(blank=True, null=True)
-    declaration_content = models.TextField()
+    declaration_content = models.TextField(blank=True, null=True)
     company_stamp = models.ImageField(upload_to=company_stamp_path, blank=True, null=True)
     pdf_declaration = models.FileField(upload_to=pdf_declaration_path, blank=True, null=True)
     

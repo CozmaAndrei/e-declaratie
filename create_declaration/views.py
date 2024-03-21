@@ -1,6 +1,7 @@
-from linecache import getlines
 from django.shortcuts import render
 from user_company_app.models import Company
+from .models import ExtendCompanyModel
+from django.contrib import messages
 
 #pdf imports start
 from django.http import FileResponse, HttpResponse
@@ -14,6 +15,23 @@ from reportlab.lib.utils import ImageReader
 from django.templatetags.static import static
 from django.contrib.staticfiles import finders
 #pdf imports stop
+
+
+def add_stamp(request, company_id):
+    '''what this function do ?'''
+    company = ExtendCompanyModel.objects.get(extend_company_info=company_id)
+    if request.method == 'POST':
+        try:
+            company_stamp = request.FILES['company_stamp']
+            company.company_stamp = company_stamp
+            company.save()
+            messages.success(request, "The company stamp was added with success!")
+        except:
+            messages.warning(request, "You should choose a file first!")  
+    context = {
+        "company": company,
+        }
+    return render(request, 'declarations_html/addstamp.html', context)
 
 def create_declaration(request, company_id):
     '''what this function do ?'''

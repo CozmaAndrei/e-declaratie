@@ -1,0 +1,28 @@
+.mainCompanyPage {
+    min-width: 60%;
+    min-height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    background-color: rgb(255, 217, 0);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    padding: 0.5rem;
+}
+
+.container-fluid img {
+    min-width: 10px;
+    min-height: 10px;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
