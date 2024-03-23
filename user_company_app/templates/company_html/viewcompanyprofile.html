@@ -7,9 +7,9 @@
         <div class="topViewCompanyPage">
             <div class="topLeftViewCompanyPage">
                 {% if company.company_logo %}
-                    <img class="img-fluid rounded-circle" alt="Company Logo" src="{{ company.company_logo.url }}">
+                    <img class="img-fluid rounded-circle" alt="Company Logo" src="{{ company.company_logo.url }}" loading="lazy">
                 {% else %}
-                    <img class="img-fluid rounded-circle" alt="Default Company Logo"src="/static/images/defaultCompanyLogo.png">
+                    <img class="img-fluid rounded-circle" alt="Default Company Logo"src="/static/images/defaultCompanyLogo.png" loading="lazy">
                 {% endif %}
             </div>
             <br>

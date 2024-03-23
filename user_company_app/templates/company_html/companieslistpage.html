@@ -15,8 +15,11 @@
                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
                     Online companies
                 </button>
-              <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                     Offline companies
+                </button>
+                <button class="nav-link" id="nav-search_company-tab" data-bs-toggle="tab" data-bs-target="#nav-search_company" type="button" role="tab" aria-controls="nav-search_company" aria-selected="false">
+                    Search company
                 </button>
             </div>
         </nav>
@@ -29,9 +32,9 @@
                             <div class="row g-0">
                                 <div class="col-md-1">
                                     {% if company.company_logo %}
-                                        <img class="companyLogo img-fluid rounded" src="{{ company.company_logo.url }}">
+                                        <img class="companyLogo img-fluid rounded" src="{{ company.company_logo.url }}" loading="lazy">
                                     {% else %}
-                                        <img class="companyLogo img-fluid rounded" src="/static/images/defaultCompanyLogo.png">
+                                        <img class="companyLogo img-fluid rounded" src="/static/images/defaultCompanyLogo.png" loading="lazy">
                                     {% endif %}
                                 </div>
                                 <div class="col-md-11">
@@ -53,9 +56,9 @@
                             <div class="row g-0">
                                 <div class="col-md-1">
                                     {% if company.company_logo %}
-                                        <img class="companyLogo img-fluid rounded" src="{{ company.company_logo.url }}">
+                                        <img class="companyLogo img-fluid rounded" src="{{ company.company_logo.url }}" loading="lazy">
                                     {% else %}
-                                        <img class="companyLogo img-fluid rounded" src="/static/images/defaultCompanyLogo.png">
+                                        <img class="companyLogo img-fluid rounded" src="/static/images/defaultCompanyLogo.png" loading="lazy">
                                     {% endif %}
                                 </div>
                                 <div class="col-md-11">
@@ -78,6 +81,17 @@
                 <!--Offline companies-->
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
                     page under maintenance
+                </div>
+                <!--Search company tab-->
+                <div class="tab-pane fade" id="nav-search_company" role="tabpanel" aria-labelledby="nav-search_company-tab" tabindex="0">
+                    <div class="container-fluid">
+                        <div class="d-flex">
+                            <form class="d-flex col-4" role="search" method="GET" action="#">
+                                <input class="form-control me-2" type="search" name="companyname" placeholder="Search company" aria-label="Search">
+                                <button class="btn" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         

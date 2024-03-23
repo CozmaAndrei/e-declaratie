@@ -11,9 +11,9 @@
             <br>
             <div class="topRightViewProfilePage">
                 {% if extra_view_user_info.user_pic %}
-                    <img class="rounded-circle img-fluid" src="{{ extra_view_user_info.user_pic.url }}"> <!--img fluid nu lasa cercul sa iasa din div-->
+                    <img class="rounded-circle img-fluid" src="{{ extra_view_user_info.user_pic.url }}" loading="lazy"> <!--img fluid nu lasa cercul sa iasa din div-->
                 {% else %}
-                    <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}">
+                    <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}" loading="lazy">
                 {% endif %}
             </div>
         </div>

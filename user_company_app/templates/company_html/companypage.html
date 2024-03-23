@@ -49,9 +49,9 @@
                 <br>
                 <div class="imgLogo">
                     {% if get_company_name.company_logo %}
-                        <img class="rounded-circle" src="{{ get_company_name.company_logo.url }}">
+                        <img class="rounded-circle" src="{{ get_company_name.company_logo.url }}" loading="lazy">
                     {% else %}
-                        <img class="rounded-circle" src="/static/images/defaultCompanyLogo.png">
+                        <img class="rounded-circle" src="/static/images/defaultCompanyLogo.png" loading="lazy">
                     {% endif %}
                 </div>
                 {% comment %} <div class="editBtnsLogo">

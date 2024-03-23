@@ -55,9 +55,9 @@
             <br>
             <div class="imgContainer">
                 {% if extra_info.user_pic %}
-                    <img class="rounded-circle img-fluid" src="{{ extra_info.user_pic.url }}">
+                    <img class="rounded-circle img-fluid" src="{{ extra_info.user_pic.url }}" loading="lazy">
                 {% else %}
-                    <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}">
+                    <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}" loading="lazy">
                 {% endif %}
             </div>
             <br>
@@ -96,7 +96,7 @@
             <a type="submit" class="btn btn btn-sm" href="{% url 'change_pass' request.user.username %}">Change password</a>
         </div>
         <div>
-            <a type="submit" class="btn btn-sm" style="background-color:red" href="{% url 'delete-user-account' request.user.id %}" onclick="return confirm('Are you sure you want to delete the user {{ request.user.username }}?')">Delete user</a>
+            <a type="submit" class="btn btn-sm" style="background-color:red" href="{% url 'delete-user-account' request.user.id %}" onclick="return confirm('Are you sure you want to delete the user {{ request.user.username }}?')">Delete account</a>
         </div>
     </div>
 </div>

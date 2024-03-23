@@ -29,7 +29,7 @@
             <div class="container-fluid">
                 <!--if company.company_stamp exists-->
                 {% if company.company_stamp %}
-                    <img class="rounded img-fluid" src="{{ company.company_stamp.url }}" alt="Company stamp">
+                    <img class="rounded img-fluid" src="{{ company.company_stamp.url }}" alt="Company stamp" loading="lazy">
                 {% else %}
                     <p>No stamp added yet</p>
                 {% endif %}
