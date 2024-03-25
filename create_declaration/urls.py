@@ -6,4 +6,5 @@ urlpatterns = [
     path('preview-default-pdf/<int:company_id>/', views.preview_default_pdf, name='preview_default_pdf'),
     path('add-stamp/<int:company_id>/', views.add_stamp, name='add_stamp'),
     path('edit-declaration/<int:company_id>/', views.edit_declaration, name='edit_declaration'),
+    path('preview-edit-pdf/<int:company_id>/', views.preview_edit_pdf, name='preview_edit_pdf'),
 ]

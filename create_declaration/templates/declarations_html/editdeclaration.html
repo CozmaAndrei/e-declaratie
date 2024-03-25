@@ -26,10 +26,23 @@
         {% endif %}
     </div>
     <div class="card-body">
-        <form method="post">
+        <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Submit">
+            <button class="btn btn-info" type="submit">Save</button>
+            <form method="POST">
+                {% csrf_token %}
+                <button class="btn btn-warning" type="submit" value="reset" name="reset">Reset</button>
+            </form>
+        </form>
+        <br>
+        <form method="POST" action="{% url 'preview_edit_pdf' company.id %}">
+            {% csrf_token %}
+            <label for="invoice_number" class="form-label">Invoice number</label>
+            <input type="text" name="invoice_number" class="form-control mb-3">
+            <label for="invoice_date" class="form-label">Invoice date</label>
+            <input type="date" name="invoice_date" class="form-control mb-3">
+            <button type="submit" class="btn btn-outline-primary mb-1">Preview edit PDF and download</button>
         </form>
     </div>
 </div>
