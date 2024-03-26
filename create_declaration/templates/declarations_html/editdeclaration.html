@@ -39,15 +39,16 @@
                 </div>
             </form>
         </div>
-        <div class="form-group d-flex justify-content-center align-center">
-            <form method="POST" action="{% url 'preview_edit_pdf' company.id %}">
+        <div class="container d-flex justify-content-center align-items-center flex-column">
+            <form method="POST" action="{% url 'preview_edit_pdf' company.id user.username %}">
                 {% csrf_token %}
                 <label for="invoice_number" class="form-label">Invoice number</label>
                 <input type="text" name="invoice_number" class="form-control mb-3">
                 <label for="invoice_date" class="form-label">Invoice date</label>
                 <input type="date" name="invoice_date" class="form-control mb-3">
-                <button type="submit" class="btn mb-1">Preview edit PDF and download</button>
+                <button type="submit" class="btn mb-3">Preview edit PDF and download</button>
             </form>
+            <a type="button" class="btn" href="{% url 'client_input_op2' user.username company.id %}">Clientul va primi pagina urmatoare</a>
         </div>
     </div>
 </div>

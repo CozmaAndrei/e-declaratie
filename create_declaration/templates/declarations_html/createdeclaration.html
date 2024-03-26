@@ -26,9 +26,8 @@
             {% endif %}
         </div>
         <div class="card-body d-flex justify-content-center">
-            <div class="container  d-flex justify-content-center align-items-center flex-column">
-                
-                <form method="POST" action="{% url 'preview_default_pdf' company.id %}">
+            <div class="container d-flex justify-content-center align-items-center flex-column">
+                <form method="POST" action="{% url 'preview_default_pdf' company.id user.username %}">
                     {% csrf_token %}
                     <label for="invoice_number" class="form-label">Invoice number</label>
                     <input type="text" name="invoice_number" class="invoiceNumber form-control mb-3">
@@ -36,7 +35,7 @@
                     <input type="date" name="invoice_date" class="invoiceDate form-control mb-3">
                     <button type="submit" class="btn mb-3">Preview PDF and download</button>
                 </form>
-                
+                <a type="button" class="btn" href="{% url 'client_input_op1' user.username company.id %}">Clientul va primi pagina urmatoare</a>
             </div>
         </div>
         <div class="card-footer">
