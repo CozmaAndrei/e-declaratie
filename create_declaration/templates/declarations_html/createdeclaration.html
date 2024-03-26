@@ -30,12 +30,18 @@
                 <form method="POST" action="{% url 'preview_default_pdf' company.id user.username %}">
                     {% csrf_token %}
                     <label for="invoice_number" class="form-label">Invoice number</label>
-                    <input type="text" name="invoice_number" class="invoiceNumber form-control mb-3">
+                    <input type="text" name="invoice_number" class="form-control mb-3">
                     <label for="invoice_date" class="form-label">Invoice date</label>
-                    <input type="date" name="invoice_date" class="invoiceDate form-control mb-3">
+                    <input type="date" name="invoice_date" class="form-control mb-3">
                     <button type="submit" class="btn mb-3">Preview PDF and download</button>
                 </form>
-                <a type="button" class="btn" href="{% url 'client_input_op1' user.username company.id %}">Clientul va primi pagina urmatoare</a>
+                <button class="btn" onclick="copyLinkOp1()">Copy the link and send it to the customer</button>
+                <script>
+                    function copyLinkOp1() {
+                        let copy_link = "http://localhost:8000/op1/{{ user.username }}/manager/{{ company.id }}";
+                        navigator.clipboard.writeText(copy_link);
+                    }
+                </script>
             </div>
         </div>
         <div class="card-footer">

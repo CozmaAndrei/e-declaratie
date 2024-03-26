@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
 from .forms import MyForm
+from django.http import HttpResponse
+from django.template import loader
 
 #pdf imports start
 from django.http import FileResponse
@@ -514,4 +516,8 @@ def pdf_to_client_op2(request, company_id, username):
     c.save()
     buffer.seek(0)
     return FileResponse(buffer, filename=f'Declaratie de conformitate {company.company_name}.pdf')   
-    
+
+
+
+
+

@@ -10,5 +10,6 @@ urlpatterns = [
     path('op1/<str:username>/manager/<int:company_id>/', views.client_input_op1, name='client_input_op1'),
     path('op2/<str:username>/manager/<int:company_id>/', views.client_input_op2, name='client_input_op2'),
     path('pdf_op1/<str:company_id>/<str:username>/', views.pdf_to_client_op1, name='pdf_to_client_op1'),
-    path('pdf_op2/<str:company_id>/<str:username>/', views.pdf_to_client_op2, name='pdf_to_client_op2')
+    path('pdf_op2/<str:company_id>/<str:username>/', views.pdf_to_client_op2, name='pdf_to_client_op2'),
+    
 ]
