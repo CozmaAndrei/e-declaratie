@@ -1,7 +1,8 @@
 .mainCompanyPage {
     min-width: 80%;
     min-height: 100%;
-    border-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -11,4 +12,11 @@
 
 .container {
     padding: 0.5rem;
+}
+
+.btn {
+    background-color: #019cbb;
+    border-radius: 15px;
+    color:white;
+    box-shadow: 0 0 5px #019cbb;
 }

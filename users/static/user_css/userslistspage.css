@@ -34,7 +34,9 @@
 
 .btn {
     background-color:orange;
+    border-radius: 15px;
     color:white;
+    box-shadow: 0 0 5px orange;
 }
 
 .col-md-1 {

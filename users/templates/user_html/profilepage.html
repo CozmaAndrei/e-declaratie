@@ -96,7 +96,7 @@
             <a type="submit" class="btn btn btn-sm" href="{% url 'change_pass' request.user.username %}">Change password</a>
         </div>
         <div>
-            <a type="submit" class="btn btn-sm" style="background-color:red" href="{% url 'delete-user-account' request.user.id %}" onclick="return confirm('Are you sure you want to delete the user {{ request.user.username }}?')">Delete account</a>
+            <a type="submit" class="btn btn-sm delete" href="{% url 'delete-user-account' request.user.id %}" onclick="return confirm('Are you sure you want to delete the user {{ request.user.username }}?')">Delete account</a>
         </div>
     </div>
 </div>

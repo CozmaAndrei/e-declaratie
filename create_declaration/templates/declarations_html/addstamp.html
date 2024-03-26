@@ -26,7 +26,7 @@
             {% endif %}
         </div>
         <div class="card-body">
-            <div class="container-fluid">
+            <div class="container-fluid mb-3">
                 <!--if company.company_stamp exists-->
                 {% if company.company_stamp %}
                     <img class="rounded img-fluid" src="{{ company.company_stamp.url }}" alt="Company stamp" loading="lazy">
@@ -34,15 +34,15 @@
                     <p>No stamp added yet</p>
                 {% endif %}
             </div>
-            <br><br>
-            <div class="form-group">
+            
+            <div class="form-group mb-3">
                 <!--add the stamp-->
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <input class="form-control" type="file" id="formFile" name="company_stamp">
+                        <input class="form-control mb-3" type="file" name="company_stamp">
                     </div>
-                    <button type="submit" class="btn btn-primary">Add stamp</button>
+                    <button type="submit" class="btn mb-5">Save company stamp</button>
                 </form>
             </div>
         </div>

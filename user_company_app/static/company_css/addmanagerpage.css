@@ -19,8 +19,9 @@
 
 .btn {
     background-color: #019cbb;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
     color:white;
+    box-shadow: 0 0 5px #019cbb;
     margin: 1rem;
 }
 
