@@ -5,15 +5,13 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
 from .forms import MyForm
-from django.http import HttpResponse
-from django.template import loader
 
 #pdf imports start
 from django.http import FileResponse
 import io
 import textwrap
 from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import  A4
+from reportlab.lib.pagesizes import A4
 from django.contrib.staticfiles import finders
 #pdf imports stop
 
@@ -36,7 +34,6 @@ def add_stamp(request, company_id):
     return render(request, 'declarations_html/addstamp.html', context)
 
 def create_declaration(request, company_id):
-    '''what this function do ?'''
     company = Company.objects.get(id=company_id)
     
     context = {
@@ -329,7 +326,7 @@ def pdf_to_client_op1(request, company_id, username):
             new_formatted_invoice_date = new_format.strftime('%d-%m-%Y')
         else:
             messages.warning(request, "You should choose an invoice number and date first!")
-            return redirect('pdf_to_client_op1', company_id=company_id, username=username)
+            return redirect('client_input_op1', company_id=company_id, username=username)
     
     # Create a BytesIO buffer
     buffer = io.BytesIO()
@@ -428,7 +425,7 @@ def pdf_to_client_op2(request, company_id, username):
             new_formatted_invoice_date = new_format.strftime('%d-%m-%Y')
         else:
             messages.warning(request, "You should choose an invoice number and date first!")
-            return redirect('pdf_to_client_op2', company_id=company_id, username=username)
+            return redirect('client_input_op2', company_id=company_id, username=username)
     
     # Create a BytesIO buffer
     buffer = io.BytesIO()

@@ -45,17 +45,14 @@
         </div>
         <div class="bottomViewCompanyPageContainer2">
             <div class="leftbtn">
-                    <form method = "POST">
-                        {% csrf_token %}
-                        {% if company in current_user_profile.favorite_company.all %}
-                            <button class="btn btn-sm btn-warning" type="submit" name="follow" value="unfollow">Unfollow</button>
-                        {% else %}
-                            <button class="btn btn-sm btn-success" type="submit" name="follow" value="follow">Follow</button>
-                        {% endif %}
-                    </form>
-            </div>
-            <div class="middlebtn">
-                <span><a class="btn btn-sm btn-primary" href="#">Manager request</a></span>
+                <form method = "POST">
+                    {% csrf_token %}
+                    {% if company in current_user_profile.favorite_company.all %}
+                        <button class="btn btn-sm btn-warning" type="submit" name="follow" value="unfollow">Unfollow</button>
+                    {% else %}
+                        <button class="btn btn-sm btn-success" type="submit" name="follow" value="follow">Follow</button>
+                    {% endif %}
+                </form>
             </div>
             <div class="rightbtn">
                 <span><a class="btn btn-sm btn-danger" href="#">Report</a></span>

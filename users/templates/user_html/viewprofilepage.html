@@ -62,10 +62,10 @@
                 <li><span><strong>Username:</strong> {{view_user.username}}</span></li>
                 <li><span><strong>First Name:</strong> {{view_user.first_name}}</span></li>
                 <li><span><strong>Last Name:</strong> {{view_user.last_name}}</span></li> 
-                <li><span><strong>Email:</strong> {{view_user.email}}</span></li>
+                {% comment %} <li><span><strong>Email:</strong> {{view_user.email}}</span></li>
                 {% if extra_view_user_info.date_of_birth%}
                     <li><span><strong>Date of birth:</strong> {{extra_view_user_info.date_of_birth}}</span></li>
-                {% endif %}
+                {% endif %} {% endcomment %}
             </ul>
         </div>
     </div>

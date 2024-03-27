@@ -135,3 +135,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_FROM = 'edeclaratie.contact@gmail.com'
+EMAIL_HOST_USER = 'edeclaratie.contact@gmail.com'
+EMAIL_HOST_PASSWORD = 'byhlumpjmxxfxgns' #nu uita sa schimbi parola sau sa o stergi de aici pentru ca se va vedea in GITHUB
+
+PASSWORD_RESET_TIMEOUT_DAYS = 3
