@@ -62,7 +62,7 @@ ROOT_URLCONF = 'declaratie_conformitate_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,6 +144,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_FROM = 'edeclaratie.contact@gmail.com'
 EMAIL_HOST_USER = 'edeclaratie.contact@gmail.com'
-EMAIL_HOST_PASSWORD = 'abc' #nu uita sa schimbi parola sau sa o stergi de aici pentru ca se va vedea in GITHUB
+EMAIL_HOST_PASSWORD = '?'
 
 PASSWORD_RESET_TIMEOUT_DAYS = 3
