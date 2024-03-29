@@ -27,6 +27,9 @@
         </div>
         <div class="card-body">
             <div class="container mb-3">
+                <p><span style="color:green"><strong>Important instructions:</strong></span> Don't forget to include the following in your edited text: <span style="color:red"><strong>*invoice_number*</strong></span>, <span style="color:red"><strong>*invoice_date*</strong></span></p>
+                <p><span style="color:red"><strong>*invoice_number*</strong></span>- will be replaced with the invoice number you will enter below</p>
+                <p><span style="color:red"><strong>*invoice_date*</strong></span>- will be replaced with the invoice date you will enter below</p>
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}

@@ -107,24 +107,9 @@ class UserPicForm(forms.ModelForm):
          model = ExtraUserInformations
          fields = ['user_pic']
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+   
