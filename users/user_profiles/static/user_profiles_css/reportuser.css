@@ -1,0 +1,21 @@
+.viewReportPage {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    min-width: 70%;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.reportTitle {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: auto;
+    color: white;
+    border-radius: 15px;
+    background-color:crimson;
+}

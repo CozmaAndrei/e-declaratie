@@ -41,6 +41,24 @@
                 <span><strong>He does not manage any company</strong></span>
             {% endif %} 
         </div>
+        <!--message-->
+        <div class="text-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-dismissible fade show m-0
+                                {% if message.tags == 'success' %} 
+                                    alert-success
+                                {% elif message.tags == 'warning' %}
+                                    alert-warning
+                                {% elif message.tags == 'error' %}
+                                    alert-danger
+                                {% endif %}" alert-info role=" alert">
+                        <span>{{ message }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
         <div class="bottomViewProfilePageContainer2">
             <div class="leftbtn">
                 <form method = "POST">
@@ -53,7 +71,7 @@
                 </form>
             </div>
             <div class="rightbtn">
-                <a class="btn btn-sm btn-danger" href="#">Report</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'report_user' view_user.username %}">Report</a>
             </div>
         </div>
         <div class="bottomViewProfilePageContainer3">
