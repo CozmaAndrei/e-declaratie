@@ -1,6 +1,6 @@
 from django import forms
 
-class ReportUserForm(forms.Form):
+class ReportCompanyForm(forms.Form):
     '''The report form using the Form class from the forms module.'''
     
     reason = forms.ChoiceField(label="Choices the reason for reporting", choices=[

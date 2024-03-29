@@ -43,6 +43,24 @@
                 <span><strong>No company to manage</strong>
             {% endif %} 
         </div>
+        <!--message-->
+        <div class="text-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-dismissible fade show m-0
+                                {% if message.tags == 'success' %} 
+                                    alert-success
+                                {% elif message.tags == 'warning' %}
+                                    alert-warning
+                                {% elif message.tags == 'error' %}
+                                    alert-danger
+                                {% endif %}" alert-info role=" alert">
+                        <span>{{ message }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
         <div class="bottomViewCompanyPageContainer2">
             <div class="leftbtn">
                 <form method = "POST">
@@ -55,15 +73,15 @@
                 </form>
             </div>
             <div class="rightbtn">
-                <span><a class="btn btn-sm btn-danger" href="#">Report</a></span>
+                <span><a class="btn btn-sm btn-danger" href="{% url 'report_company' company.company_name %}">Report</a></span>
             </div>
         </div>
         <div class="bottomViewCompanyPageContainer3">
             <h3><strong>User Info</strong></h3>
             <ul>
-                <li><span><strong>Name</strong> {{company.company_name}}</span></li>
+                <li><span><strong>Name:</strong> {{company.company_name}}</span></li>
                 <li><span><strong>Email:</strong> {{company.company_email}}</span></li>
-                <li><span><strong>Unic:</strong> {{company.company_cui}}</span></li>
+                <li><span><strong>CUI:</strong> {{company.company_cui}}</span></li>
                 <li><span><strong>Register number:</strong> {{company.company_register_number}}</span></li>
                 <li><span><strong>Address:</strong> {{company.company_address}}</span></li>
                 <li><span><strong>City:</strong> {{company.company_city}}</span></li>
@@ -74,5 +92,5 @@
         </div>
     </div>
     <!--CSS-->
-    <link rel="stylesheet" href="{% static 'company_css/viewcompanypage.css' %}">
+    <link rel="stylesheet" href="{% static 'company_profiles_css/viewcompanypage.css' %}">
 {% endblock %}

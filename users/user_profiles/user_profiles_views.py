@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from users.models import ExtraUserInformations
 from django.core.mail import EmailMessage
-from .user_profiles_forms import ReportForm
+from .user_profiles_forms import ReportUserForm
 from django.contrib import messages
 
 
@@ -31,7 +31,7 @@ def user_view_profile(request, username):
 def report_user(request, username):
     report_user = User.objects.get(username=username)
     if request.method == "POST":
-        report_form = ReportForm(request.POST)
+        report_form = ReportUserForm(request.POST)
         if report_form.is_valid():
             reason = report_form.cleaned_data['reason']
             description = report_form.cleaned_data['description']
@@ -43,7 +43,7 @@ def report_user(request, username):
                 messages.error(request, f'Thank you for reporting. We will investigate the issue and take appropriate action.')
                 return redirect('user_view_profile', username=username)
     else:
-        report_form = ReportForm()
+        report_form = ReportUserForm()
         
     context = {
         "report_user": report_user,

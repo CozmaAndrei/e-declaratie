@@ -63,26 +63,6 @@ def delete_company_account(request, company_name):
 
     return redirect('user_profile', request.user.username)
 
-'''Return all the companies without the current user company in companieslistpage.html'''
-def companies_list(request):
-    all_companies = Company.objects.exclude(managers=request.user) #used in for loop in companieslistpage.html
-    companies = ExtraUserInformations.objects.get(user=request.user) #used in companieslistpage.html
-    favorite_companies = companies.favorite_company.all() #used in companieslistpage.html
-    return render(request, 'company_html/companieslistpage.html', {"all_companies": all_companies, "favorite_companies": favorite_companies})
-
-'''Return the company view profile for the rest of the users in viewcompanyprofile.html'''
-def company_view_profile(request, company_name):
-    company = Company.objects.get(company_name=company_name) #used in viewcompanyprofile.html
-    current_user_profile = ExtraUserInformations.objects.get(user=request.user)  # Get the ExtraUserInformations instance for the current user
-    if request.method == "POST":
-        action = request.POST.get("follow")
-        if action == "unfollow":
-            current_user_profile.favorite_company.remove(company)
-        elif action == "follow":
-            current_user_profile.favorite_company.add(company)
-        current_user_profile.save()
-    return render(request, 'company_html/viewcompanyprofile.html', {"company": company,"current_user_profile": current_user_profile})
-
 '''This function checked if the DeleteManagerForm is POST, take the input value and remove from the managers field from Company table and return to the company page'''
 def delete_manager(request, company_name):
     get_company_name = Company.objects.get(company_name=company_name)

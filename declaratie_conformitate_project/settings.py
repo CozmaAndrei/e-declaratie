@@ -66,7 +66,8 @@ TEMPLATES = [
             os.path.join(BASE_DIR, "templates"),
             os.path.join(BASE_DIR, "users/user_profiles/templates"),
             os.path.join(BASE_DIR, "users/user_lists/templates"),
-            
+            os.path.join(BASE_DIR, "user_company_app/company_profiles/templates"),
+            os.path.join(BASE_DIR, "user_company_app/company_lists/templates"),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -137,6 +138,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'users/user_profiles/static'),
     os.path.join(BASE_DIR, 'users/user_lists/static'),
+    os.path.join(BASE_DIR, 'user_company_app/company_profiles/static'),
+    os.path.join(BASE_DIR, 'user_company_app/company_lists/static'),
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
