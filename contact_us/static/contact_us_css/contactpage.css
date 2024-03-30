@@ -3,7 +3,7 @@
     min-height: 100%;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    background-color: whitesmoke;
+    background-color: rgb(255, 255, 255, 0.9);
 }
 
 .title {
@@ -15,7 +15,7 @@
     width: auto;
     color: white;
     border-radius: 15px;
-    background-color:lightslategrey
+    background-color:rgba(119, 136, 153, 0.9);
 }
 
 .container {

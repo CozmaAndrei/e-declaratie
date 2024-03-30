@@ -1,6 +1,6 @@
 .updateUserInfo {
     display: flex;
-    background-color: white;
+    background-color: rgb(255, 255, 255, 0.9);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -13,22 +13,17 @@
 }
 
 .titleEdit {
-    color: #019cbb;
+    color: rgba(1, 156, 187, 1);
     font-size: 2rem;
     margin-bottom: 2rem;
 }
 
 .btn {
-    background-color: #019cbb;
+    background-color: rgba(1, 156, 187, 1);
     border-radius: 15px;
     color:white;
-    box-shadow: 0 0 5px #019cbb;
+    box-shadow: 0 0 5px rgba(1, 156, 187, 1);
     margin: 1rem;
-}
-
-.btnContainer {
-    display: flex;
-    justify-content: center;
 }
 
 /* adding style for forms.ValidationError */

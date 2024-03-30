@@ -1,13 +1,13 @@
 .mainCompanyPage {
     min-width: 100%;
     min-height: 100%;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255, 0.9);
 }
 
 .card-header {
-    background-color: rgb(255, 217, 0);
+    background-color: rgb(220, 220, 220, 0.7);
 }
 
 .container {
@@ -15,8 +15,17 @@
 }
 
 .btn {
-    background-color: #019cbb;
+    background-color: rgba(1, 156, 187, 1);
     border-radius: 15px;
     color:white;
-    box-shadow: 0 0 5px #019cbb;
+    box-shadow: 0 0 5px rgba(1, 156, 187, 1);
+}
+
+.nav-item .nav-link.active {
+    background-color: rgb(255, 255, 255, 0.8);
+    border-color:rgb(220, 220, 220, 1);
+}
+
+.card-footer {
+    background-color: rgb(220, 220, 220, 0.7);
 }
