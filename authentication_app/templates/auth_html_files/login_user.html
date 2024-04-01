@@ -3,27 +3,32 @@
 
 
 {% block content %}
-    <form method="POST" action="{% url 'login_user' %}" class="loginUserForm">
-        <div class="text-center">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-success alert-dismissible fade show m-0" role="alert">
-                        <span>{{ message }}</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
+    <div class="loginUserForm">
+        <div class="titleEdit mb-3 text-center">
+            <h2>Login</h2>
         </div>
-        {% csrf_token %}
-        <h3 class="titleEdit">Login</h3>
-        {{ form.as_p }}
-        <br>
-        <button type="submit" class="btn">Login</button>
-        <br>
-        <p>Don't have an account? <a style="color:#019cbb" href="{% url 'register_user' %}">Became a member</a></p>
-        <p>Forgot your password? <a style="color:#019cbb" href="#">Reset</a></p>
-    </form>
-
+        <form method="POST" action="{% url 'login_user' %}">
+            <div class="text-center">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show m-0" role="alert">
+                            <span>{{ message }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mb-3">
+                <button type="submit" class="btn">Login</button>
+            </div>
+            <div class="text-center">
+                <p>Don't have an account? <a style="color:#019cbb" href="{% url 'register_user' %}">Became a member</a></p>
+                <p>Forgot your password? <a style="color:#019cbb" href="{% url 'reset_password' %}">Reset</a></p>
+            </div>
+        </form>
+    </div>
     <!--CSS style-->
     <link rel="stylesheet" href="{% static 'auth_css_files/login_user.css' %}">
 {% endblock %}

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from user_company_app.models import Company
 from datetime import datetime
+from django.contrib.auth.forms import PasswordResetForm
 
 
 class UserRegisterForm(UserCreationForm):
@@ -99,3 +100,7 @@ class CompanyRegisterForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ['company_name', 'company_email', 'company_cui', 'company_register_number', 'company_address', 'company_city', 'contact_person_phone']
+        
+                
+        
+        

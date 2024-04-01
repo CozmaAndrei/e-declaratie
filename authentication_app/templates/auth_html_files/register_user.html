@@ -4,6 +4,9 @@
 
 {% block content %}
     <div class="registerUserForm">
+        <div class="titleEdit mb-3 text-center">
+            <h3 >User registration</h3>
+        </div>
         <form method="POST" action="{% url 'register_user'%}">
             {% csrf_token %}
             <div class="text-center">
@@ -16,17 +19,15 @@
                     {% endfor %}
                 {% endif %}
             </div>
-            <h3 class="titleEdit">User registration</h3>
             {{ form.as_p }}
-            <div class="d-flex justify-content-center">
+            <div class="text-center mb-3">
                 <button type="submit" class="btn" href="{% url 'login_user' %}">Register</button>
             </div>
             <div class="text-center">
-            <p>Already have an account? <a style="color:#019cbb" href="{% url 'login_user' %}">Login</a></p>
+                <p>Already have an account? <a style="color:#019cbb" href="{% url 'login_user' %}">Login</a></p>
             </div>
         </form>
     </div>
-
     <!--CSS style-->
     <link rel="stylesheet" href="{% static 'auth_css_files/register_user.css' %}">
 {% endblock %}
