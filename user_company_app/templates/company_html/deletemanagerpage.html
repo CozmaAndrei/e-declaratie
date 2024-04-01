@@ -4,14 +4,15 @@
 
 {% block content %}
 <div class="deleteManager">
-    <h3 class="titleEdit"> Delete manager </h3>
+    <div class="titleEdit mb-3 text-center">
+        <h2> Delete manager </h2>
+    </div>
     <form method="POST" action="{% url 'delete_manager' get_company_name.company_name %}"> <!--get_company_name used also in def delete_manager-->
         {% csrf_token %}
         {{ form.as_p }}
-        <div class="btnContainer">
+        <div class="text-center">
             <a type="button" class="btn" href="{% url 'company_profile' get_company_name.company_name %}">Back</a>
-            <br>
-            <button type="submit" class="btn">Delete</button>
+            <button type="submit" class="btn delete">Delete</button>
         </div>
     </form>
 </div>

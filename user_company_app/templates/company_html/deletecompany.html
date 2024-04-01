@@ -4,6 +4,9 @@
 {% block content %}
     <div class="deleteCompany">
         <!--messages-->
+        <div class="titleEdit mb-3 text-center">
+            <h2>Delete Company Account</h2>
+        </div>
         <div class="text-center">
             {% if messages %}
                 {% for message in messages %}
@@ -21,15 +24,14 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <div>
-            <form class="text-center" method="POST" action="{% url 'delete_company_account' company.company_name %}">
-                {% csrf_token %}
-                {{ delete_company_form.as_p }}
-                <div class="text-center">
-                    <button type="submit" class="btn btn-danger">Delete Account</button>
-                </div>
-            </form>
-        </div>
+        <form method="POST" action="{% url 'delete_company_account' company.company_name %}">
+            {% csrf_token %}
+            {{ delete_company_form.as_p }}
+            <div class="text-center">
+                <a type="button" class="btn" href="{% url 'company_profile' company.company_name %}">Back</a>
+                <button type="submit" class="btn delete">Delete</button>
+            </div>
+        </form>
     </div>
 
     <!--Bootstrap JS-->

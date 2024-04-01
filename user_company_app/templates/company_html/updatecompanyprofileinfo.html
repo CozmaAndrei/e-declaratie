@@ -3,15 +3,15 @@
 
 {% block content %}
     <div class="updateCompanyInfo">
-
-        <h3 class="titleEdit">Update company profile</h3>
+        <div class="titleEdit mb-3 text-center">    
+            <h2>Update company profile</h2>
+        </div>
         <form method="POST" action="{% url 'update_company_info' the_company.company_name %}" enctype="multipart/form-data"> <!--the_company from update_company_info-->
             {% csrf_token %}
             {{ company_form.as_p }}
             {{ company_logo_form.as_p }}
-            <div class="d-flex justify-content-center">
+            <div class="text-center">
                 <button type="button" class="btn" onclick="history.back()">Back</button>
-                <br>
                 <button type="submit" class="btn">Save</button>
             </div>
         </form>

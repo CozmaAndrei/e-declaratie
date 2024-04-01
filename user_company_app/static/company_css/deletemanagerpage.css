@@ -6,14 +6,9 @@
     justify-content: center;
     margin: 0 auto;
     width: fit-content;
-    padding: 1rem 2rem;
+    padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.btnContainer {
-    display: flex;
-    justify-content: center;
 }
 
 .btn {
@@ -24,10 +19,20 @@
     margin: 1rem;
 }
 
+.delete {
+    background-color: #ff0000;
+    border-radius: 15px;
+    color:white;
+    box-shadow: 0 0 5px #ff0000;
+}
+
 .titleEdit {
-    color: rgba(1, 156, 187, 1);
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: rgba(1, 156, 187, 0.8);
+    color: white;
 }
 
 .errorlist {

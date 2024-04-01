@@ -9,3 +9,27 @@
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
+.btn {
+    background-color: rgba(1, 156, 187, 1);
+    border-radius: 15px;
+    color:white;
+    box-shadow: 0 0 5px rgba(1, 156, 187, 1);
+    margin: 1rem;
+}
+
+.delete {
+    background-color: #ff0000;
+    border-radius: 15px;
+    color:white;
+    box-shadow: 0 0 5px #ff0000;
+}
+
+.titleEdit {
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: rgba(1, 156, 187, 0.8);
+    color: white;
+}

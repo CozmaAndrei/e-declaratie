@@ -4,13 +4,14 @@
 
 {% block content %}
 <div class="addManager">
-    <h3 class="titleEdit"> Add new manager </h3>
+    <div class="titleEdit mb-3 text-center">
+        <h2> Add new manager </h2>
+    </div>
     <form method="POST" action="{% url 'add_manager' get_company_name.company_name%}"> <!--get_company_name used in def add_manager-->
         {% csrf_token %}
         {{ form.as_p }}
-        <div class="d-flex justify-content-center">
+        <div class="text-center">
             <button type="button" class="btn" onclick="history.back()">Back</button>
-            <br>
             <button type="submit" class="btn">Save</button>
         </div>
     </form>

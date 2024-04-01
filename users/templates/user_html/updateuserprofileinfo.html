@@ -3,12 +3,14 @@
 
 {% block content %}
     <div class="updateUserInfo">
-        <h3 class="titleEdit">Update user profile</h3>
+        <div class="titleEdit mb-3 text-center">
+            <h2>Update user profile</h2>
+        </div>
         <form method="POST" action="{% url 'update_user_info' request.user.username %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             {{ user_pic_form.as_p}}
-            <div class="d-flex justify-content-center">
+            <div class="text-center">
                 <a class="btn" href={% url 'user_profile' request.user.username %}>Back</a> 
                 <button type="submit" class="btn">Save</button>
             </div>

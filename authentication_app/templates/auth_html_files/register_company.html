@@ -5,7 +5,7 @@
 {% block content %}
     <div class="registerCompanyForm">
         <div class="titleEdit mb-3 text-center">
-            <h3>Company registration</h3>
+            <h2>Company registration</h2>
         </div>
         <form method="POST" action="{% url 'register_company' %}">
             {% csrf_token %}
