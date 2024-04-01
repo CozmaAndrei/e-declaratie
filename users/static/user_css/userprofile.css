@@ -1,4 +1,4 @@
-.mainProfilePage {
+.mainUserProfile {
     min-width: 100%;
     min-height: 100%;
     background-color: rgb(255, 255, 255, 0.9);
@@ -8,7 +8,7 @@
     background-color: rgb(220, 220, 220, 0.7);
 }
 
-.profilePage {
+.userProfile {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -118,7 +118,7 @@ h5 {
 /* Pentru telefoane */
 
 @media only screen and (max-width: 600px) {
-    .profilePage {
+    .userProfile {
         flex-direction: column;
     }
     .userInfo {

@@ -2,12 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.core.mail import EmailMessage
 from django.contrib import messages
-from django.core.mail import send_mail
 from django.conf import settings
-import csv
-# Rest of the code
 
 def contact_us(request):
+    '''This function sends an email to the admin with the contact form data.'''
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():

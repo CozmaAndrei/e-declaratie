@@ -7,7 +7,6 @@ from .user_profiles_forms import ReportUserForm
 from django.contrib import messages
 
 
-
 def user_view_profile(request, username):
     '''Return the user view profile in viewprofilepage.html for all the users and the current user profile in viewprofilepage.html for the current user'''
     view_user = User.objects.get(username=username) #used in viewprofilepage.html
@@ -29,6 +28,7 @@ def user_view_profile(request, username):
     return render(request, 'user_profiles_html/viewprofilepage.html', context)
 
 def report_user(request, username):
+    '''Report a user, send an email to the admin and return the reportuser.html page'''
     report_user = User.objects.get(username=username)
     if request.method == "POST":
         report_form = ReportUserForm(request.POST)

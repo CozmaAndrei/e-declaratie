@@ -107,7 +107,18 @@ class UserPicForm(forms.ModelForm):
          model = ExtraUserInformations
          fields = ['user_pic']
     
+class DeleteUserForm(forms.Form):
+    '''The form used to delete a user account. We use the EmailField to confirm the user's email.'''
+    delete_user_widget_form = {'class': 'form-control', 
+                        'size': '30', 
+                        'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                        'onfocus': 'this.style.borderColor="#019cbb";', 
+                        'onfocusout': 'this.style.borderColor="";'
+                    }
+    email = forms.EmailField(label='Confirm Email', widget=forms.EmailInput(attrs=delete_user_widget_form))
 
+
+                                     
 
 
 

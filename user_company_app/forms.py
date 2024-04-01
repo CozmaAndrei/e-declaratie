@@ -53,7 +53,14 @@ class CompanyLogoForm(forms.ModelForm):
         model = Company
         fields = ['company_logo']
         
-        
+class DeleteCompanyForm(forms.Form):
+    delete_company_widget_form = {'class': 'form-control', 
+                        'size': '30', 
+                        'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                        'onfocus': 'this.style.borderColor="#019cbb";', 
+                        'onfocusout': 'this.style.borderColor="";'
+                    }
+    company_email = forms.EmailField(label='Confirm Company Email', widget=forms.EmailInput(attrs=delete_company_widget_form))       
         
         
         

@@ -1,10 +1,10 @@
 {% extends 'e_declaratie_html_files/homepage.html' %}
 {% load static %}
 
-
 {% block content %}
-    <div class="edeclarationPage">
-        <div class="msg text-center">
+    <div class="deleteCompany">
+        <!--messages-->
+        <div class="text-center">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-dismissible fade show m-0
@@ -12,6 +12,8 @@
                                     alert-success
                                 {% elif message.tags == 'warning' %}
                                     alert-warning
+                                {% elif message.tags == 'error' %}
+                                    alert-danger
                                 {% endif %}" alert-info role=" alert">
                         <span>{{ message }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -19,13 +21,19 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <div class="LogoTitleSlogan">
-            <h1 class="mb-3">e-Declaration</h1>
-            <p class="mb-3">Your business to the next level</p>
+        <div>
+            <form class="text-center" method="POST" action="{% url 'delete_company_account' company.company_name %}">
+                {% csrf_token %}
+                {{ delete_company_form.as_p }}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-danger">Delete Account</button>
+                </div>
+            </form>
         </div>
     </div>
+
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <!--CSS style-->
-    <link rel="stylesheet" href="{% static 'css_files/mainpage.css' %}">
+    <link rel="stylesheet" href="{% static 'company_css/deletecompany.css' %}">
 {% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Company
-from .forms import AddNewManagerForm, DeleteManagerForm, EditCompanyInfoForm, CompanyLogoForm
+from .forms import AddNewManagerForm, DeleteManagerForm, EditCompanyInfoForm, CompanyLogoForm, DeleteCompanyForm
 from users.models import ExtraUserInformations
 
 
@@ -52,16 +52,29 @@ def add_manager(request, company_name):
 def delete_company_account(request, company_name):
     company = Company.objects.get(company_name=company_name)
     company_managers = company.managers.all()
-
-    if len(company_managers) == 1: #if you are the only one manager, then can delete the company
-        company.delete()
-        messages.success(request, "The company was successfully deleted!")
-        return redirect('user_profile', request.user.username)
-    elif len(company_managers) > 1: #if the company has more than one manager, you can't delete the company. You must delete all the managers first!.
-        messages.warning(request, "If you want to delete the company, you must delete all the managers first!")
-        return redirect('company_profile', company.company_name)
-
-    return redirect('user_profile', request.user.username)
+    if request.method == "POST":
+        delete_company_form = DeleteCompanyForm(request.POST)
+        if delete_company_form.is_valid():
+            company_email = delete_company_form.cleaned_data['company_email']
+            if company_email == company.company_email:
+                if len(company_managers) == 1: #if you are the only one manager, then can delete the company
+                    company.delete()
+                    messages.success(request, "The company was successfully deleted!")
+                    return redirect('user_profile', request.user.username)
+                elif len(company_managers) > 1: #if the company has more than one manager, you can't delete the company. You must delete all the managers first!.
+                    messages.warning(request, "If you want to delete the company, you must delete all the managers first!")
+                    return redirect('company_profile', company.company_name)
+            else:
+                messages.error(request, "The email you entered is not your company email")
+                return redirect ('delete_company_account', company.company_name)
+    else:
+        delete_company_form = DeleteCompanyForm()
+        
+    context = {
+        "delete_company_form": delete_company_form,
+        "company": company,
+    }
+    return render(request, 'company_html/deletecompany.html', context)
 
 '''This function checked if the DeleteManagerForm is POST, take the input value and remove from the managers field from Company table and return to the company page'''
 def delete_manager(request, company_name):

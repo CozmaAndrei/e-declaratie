@@ -92,9 +92,8 @@ def activate(request, uidb64, token):
         messages.success(request, 'Your account has been activated successfully!')
         return redirect('login_user')
     else:
-        messages.error(request, 'Activation link is invalid!')
-
-    return redirect('homepage')    
+        messages.warning(request, 'Activation link is invalid!')
+        return redirect("home")  
 
 def register_company(request):
     '''Company registration function'''
