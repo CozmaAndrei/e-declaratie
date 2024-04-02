@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from user_company_app.models import Company
+from companies.models import Company
 from users.models import ExtraUserInformations
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from user_company_app.models import Company
-from user_company_app.models import ExtendCompanyModel
+from companies.models import Company
+from companies.models import ExtendCompanyModel
 from django.contrib import messages
 
 

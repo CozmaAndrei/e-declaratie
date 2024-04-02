@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from user_company_app.models import Company
-from user_company_app.models import ExtendCompanyModel
+from companies.models import Company
+from companies.models import ExtendCompanyModel
 from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime

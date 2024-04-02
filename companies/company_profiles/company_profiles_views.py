@@ -1,6 +1,6 @@
 from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
-from user_company_app.models import Company
+from companies.models import Company
 from users.models import ExtraUserInformations
 from .company_profiles_forms import ReportCompanyForm
 from django.conf import settings

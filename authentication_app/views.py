@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.models import User
 from .forms import UserRegisterForm
 from .forms import CustomAuthenticationForm
 from .forms import CompanyRegisterForm
-from user_company_app.models import Company
 from users.models import ExtraUserInformations
 
 # email activation imports start

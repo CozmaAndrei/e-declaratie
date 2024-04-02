@@ -1,7 +1,7 @@
 import os
 from django.db import models
 from django.contrib.auth.models import User
-from user_company_app.models import Company
+from companies.models import Company
 from django.contrib.auth.models import User
 
 

@@ -7,6 +7,6 @@ urlpatterns = [
     path('company-name/<str:company_name>/add-manager/', views.add_manager, name='add_manager'),
     path('company-name/<str:company_name>/delete-manager/', views.delete_manager, name='delete_manager'),
     path('delete-company-account/<str:company_name>/', views.delete_company_account, name="delete_company_account"),
-    path('', include('user_company_app.company_lists.company_lists_urls')),
-    path('', include('user_company_app.company_profiles.company_profiles_urls')),
+    path('', include('companies.company_lists.company_lists_urls')),
+    path('', include('companies.company_profiles.company_profiles_urls')),
 ]

@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'e_declaratie_app',
     'authentication_app',
-    'users',
-    'user_company_app',
+    'users.apps.UserAppConfig',
+    'companies',
     'create_declaration',
     'contact_us',
     
@@ -67,8 +67,8 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'authentication_app/reset_password/templates'),
             os.path.join(BASE_DIR, "users/user_profiles/templates"),
             os.path.join(BASE_DIR, "users/user_lists/templates"),
-            os.path.join(BASE_DIR, "user_company_app/company_profiles/templates"),
-            os.path.join(BASE_DIR, "user_company_app/company_lists/templates"),
+            os.path.join(BASE_DIR, "companies/company_profiles/templates"),
+            os.path.join(BASE_DIR, "companies/company_lists/templates"),
             os.path.join(BASE_DIR, "create_declaration/create_default_pdf/templates"),
             os.path.join(BASE_DIR, "create_declaration/create_edit_pdf/templates"),
             
@@ -143,8 +143,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'authentication_app/reset_password/static'),
     os.path.join(BASE_DIR, 'users/user_profiles/static'),
     os.path.join(BASE_DIR, 'users/user_lists/static'),
-    os.path.join(BASE_DIR, 'user_company_app/company_profiles/static'),
-    os.path.join(BASE_DIR, 'user_company_app/company_lists/static'),
+    os.path.join(BASE_DIR, 'companies/company_profiles/static'),
+    os.path.join(BASE_DIR, 'companies/company_lists/static'),
     os.path.join(BASE_DIR, 'create_declaration/create_default_pdf/static'),
     os.path.join(BASE_DIR, 'create_declaration/create_edit_pdf/static'),
 ]

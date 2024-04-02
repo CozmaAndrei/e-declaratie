@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from user_company_app.models import Company
+from companies.models import Company
 from datetime import datetime
 from django.contrib.auth.forms import PasswordResetForm
 
