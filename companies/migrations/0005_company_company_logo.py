@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='company',
             name='company_logo',
-            field=models.ImageField(blank=True, null=True, upload_to=companies.models.company_directory_path),
+            field=models.ImageField(blank=True, null=True, upload_to=companies.models.logo_directory_path),
         ),
     ]

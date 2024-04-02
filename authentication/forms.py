@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from companies.models import Company
 from datetime import datetime
-from django.contrib.auth.forms import PasswordResetForm
 
 
 class UserRegisterForm(UserCreationForm):

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 
-def company_directory_path(instance, filename):
+def logo_directory_path(instance, filename):
     '''This function is used to create a new folder for each company and save his logo in it. 
         The folder name is the company's name.
         The function are used in the Company model in the company_logo field.'''
@@ -22,13 +22,19 @@ class Company(models.Model):
     company_address = models.CharField(max_length=100)
     company_city = models.CharField(max_length=50)
     contact_person_phone = models.CharField(max_length=25, blank=True, null=False)
-    company_logo = models.ImageField(upload_to=company_directory_path, blank=True, null=True)
+    company_logo = models.ImageField(upload_to=logo_directory_path, blank=True, null=True)
     
     class Meta:
         db_table = 'Companies'
         
     def __str__(self):
         return self.company_name #plus many fields if you want
+    
+    def save(self, *args, **kwargs):
+        created = self.pk is None
+        super().save(*args, **kwargs)
+        if created:
+            ExtendCompanyModel.objects.create(extend_company_info=self)
 
 def company_stamp_path(instance, filename):
     '''This function is used to create a new folder for each company and save its company stamp in it.'''
