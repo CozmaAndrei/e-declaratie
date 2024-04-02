@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'e_declaratie_app',
-    'authentication_app',
+    'main',
+    'authentication',
     'users.apps.UserAppConfig',
-    'companies',
+    'companies.apps.UserCompanyAppConfig',
     'create_declaration',
     'contact_us',
     
@@ -64,7 +64,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, "templates"),
-            os.path.join(BASE_DIR, 'authentication_app/reset_password/templates'),
+            os.path.join(BASE_DIR, 'authentication/reset_password/templates'),
             os.path.join(BASE_DIR, "users/user_profiles/templates"),
             os.path.join(BASE_DIR, "users/user_lists/templates"),
             os.path.join(BASE_DIR, "companies/company_profiles/templates"),
@@ -140,7 +140,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'authentication_app/reset_password/static'),
+    os.path.join(BASE_DIR, 'authentication/reset_password/static'),
     os.path.join(BASE_DIR, 'users/user_profiles/static'),
     os.path.join(BASE_DIR, 'users/user_lists/static'),
     os.path.join(BASE_DIR, 'companies/company_profiles/static'),

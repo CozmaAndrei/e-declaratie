@@ -18,16 +18,16 @@ from django.contrib import admin
 from django.urls import path, include, reverse_lazy
 from django.conf import settings
 from django.conf.urls.static import static
-from authentication_app.reset_password.reset_password_forms import CustomResetPasswordForm, CustomSetPasswordForm
+from authentication.reset_password.reset_password_forms import CustomResetPasswordForm, CustomSetPasswordForm
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('e_declaratie_app.urls')),
+    path('', include('main.urls')),
     path('', include('users.urls')),
     path('', include('companies.urls')),
     path('', include('django.contrib.auth.urls')),
-    path('', include('authentication_app.urls')),
+    path('', include('authentication.urls')),
     path('', include('create_declaration.urls')),
     path('', include('contact_us.urls')),
     #reset password urls 
