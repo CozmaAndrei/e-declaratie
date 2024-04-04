@@ -1,6 +1,6 @@
 .viewReportPage {
     display: flex;
-    background-color: rgb(255, 255, 255, 0.9);
+    background-color: rgb(255, 255, 255, 0.95);
     flex-direction: column;
     min-width: 70%;
     padding: 1rem;

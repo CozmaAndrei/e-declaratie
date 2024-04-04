@@ -8,10 +8,10 @@
             </a>
         </div>
     </div>
-    <hr>
-    <ul class="sidebar-nav">
-        <!-- if user is authenticated -->
-        {% if user.is_authenticated %}
+    <!-- if user is authenticated -->
+    {% if user.is_authenticated %}
+        <hr>
+        <ul class="sidebar-nav">
             <li class="sidebar-item">
                 <a href="{% url 'user_profile' request.user.username %}" class="sidebar-link">
                     <i class="bi-person-circle"></i>
@@ -71,52 +71,20 @@
                     </a>
                 </li>
             {% endif %}
-            <li class="sidebar-item">
-                <a href="{% url 'company_lists' %}" class="sidebar-link">
-                    <i class="bi-card-list"></i>
-                    <span>Company lists</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{% url 'user_lists' %}" class="sidebar-link">
-                    <i class="bi-people"></i>
-                    <span>User lists</span>
-                </a>
-            </li>
-        {% else %}
-        <!-- if user is not authenticated -->
-            <li class="sidebar-item">
-                <a href="{% url 'login_user' %}" class="sidebar-link">
-                    <i class="bi-person-circle"></i>
-                    <span>My profile</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{% url 'login_user' %}" class="sidebar-link">
-                    <i class="bi-briefcase"></i>
-                    <span>My company</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{% url 'login_user' %}" class="sidebar-link">
-                    <i class="bi-file-earmark-text"></i>
-                    <span>Create e-dec</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{% url 'login_user' %}" class="sidebar-link">
-                    <i class="bi-card-list"></i>
-                    <span>Companies list</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{% url 'login_user' %}" class="sidebar-link">
-                    <i class="bi-people"></i>
-                    <span>Users list</span>
-                </a>
-            </li>
-        {% endif %}
-    </ul>
+                <li class="sidebar-item">
+                    <a href="{% url 'company_lists' %}" class="sidebar-link">
+                        <i class="bi-card-list"></i>
+                        <span>Company lists</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{% url 'user_lists' %}" class="sidebar-link">
+                        <i class="bi-people"></i>
+                        <span>User lists</span>
+                    </a>
+                </li>
+        </ul>
+    {% endif %}
     <hr>
     <ul class="sidebar-nav">
         {% if user.is_authenticated %}
