@@ -6,13 +6,15 @@ from .forms import EditUserInfoForm, ChangeUserPassForm, UserPicForm, DeleteUser
 from .models import ExtraUserInformations
 from django.contrib.auth import login, logout
 
-
+from django.http import Http404
 
 def user_profile(request, username): #used for userprofile.html
     '''Return the user profile with his username in URL and user information in userprofile.html'''
-    username = request.user
-    the_user_name = User.objects.get(username=username)
-    extra_info = ExtraUserInformations.objects.get(user=the_user_name) #used to get informations from ExtraUserInformations model
+    try:
+        the_user_name = User.objects.get(username=username)
+        extra_info = ExtraUserInformations.objects.get(user=the_user_name) #used to get informations from ExtraUserInformations model
+    except User.DoesNotExist:
+        raise Http404("User does not exist") #used to get informations from ExtraUserInformations model
     
     context = {
         "the_user_name": the_user_name,
@@ -28,12 +30,22 @@ def update_user_info(request, username):
         form = EditUserInfoForm(request.POST, instance=user)
         user_pic_form = UserPicForm(request.POST, request.FILES, instance=extra_info)
         if form.is_valid() and user_pic_form.is_valid():
-            form.save()
-            extra_info.date_of_birth = form.cleaned_data['date_of_birth']
-            extra_info.save()
-            user_pic_form.save()
-            messages.success(request, "Your profile was edited with success!")
-            return redirect ('user_profile', user.username)
+            if form.cleaned_data['username'] != request.user.username:
+                form.save()
+                extra_info.date_of_birth = form.cleaned_data['date_of_birth']
+                extra_info.save()
+                user_pic_form.save()
+                user.save()
+                logout(request)
+                return redirect ('login_user')
+            else:
+                form.save()
+                extra_info.date_of_birth = form.cleaned_data['date_of_birth']
+                extra_info.save()
+                user_pic_form.save()
+                user.save()
+                messages.success(request, "Your profile was edited with success!")
+                return redirect ('user_profile', user.username)
     else:
         form = EditUserInfoForm(instance=user)
         user_pic_form = UserPicForm(instance=extra_info)

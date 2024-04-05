@@ -1,6 +1,10 @@
 {% extends 'e_declaratie_html_files/homepage.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <!--CSS style-->
+    <link rel="stylesheet" href="{% static 'auth_css_files/register_user.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="registerUserForm">
@@ -28,7 +32,6 @@
             </div>
         </form>
     </div>
-    <!--CSS style-->
-    <link rel="stylesheet" href="{% static 'auth_css_files/register_user.css' %}">
+
 {% endblock %}
 

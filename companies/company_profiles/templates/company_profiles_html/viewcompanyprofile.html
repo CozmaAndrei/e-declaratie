@@ -1,6 +1,10 @@
 {% extends 'e_declaratie_html_files/homepage.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <!--CSS-->
+    <link rel="stylesheet" href="{% static 'company_profiles_css/viewcompanypage.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="viewCompanyPage">
@@ -91,6 +95,5 @@
             </ul>
         </div>
     </div>
-    <!--CSS-->
-    <link rel="stylesheet" href="{% static 'company_profiles_css/viewcompanypage.css' %}">
+
 {% endblock %}

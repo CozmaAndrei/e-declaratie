@@ -15,7 +15,6 @@ class EditUserInfoForm(forms.ModelForm):
                         'onfocusout': 'this.style.borderColor="";'
                     }
     
-    username = forms.CharField(min_length=3, max_length=50, widget=forms.TextInput(attrs=user_widget_form))
     first_name = forms.CharField(min_length=3, max_length=50, widget=forms.TextInput(attrs=user_widget_form))
     last_name = forms.CharField(min_length=3, max_length=50, widget=forms.TextInput(attrs=user_widget_form))
     email = forms.EmailField(widget=forms.EmailInput(attrs=user_widget_form))
@@ -28,7 +27,7 @@ class EditUserInfoForm(forms.ModelForm):
                                                                                             'onfocusout': 'this.style.borderColor="";'}))
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'date_of_birth']
+        fields = ['first_name', 'last_name', 'email', 'date_of_birth']
         
     def __init__(self, *args, **kwargs):
         '''We use the __init__ method to get the date_of_birth from the ExtraUserInformations model and set it as initial value for the date_of_birth field in the form.'''

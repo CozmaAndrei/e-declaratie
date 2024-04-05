@@ -20,7 +20,7 @@ def edit_declaration(request, company_id):
     company = Company.objects.get(id=company_id)
     user = User.objects.get(username=request.user)
     extended_company = ExtendCompanyModel.objects.get(extend_company_info=company_id)
-    edited_text = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number} la Registrul Comertului, CUI {company.company_cui}, reprezentata de {user.first_name.upper()} {user.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr *invoice_number* din data de *invoice_date* care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
+    edited_text = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number} la Registrul Comertului, CUI {company.company_cui}, reprezentata de {user.first_name.upper()} {user.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr [invoice_number] din data de [invoice_date] care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
     
     if request.method == 'POST':
         if 'reset' in request.POST:
@@ -49,8 +49,8 @@ def edited_text(edit_text, company_id, username, invoice_number, invoice_date):
     extended_company = ExtendCompanyModel.objects.get(extend_company_info=company_id)
     edit_text = extended_company.declaration_content
     if edit_text:
-        edit_text = edit_text.replace("*invoice_number*", str(invoice_number))
-        edit_text = edit_text.replace("*invoice_date*", str(invoice_date))
+        edit_text = edit_text.replace("[invoice_number]", str(invoice_number))
+        edit_text = edit_text.replace("[invoice_date]", str(invoice_date))
     return edit_text
 
 def preview_edit_pdf(request, company_id, username):
