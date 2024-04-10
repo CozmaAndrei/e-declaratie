@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#29n)uu7-p4==hfeylwj_)*)336wcc^&6cc1i0yu^4!*u3)q80
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['edeclaratie.ro', 'www.edeclaratie.ro', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -71,7 +71,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, "companies/company_lists/templates"),
             os.path.join(BASE_DIR, "create_declaration/create_default_pdf/templates"),
             os.path.join(BASE_DIR, "create_declaration/create_edit_pdf/templates"),
-            
+
             ],
         'APP_DIRS': True,
         'OPTIONS': {
