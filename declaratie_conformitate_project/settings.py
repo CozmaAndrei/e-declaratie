@@ -174,6 +174,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_FROM = 'edeclaratie.contact@gmail.com'
 EMAIL_HOST_USER = 'edeclaratie.contact@gmail.com'
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+try:
+    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+except Exception as e:
+    print(f"Error reading .env file: {e}")
 
 PASSWORD_RESET_TIMEOUT_DAYS = 3
