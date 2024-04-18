@@ -36,7 +36,7 @@ def report_user(request, username):
             reason = report_form.cleaned_data['reason']
             description = report_form.cleaned_data['description']
             #send email to admin
-            mail_subject= f"User {report_user.username} reported {request.user.username}"
+            mail_subject= f"User {report_user.username} has been reported by {request.user.username}"
             body= f"User: {report_user.username} ({report_user.first_name} {report_user.last_name}) has been reported by {request.user.username} ({request.user.first_name} {request.user.last_name}) for the following:\nReason: {reason}.\nDescription: {description}."
             email = EmailMessage(mail_subject, body, reply_to=[request.user.email], to=[settings.EMAIL_HOST_USER])
             if email.send():

@@ -167,6 +167,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Specifies the path to the directory containing the .env file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ENV_FILE = os.path.join(BASE_DIR, '.env')
+
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -174,9 +178,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_FROM = 'edeclaratie.contact@gmail.com'
 EMAIL_HOST_USER = 'edeclaratie.contact@gmail.com'
-try:
-    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-except Exception as e:
-    print(f"Error reading .env file: {e}")
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
 
 PASSWORD_RESET_TIMEOUT_DAYS = 3
