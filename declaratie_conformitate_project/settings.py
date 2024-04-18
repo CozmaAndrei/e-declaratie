@@ -97,11 +97,11 @@ WSGI_APPLICATION = 'declaratie_conformitate_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'declaratie_conformitate_db',
-        'USER': 'cozma',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',   # sau adresa IP a serverului MySQL
-        'PORT': '3306',        # portul MySQL (3306 este valoarea implicită)
+        'NAME': config('db_name'),
+        'USER': config('db_user'),
+        'PASSWORD': config('db_password'),
+        'HOST': config('db_host'),   # sau adresa IP a serverului MySQL
+        'PORT': config('db_port'),        # portul MySQL (3306 este valoarea implicită)
     }
 }
 
@@ -145,6 +145,10 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
+# Specifies the path to the directory containing the .env file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ENV_FILE = os.path.join(BASE_DIR, '.env')
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -166,10 +170,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Specifies the path to the directory containing the .env file
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ENV_FILE = os.path.join(BASE_DIR, '.env')
 
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
