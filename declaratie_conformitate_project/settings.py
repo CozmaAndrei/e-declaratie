@@ -100,8 +100,8 @@ DATABASES = {
         'NAME': config('db_name'),
         'USER': config('db_user'),
         'PASSWORD': config('db_password'),
-        'HOST': config('db_host'),   # sau adresa IP a serverului MySQL
-        'PORT': config('db_port'),        # portul MySQL (3306 este valoarea implicită)
+        'HOST': config('db_host'),
+        'PORT': config('db_port'),
     }
 }
 
@@ -179,6 +179,4 @@ EMAIL_USE_TLS = True
 EMAIL_FROM = config('EMAIL_FROM')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-
-
 PASSWORD_RESET_TIMEOUT_DAYS = 3
