@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from django.utils.translation import gettext_lazy as _
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-#29n)uu7-p4==hfeylwj_)*)336wcc^&6cc1i0yu^4!*u3)q80
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['edeclaratie.ro', 'www.edeclaratie.ro', 'localhost', '127.0.0.1', 'localhost:8000', "127.0.0.1:8000"]
 
 
 # Application definition
@@ -48,8 +50,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # used for translation
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -133,6 +136,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('en', _('English')),
+    ('ro', _('Romanian')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -161,8 +172,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# EMAIL_FROM = 'edeclaratie.contact@gmail.com'
+EMAIL_FROM = 'edeclaratie.contact@gmail.com'
 EMAIL_HOST_USER = 'edeclaratie.contact@gmail.com'
-EMAIL_HOST_PASSWORD = '?'
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 PASSWORD_RESET_TIMEOUT_DAYS = 3

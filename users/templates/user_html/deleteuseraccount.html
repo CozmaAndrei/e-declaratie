@@ -33,6 +33,7 @@
             {% csrf_token %}
             {{ delete_form.as_p }}
             <div class="text-center">
+                <a class="btn" href={% url 'user_profile' request.user.username %}>Back</a>
                 <button type="submit" class="btn delete">Delete Account</button>
             </div>
         </form>

@@ -1,0 +1,23 @@
+.container {
+    min-width: 60%;
+    min-height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    background-color: #f5f5f5;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #019cbb;
+}
+
+.btn {
+    background-color: #019cbb;
+    border-radius: 15px;
+    color:white;
+    box-shadow: 0 0 5px #019cbb;
+}
