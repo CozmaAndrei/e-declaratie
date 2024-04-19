@@ -19,7 +19,7 @@
                 </a>
             </li>
             <!-- if user has companies -->
-            {% if user.companies.all %}
+            {% if user.companies.exists %}
                 <li class="sidebar-item">
                     <div class="dropend">
                         <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

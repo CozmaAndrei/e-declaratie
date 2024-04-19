@@ -145,9 +145,7 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
-# Specifies the path to the directory containing the .env file
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ENV_FILE = os.path.join(BASE_DIR, '.env')
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -168,6 +166,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+# Specifies the path to the directory containing the .env file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ENV_FILE = os.path.join(BASE_DIR, '.env')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
