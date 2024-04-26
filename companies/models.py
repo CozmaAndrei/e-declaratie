@@ -25,7 +25,7 @@ class Company(models.Model):
     company_logo = models.ImageField(upload_to=logo_directory_path, blank=True, null=True)
     
     class Meta:
-        db_table = 'Companies'
+        db_table = 'companies'
         
     def __str__(self):
         return self.company_name #plus many fields if you want
