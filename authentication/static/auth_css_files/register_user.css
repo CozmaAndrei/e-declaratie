@@ -1,3 +1,23 @@
+body {
+    background-color:whitesmoke;
+}
+
+h2 {
+    margin-bottom: 0;
+    padding: 1rem;
+}
+
+.mainPage {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:transparent;
+    width: 100%;
+    min-height: 100vh;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
 .registerUserForm {
     display: flex;
     background-color: rgb(255, 255, 255, 0.95);
@@ -9,7 +29,7 @@
     max-width: 500px;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .titleEdit {
@@ -17,15 +37,15 @@
     border-radius: 10px;
     padding: 0.5rem;
     text-align: center;
-    background-color: rgba(1, 156, 187, 0.8);
+    background-color: rgba(0, 118, 141);
     color: white;
 }
 
 .btn {
-    background-color: rgba(1, 156, 187, 1);
-    border-radius: 15px;
+    background-color: rgba(0, 118, 141);
+    border-radius: 5px;
     color:white;
-    box-shadow: 0 0 5px rgba(1, 156, 187, 1);
+    box-shadow: 0 0 5px rgba(0, 118, 141);
     margin: 1rem;
 }
 
@@ -38,6 +58,10 @@
     color: white;
     margin-bottom: 15px;
     border-radius: 4px;
+}
+
+a:link, a {
+    text-decoration: none;
 }
 
 

@@ -5,10 +5,15 @@ from .forms import AddNewManagerForm, DeleteManagerForm, EditCompanyInfoForm, Co
 from users.models import ExtraUserInformations
 
 
-'''Return all users asociated to company in companypage.html and the company name in URL '''
+'''Return all users asociated to company in companypage.html and the company name in URL'''
 def company_profile(request, company_name):
+    
     get_company_name = Company.objects.get(company_name=company_name) #used for companypage.html
-    return render(request, 'company_html/companypage.html', {"get_company_name": get_company_name})
+    
+    context = {
+       "get_company_name": get_company_name,
+    }
+    return render(request, 'company_html/companypage.html', context)
 
 '''Update the company info, like name, email, logo, etc'''
 def update_company_info(request, company_name):
@@ -19,7 +24,7 @@ def update_company_info(request, company_name):
         if company_form.is_valid() and company_logo_form.is_valid():
             company_logo_form.save()
             company_form.save()
-            messages.success(request, "Your company was edited with success!")
+            messages.success(request, "Datele firmei au fost actualizate cu succes!")
             return redirect ('company_profile', the_company.company_name)
     else:
         company_form = EditCompanyInfoForm(instance=the_company)
@@ -42,11 +47,16 @@ def add_manager(request, company_name):
             get_company_name.managers.add(manager) #add the new manager at the company
             extra_info = ExtraUserInformations.objects.get(user=manager)
             extra_info.user_company.add(get_company_name) #added in user_company field from ExtraUserInformations the new company
-            messages.success(request, f"The {manager} manager was successfully added!")
+            messages.success(request, f"{manager} a fost adaugat ca manager la firma ta!")
             return redirect('company_profile', get_company_name.company_name)
     else:
         form = AddNewManagerForm()
-    return render(request, 'company_html/addmanagerpage.html', {'form': form, "get_company_name": get_company_name})
+        
+    context = {
+        'form': form,
+        "get_company_name": get_company_name,
+    }
+    return render(request, 'company_html/addmanagerpage.html', context)
 
 '''Delete the company account with conditions'''
 def delete_company_account(request, company_name):
@@ -59,13 +69,13 @@ def delete_company_account(request, company_name):
             if company_email == company.company_email:
                 if len(company_managers) == 1: #if you are the only one manager, then can delete the company
                     company.delete()
-                    messages.success(request, "The company was successfully deleted!")
+                    messages.success(request, "Contul firmei a fost sters cu succes!")
                     return redirect('user_profile', request.user.username)
                 elif len(company_managers) > 1: #if the company has more than one manager, you can't delete the company. You must delete all the managers first!.
-                    messages.warning(request, "If you want to delete the company, you must delete all the managers first!")
+                    messages.warning(request, "Pentru a sterge acesta firma, trebuie sa renunti la managerii atribuiti!")
                     return redirect('company_profile', company.company_name)
             else:
-                messages.error(request, "The email you entered is not your company email")
+                messages.error(request, "Acest email nu este al firmei dumneavoastra!")
                 return redirect ('delete_company_account', company.company_name)
     else:
         delete_company_form = DeleteCompanyForm()
@@ -86,19 +96,14 @@ def delete_manager(request, company_name):
             get_company_name.managers.remove(manager) #remove the mananger
             extra_info = ExtraUserInformations.objects.get(user=manager)
             extra_info.user_company.remove(get_company_name) #remove company from user_company field from ExtraUserInformations model
-            messages.success(request, f"The {manager} manager was successfully deleted!")
+            messages.success(request, f"{manager} a fost sters cu succes din lista de manageri ai firmei tale!")
             return redirect('company_profile', get_company_name.company_name)
     else:
         form = DeleteManagerForm(company=get_company_name)
-    return render(request, 'company_html/deletemanagerpage.html', {'form': form, "get_company_name": get_company_name})
-
-
-
-
-
-
-
-
-
-
+        
+    context = {
+        'form': form,
+        "get_company_name": get_company_name,
+    }
+    return render(request, 'company_html/deletemanagerpage.html', context)
 

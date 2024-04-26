@@ -9,14 +9,14 @@
 {% block content %}
     <div class="registerCompanyForm">
         <div class="titleEdit mb-3 text-center">
-            <h2>Company registration</h2>
+            <h2>Creare firma</h2>
         </div>
         <form method="POST" action="{% url 'register_company' %}">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ register_company_form.as_p }}
             <div class="text-center">
-                <button type="submit" class="btn" onclick="history.back()">Back</button>
-                <button type="submit" class="btn">Register</button>
+                <button type="submit" class="btn" onclick="history.back()">Inapoi</button>
+                <button type="submit" class="btn">Creare</button>
             </div>
         </form>
     </div>

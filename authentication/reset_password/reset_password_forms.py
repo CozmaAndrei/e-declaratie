@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 
 
-
+'''This form is used to apply style for Custom Reset Pass'''
 class CustomResetPasswordForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -11,7 +11,8 @@ class CustomResetPasswordForm(PasswordResetForm):
         self.fields['email'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
         self.fields['email'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['email'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
-        
+    
+'''This form is used to apply style for Custom Set New Pass'''     
 class CustomSetPasswordForm(SetPasswordForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

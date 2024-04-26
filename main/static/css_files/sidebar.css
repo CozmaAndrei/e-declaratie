@@ -4,7 +4,8 @@
     display: flex;
     overflow-y: auto;
     overflow-x: auto;
-    background-image: url(../images/mainwebpage1.jpg);
+    /* background-image: url(../images/mainwebpage1.jpg); */
+    background-color:lightgray;
     background-position: center;
     background-size: cover;
 }
@@ -29,53 +30,51 @@ body {
 hr {
     margin: 0 auto; /* pune linia in mijloc */
     width: 80%; /* lungimea liniei */
-    color: black; 
+    color: white; 
 }
 
 .sidebar {
     display: flex;
-    width: 180px; 
-    min-width: 180px; 
+    width: 220px; 
+    min-width: 220px; 
     transition: all 0.5s ease-in-out; /* face tranzitia cand trecem cu cursorul peste acel buton */
-    background-color: rgb(255, 255, 255, 0.95); /* face transparenta la sidebar */
-    flex-direction: column; 
-    border-right: 1px solid rgba(0, 0, 0, 0.3); /* face un border la dreapta */
-    margin:0.5rem;
-    border-radius: 10px;
+    background-color:rgba(0, 118, 141);
+    flex-direction: column;
 }
 
 .sidebar-logo {
-    margin: auto; /* pune logo-ul in mijloc */
-    padding: 1.5rem 1.5rem; /* spatiul dintre logo si margini */
+    margin: auto; 
+    padding: 1.5rem;
 }
 
 .sidebar-logo span {
-    white-space: nowrap; /* face ca textul sa nu se mute pe linie noua */
-    color: black;
+    white-space: nowrap;
+    color: white;
 }
 
 .sidebar-nav {
-    padding: 1rem 0; /* spatiul dintre butoane */
+    padding: 1rem 0; /* space between buttons */
 }
 
 a.sidebar-link {
     padding: 0.5rem 0.9rem;
-    color: black;
+    color: white;
     display: block;
     font-size: 1.0rem;
     white-space: nowrap;
-    border-left: 3px solid transparent; /* face un border la stanga si ajuta pe a.sidebar-link:hover*/
-    transition: all 0.5s ease-in-out; /* face tranzitia cand trecem cu cursorul peste acel buton */
+    border-left: 3px solid transparent;
+    transition: all 0.5s ease-in-out;
 }
 
 a.sidebar-link:hover {
-    background-color: rgba(0, 0, 0, 0.3); /* face ca butonul sa devina transparent cand trecem cu cursorul peste el */
-    border-left: 3px solid black;
+    background-color: rgba(253, 251, 251, 0.3); /* face ca butonul sa devina transparent cand trecem cu cursorul peste el */
+    border-left: 3px solid white;
 }
 
 .dropdown-menu {
     padding: 0rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color:rgba(0, 118, 141);
 }
 
 .sidebar-item {
@@ -92,38 +91,12 @@ a.sidebar-link:hover {
 }
 
 .mainPage {
+    background-color: whitesmoke;
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color:transparent;
     width: 100%;
     min-height: 100vh;
-    padding: 1rem;
     flex-wrap: wrap;
 }
 
-.edeclarationPage {
-    display: flex;
-    min-width: 100%;
-    min-height: 100%;
-    background-color: transparent;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.msg {
-    min-width: 100%;
-    height: 6rem;
-    margin-bottom: 1rem;
-}
-
-.LogoTitleSlogan {
-    flex-grow: 1;
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5rem;
-}

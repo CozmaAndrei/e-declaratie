@@ -9,7 +9,7 @@
 {% block content %}
     <div class="deleteContainer">
         <div class="titleEdit mb-3 text-center">
-            <h2>Delete Account</h2>
+            <h2>Sterge cont</h2>
         </div>
         <!--messages-->
         <div class="text-center">
@@ -29,12 +29,14 @@
                 {% endfor %}
             {% endif %}
         </div>
+        <br>
+        <p>Pentru a sterge contul, trebuie sa confirmi email-ul.</p>
         <form method="POST" action="{% url 'delete_user_account' request.user.id %}">
             {% csrf_token %}
             {{ delete_form.as_p }}
             <div class="text-center">
-                <a class="btn" href={% url 'user_profile' request.user.username %}>Back</a>
-                <button type="submit" class="btn delete">Delete Account</button>
+                <a class="btn" href={% url 'user_profile' request.user.username %}>Inapoi</a>
+                <button type="submit" class="btn delete">Sterge cont</button>
             </div>
         </form>
     </div>

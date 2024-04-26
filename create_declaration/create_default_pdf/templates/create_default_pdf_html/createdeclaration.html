@@ -38,7 +38,11 @@
                 <button class="btn" onclick="copyLinkOp1()">Copy the link and send it to the customer</button>
                 <script>
                     function copyLinkOp1() {
+<<<<<<< HEAD
                         let copy_link = "http://edeclaratie.ro/op1/{{ user.username }}/manager/{{ company.id }}";
+=======
+                        let copy_link = "http://localhost:8000/op1/{{ user.username }}/manager/{{ company.id }}";
+>>>>>>> adce05e9c927019d0b70baa63179f85a3862f3ac
                         navigator.clipboard.writeText(copy_link);
                     }
                 </script>

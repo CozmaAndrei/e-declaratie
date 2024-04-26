@@ -9,14 +9,14 @@
 {% block content %}
 <div class="addManager">
     <div class="titleEdit mb-3 text-center">
-        <h2> Add new manager </h2>
+        <h2>Adauga manager nou</h2>
     </div>
     <form method="POST" action="{% url 'add_manager' get_company_name.company_name%}"> <!--get_company_name used in def add_manager-->
         {% csrf_token %}
         {{ form.as_p }}
         <div class="text-center">
-            <button type="button" class="btn" onclick="history.back()">Back</button>
-            <button type="submit" class="btn">Save</button>
+            <button type="button" class="btn" onclick="history.back()">Inapoi</button>
+            <button type="submit" class="btn">Salveaza</button>
         </div>
     </form>
 </div>
