@@ -1,8 +1,8 @@
 {% autoescape off %}
 
-Hi {{ user.first_name }} {{ user.last_name }},
+Salut {{ user.first_name }} {{ user.last_name }},
 
-Please click on the link below to confirm your registration:
+Vă rugăm să faceți click pe linkul de mai jos pentru a vă confirma înregistrarea:
 
 {{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}
 

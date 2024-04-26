@@ -10,7 +10,7 @@
     <div class="deleteCompany">
         <!--messages-->
         <div class="titleEdit mb-3 text-center">
-            <h2>Delete Company Account</h2>
+            <h2>Sterge firma</h2>
         </div>
         <div class="text-center">
             {% if messages %}
@@ -29,12 +29,14 @@
                 {% endfor %}
             {% endif %}
         </div>
+        <br>
+        <p>Pentru a sterge contul firmei, trebuie sa confirmi email-ul.</p>
         <form method="POST" action="{% url 'delete_company_account' company.company_name %}">
             {% csrf_token %}
             {{ delete_company_form.as_p }}
             <div class="text-center">
-                <a type="button" class="btn" href="{% url 'company_profile' company.company_name %}">Back</a>
-                <button type="submit" class="btn delete">Delete</button>
+                <a type="button" class="btn" href="{% url 'company_profile' company.company_name %}">Inapoi</a>
+                <button type="submit" class="btn delete">Sterge</button>
             </div>
         </form>
     </div>

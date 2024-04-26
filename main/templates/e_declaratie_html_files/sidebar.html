@@ -15,7 +15,7 @@
             <li class="sidebar-item">
                 <a href="{% url 'user_profile' request.user.username %}" class="sidebar-link">
                     <i class="bi-person-circle"></i>
-                    <span>My profile</span>
+                    <span>Profilul meu</span>
                 </a>
             </li>
             <!-- if user has companies -->
@@ -24,7 +24,7 @@
                     <div class="dropend">
                         <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi-briefcase"></i>
-                            <span>My company</span>
+                            <span>Firma mea</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!--used for loop to find the user companies and display the name of the company in URL-->
@@ -39,10 +39,16 @@
                     </div>
                 </li>
                 <li class="sidebar-item">
+                    <a href="{% url 'register_company' %}" class="sidebar-link">
+                        <i class="bi-plus-square"></i>
+                        <span>Adauga firma noua</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <div class="dropend">
                         <a class="sidebar-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
                             <i class="bi-file-earmark-text"></i>
-                            <span>Create e-dec</span>
+                            <span>Creare e-dec</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!--used for loop to find the user companies and display the name of the company in URL-->
@@ -56,33 +62,28 @@
                         </ul>
                     </div>
                 </li>
-            {% else %}
-                <!-- if user has no companies -->
-                <li class="sidebar-item">
-                    <a href="{% url 'register_company' %}" class="sidebar-link">
-                        <i class="bi-briefcase"></i>
-                        <span>My company</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{% url 'register_company' %}" class="sidebar-link">
-                        <i class="bi-file-earmark-text"></i>
-                        <span>Create e-dec</span>
-                    </a>
-                </li>
-            {% endif %}
+                <!--Client want to hide those functions-->
                 <li class="sidebar-item">
                     <a href="{% url 'company_lists' %}" class="sidebar-link">
                         <i class="bi-card-list"></i>
-                        <span>Company lists</span>
+                        <span>Lista companii</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="{% url 'user_lists' %}" class="sidebar-link">
                         <i class="bi-people"></i>
-                        <span>User lists</span>
+                        <span>Lista useri</span>
                     </a>
                 </li>
+            {% else %}
+                <!-- if user has no companies -->
+                <li class="sidebar-item">
+                    <a href="{% url 'register_company' %}" class="sidebar-link">
+                        <i class="bi-plus-square"></i>
+                        <span>Adauga firma</span>
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     {% endif %}
     <hr>
@@ -91,26 +92,26 @@
             <li class="sidebar-item">
                 <a href="{% url 'login_user' %}" class="sidebar-link">
                     <i class="bi-arrow-left-right"></i>
-                    <span>Switch account</span>
+                    <span>Schimba cont</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="{% url 'logout_user' %}" class="sidebar-link">
                     <i class="bi-box-arrow-left"></i>
-                    <span>Logout</span>
+                    <span>Deconectare</span>
                 </a>
             </li>
         {% else %}
             <li class="sidebar-item">
                 <a href="{% url 'login_user' %}" class="sidebar-link">
                     <i class="bi-box-arrow-in-right"></i>
-                    <span>Login</span>
+                    <span>Conectare</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="{% url 'register_user' %}" class="sidebar-link">
                     <i class="bi-person-plus"></i>
-                    <span>Register</span>
+                    <span>Inregistrare</span>
                 </a>
             </li>
         {% endif %}
@@ -120,7 +121,7 @@
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="bi-book"></i>
-                <span>About Us</span>
+                <span>Despre noi</span>
             </a>
         </li>
     </ul>

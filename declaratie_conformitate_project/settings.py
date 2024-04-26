@@ -60,6 +60,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://edeclaratie.ro','https://www.edeclaratie.ro']
+
 ROOT_URLCONF = 'declaratie_conformitate_project.urls'
 
 TEMPLATES = [

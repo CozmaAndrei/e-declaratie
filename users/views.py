@@ -32,7 +32,7 @@ def update_user_info(request, username):
         if form.is_valid() and user_pic_form.is_valid():
             if form.cleaned_data['username'] != request.user.username:
                 form.save()
-                extra_info.date_of_birth = form.cleaned_data['date_of_birth']
+                # extra_info.date_of_birth = form.cleaned_data['date_of_birth']
                 extra_info.save()
                 user_pic_form.save()
                 user.save()
@@ -40,7 +40,7 @@ def update_user_info(request, username):
                 return redirect ('login_user')
             else:
                 form.save()
-                extra_info.date_of_birth = form.cleaned_data['date_of_birth']
+                # extra_info.date_of_birth = form.cleaned_data['date_of_birth']
                 extra_info.save()
                 user_pic_form.save()
                 user.save()
@@ -74,22 +74,30 @@ def delete_user_account(request, user_id):
                         managers = company.managers.all()
                         if len(managers) == 1 and user in managers: #if the user is the only one manager on his company, then he must delete the company first
                             if company.managers.count() == 1:
-                                messages.warning(request, "You must delete the company account first!")
-                                return redirect('user_profile', request.user.username)
+                                user.delete()
+                                company.delete()
+                                messages.success(request, "Contul tau a fost sters!")
+                                return redirect('home')
                         elif len(managers) > 1 and user in managers: #if the company has many managers, then the user can delete the account
                             user.delete()
-                            messages.success(request, "Your account was deleted!")
-                            return redirect('register_user')
+                            messages.success(request, "Contul tau a fost sters!")
+                            return redirect('home')
                 else: #if user has no company
                     user.delete()
-                    messages.success(request, "Your account was deleted!")
+                    messages.success(request, "Contul tau a fost sters!")
+                    return redirect('home')
             else:
                 messages.error(request, "The email you entered is not your email")
                 return redirect('delete_user_account', user_id)
     else:
         delete_form = DeleteUserForm()  
-     
-    return render(request, "user_html/deleteuseraccount.html", {"delete_form": delete_form, "user": user, "user_companies": user_companies})
+    
+    context = {
+        "delete_form": delete_form,
+        "user": user,
+        "user_companies": user_companies,
+    }
+    return render(request, "user_html/deleteuseraccount.html", context)
 
 def change_pass(request,username):
     '''Change the user password and return to the login page after the password was changed with success!'''

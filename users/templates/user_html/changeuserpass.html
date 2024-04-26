@@ -9,14 +9,14 @@
 {% block content %}
     <div class="changeUserPass">
         <div class="titleEdit mb-3 text-center">
-            <h2>Update user password</h2>
+            <h2>Schimba parola</h2>
         </div>
         <form method="POST" action="{% url 'change_pass' request.user.username %}">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="text-center">
-                <a class="btn" href={% url 'user_profile' request.user.username %}>Back</a> 
-                <button type="submit" class="btn">Save</button>
+                <a class="btn" href={% url 'user_profile' request.user.username %}>Inapoi</a> 
+                <button type="submit" class="btn">Salveaza</button>
             </div>
         </form>
     </div>
