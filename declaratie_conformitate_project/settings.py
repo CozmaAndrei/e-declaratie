@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-#29n)uu7-p4==hfeylwj_)*)336wcc^&6cc1i0yu^4!*u3)q80
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['edeclaratie.ro', 'www.edeclaratie.ro', 'localhost:8000', "127.0.0.1:8000", "localhost"]
+ALLOWED_HOSTS = ['edeclaratie.ro', 'www.edeclaratie.ro', 'localhost:8000', "127.0.0.1:8000", "localhost", "127.0.0.1"]
 
 
 # Application definition
