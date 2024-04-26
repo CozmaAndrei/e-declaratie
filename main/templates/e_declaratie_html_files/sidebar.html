@@ -69,12 +69,7 @@
                         <span>Lista companii</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="{% url 'user_lists' %}" class="sidebar-link">
-                        <i class="bi-people"></i>
-                        <span>Lista useri</span>
-                    </a>
-                </li>
+                
             {% else %}
                 <!-- if user has no companies -->
                 <li class="sidebar-item">
@@ -84,6 +79,12 @@
                     </a>
                 </li>
             {% endif %}
+            <li class="sidebar-item">
+                <a href="{% url 'user_lists' %}" class="sidebar-link">
+                    <i class="bi-people"></i>
+                    <span>Lista useri</span>
+                </a>
+            </li>
         </ul>
     {% endif %}
     <hr>
