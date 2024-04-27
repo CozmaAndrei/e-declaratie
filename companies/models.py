@@ -3,17 +3,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
-def logo_directory_path(instance, filename):
-    '''This function is used to create a new folder for each company and save his logo in it. 
+'''This function is used to create a new folder for each company and save his logo in it. 
         The folder name is the company's name.
         The function are used in the Company model in the company_logo field.'''
+def logo_directory_path(instance, filename):
     new_name_of_folder = f"{instance.company_name}'s_logo"
     filename = instance.company_name + '.png'
     return os.path.join('company_logo', new_name_of_folder + '/' + filename)
 
+'''This model is used to store informations about the company, like his name, logo, email, etc.'''
 class Company(models.Model):
-    '''This model is used to store informations about the company, like his name, logo, email, etc.'''
     managers = models.ManyToManyField(User, related_name='companies', blank=True) # the user that is associated with the company
     company_name = models.CharField(max_length=100)
     company_email = models.CharField(max_length=100, unique=True)
@@ -36,20 +35,20 @@ class Company(models.Model):
         if created:
             ExtendCompanyModel.objects.create(extend_company_info=self)
 
+'''This function is used to create a new folder for each company and save its company stamp in it.'''
 def company_stamp_path(instance, filename):
-    '''This function is used to create a new folder for each company and save its company stamp in it.'''
     company_name = instance.extend_company_info.company_name
     filename = company_name + '.png'
     return os.path.join('company_stamps', company_name + '/' + filename)
 
+'''This function is used to create a new folder for each company and save its pdf declaration in it.'''
 def pdf_declaration_path(instance, filename):
-    '''This function is used to create a new folder for each company and save its pdf declaration in it.'''
     company_name = instance.extend_company_info.company_name
     filename = company_name + '.pdf'
     return os.path.join('pdf_declarations', company_name + '/' + filename)
 
+'''This model is used to extend the Company model'''
 class ExtendCompanyModel(models.Model):
-    '''This model is used to extend the Company model'''
     extend_company_info = models.OneToOneField(Company, on_delete=models.CASCADE)
     declaration_content = models.TextField(blank=True, null=True)
     company_stamp = models.ImageField(upload_to=company_stamp_path, blank=True, null=True)

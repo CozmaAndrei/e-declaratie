@@ -1,13 +1,12 @@
 .companiesListPage {
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255, 0.95);
+    background-color: rgb(255, 255, 255);
     margin: 0 auto;
     min-width: 100%;
     min-height: 100%;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 }
 
@@ -25,7 +24,7 @@
 
 .btn {
     background-color:orange;
-    border-radius: 15px;
+    border-radius: 5px;
     color:white;
     box-shadow: 0 0 5px orange;
 }
@@ -55,6 +54,5 @@
 }
 
 .nav-tabs .nav-link.active {
-    background-color: rgb(255, 255, 255, 0.5);
-    border-color:rgb(220, 220, 220, 1);
+    background-color: rgb(255, 255, 255);
 }

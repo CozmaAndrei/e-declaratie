@@ -25,7 +25,7 @@ class EditCompanyInfoForm(forms.ModelForm):
 
 '''Add the new manager to the company form'''    
 class AddNewManagerForm(forms.Form):
-    manager = forms.ModelChoiceField(label="Alege manager",queryset=User.objects.exclude(username='admin'),
+    manager = forms.ModelChoiceField(label="Selecteaza manager",queryset=User.objects.exclude(username='admin'),
                                      widget=forms.Select(attrs={'class': 'form-control',
                                                                 'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
                                                                 'onfocus': 'this.style.borderColor="#019cbb";', 
@@ -44,13 +44,15 @@ class DeleteManagerForm(forms.Form):
                                                                  'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
                                                                  'onfocus': 'this.style.borderColor="#019cbb";', 
                                                                  'onfocusout': 'this.style.borderColor="";'}))
-      
+   
+'''This form is used to add an logo for company'''   
 class CompanyLogoForm(forms.ModelForm):
     company_logo = forms.ImageField(label='Logo firma', required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
     class Meta:
         model = Company
         fields = ['company_logo']
 
+'''This form is used to confirm email when an user want to delete his company'''
 class DeleteCompanyForm(forms.Form):
     delete_company_widget_form = {'class': 'form-control', 
                         'size': '30', 
