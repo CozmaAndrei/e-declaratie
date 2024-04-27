@@ -7,44 +7,45 @@
 {% endblock %}
 
 {% block content %}
-<div class="card contactPage">
-    <div class="text-center">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-dismissible fade show m-0
-                            {% if message.tags == 'success' %} 
-                                alert-success
-                            {% elif message.tags == 'warning' %}
-                                alert-warning
-                            {% endif %}" alert-info role=" alert">
-                    <span>{{ message }}</span>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-        {% endif %}
-    </div>
-    <div class="title flex-column">
-        <h1 class="mb-3">Contact us</h1>
-        <p>
-            <i class="bi-envelope"></i>
-            <span>Email: edeclaratie.contact@gmail.com</span>
-        </p>
-    </div>
-    <div class="container mb-3">
-        <div class="formcontainer col-5 ">
-            <form action="{% url 'contact_us' %}" method="POST">
-                {% csrf_token %}
-                {{contact_form.as_p}}
-                <div class="text-center">
-                    <button type="submit" class="btn btn-secondary">Send message</button>
-                </div>
-            </form>
+
+    <div class="contactPage">
+        <div class="text-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-dismissible fade show m-0
+                                {% if message.tags == 'success' %} 
+                                    alert-success
+                                {% elif message.tags == 'warning' %}
+                                    alert-warning
+                                {% endif %}" alert-info role=" alert">
+                        <span>{{ message }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="title flex-column">
+            <h1 class="mb-3">Contacteaza-ne</h1>
+            <p>
+                <i class="bi-envelope"></i>
+                <span>Email: edeclaratie.contact@gmail.com</span>
+            </p>
+        </div>
+        <div class="container mb-3">
+            <div class="col-5 ">
+                <form action="{% url 'contact_us' %}" method="POST">
+                    {% csrf_token %}
+                    {{contact_form.as_p}}
+                    <div class="text-center">
+                        <button type="submit" class="btn">Trimite mesaj</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer d-flex text-align-center align-items-center justify-content-center">
+            <p>© 2024 eDeclaratie. All rights reserved.</p>
         </div>
     </div>
-    <div class="footer d-flex text-align-center align-items-center justify-content-center">
-        <p>© 2024 eDeclaratie. All rights reserved.</p>
-    </div>
-</div>
 
 
     <!--Bootstrap JS-->

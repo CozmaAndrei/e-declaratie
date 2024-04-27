@@ -25,24 +25,24 @@
             <!--view_user from def user_view_profile-->
             {% if view_user.companies.count == 1 %}
                 <ul>
-                    <span><strong>Manager at the company:</strong></span>
+                    <span><strong>Manager la firma:</strong></span>
                     {% for company in view_user.companies.all %}
                         <li>
-                            <a href="{% url 'company_view_profile' company.company_name %}">{{company.company_name}}</a>
+                            <a style="color: rgba(0, 118, 141)" href="{% url 'company_view_profile' company.company_name %}">{{company.company_name}}</a>
                         </li>
                     {% endfor %}
                 </ul>
             {% elif view_user.companies.count > 1 %}
                 <ul>
-                    <span><strong>Manager at the companies:</strong></span>
+                    <span><strong>Manager la firmele:</strong></span>
                     {% for company in view_user.companies.all %}
                         <li>
-                            <a href="{% url 'company_view_profile' company.company_name %}">{{company.company_name}}</a>
+                            <a style="color: rgba(0, 118, 141)" href="{% url 'company_view_profile' company.company_name %}">{{company.company_name}}</a>
                         </li>
                     {% endfor %}
                 </ul>
             {% else %}
-                <span><strong>He does not manage any company</strong></span>
+                <span><strong>Nici o firma asociata</strong></span>
             {% endif %} 
         </div>
         <!--message-->
@@ -75,19 +75,16 @@
                 </form>
             </div>
             <div class="rightbtn">
-                <a class="btn btn-sm btn-danger" href="{% url 'report_user' view_user.username %}">Report</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'report_user' view_user.username %}">Raporteaza</a>
             </div>
         </div>
         <div class="bottomViewProfilePageContainer3">
-            <h3><strong>User Info</strong></h3>
+            <h3><strong>Informatii user:</strong></h3>
             <ul>
-                <li><span><strong>Username:</strong> {{view_user.username}}</span></li>
-                <li><span><strong>First Name:</strong> {{view_user.first_name}}</span></li>
-                <li><span><strong>Last Name:</strong> {{view_user.last_name}}</span></li> 
-                {% comment %} <li><span><strong>Email:</strong> {{view_user.email}}</span></li>
-                {% if extra_view_user_info.date_of_birth%}
-                    <li><span><strong>Date of birth:</strong> {{extra_view_user_info.date_of_birth}}</span></li>
-                {% endif %} {% endcomment %}
+                <li><span><strong>Utilizator:</strong> {{view_user.username}}</span></li>
+                <li><span><strong>Nume:</strong> {{view_user.first_name}}</span></li>
+                <li><span><strong>Prenume:</strong> {{view_user.last_name}}</span></li> 
+                {% comment %} <li><span><strong>Email:</strong> {{view_user.email}}</span></li>{% endcomment %}
             </ul>
         </div>
     </div>
