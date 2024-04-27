@@ -1,22 +1,23 @@
 .viewProfilePage {
     display: flex;
-    background-color: rgb(255, 255, 255, 0.95);
+    background-color: rgb(255, 255, 255);
     flex-direction: column;
     min-width: 70%;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .topViewProfilePage {
     display: flex;
     flex-direction: row;
-    background-color: rgb(255, 217, 0, 0.8);
+    background-color: rgb(255, 217, 0);
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     border-top-left-radius:10px;
     min-width: 70%;
     padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .topLeftViewProfilePage {
@@ -25,7 +26,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    color: #019cbb;
+    color: rgba(0, 118, 141);
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-top-right-radius: 60px;
@@ -62,6 +63,7 @@
     align-items: center;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .bottomViewProfilePageContainer2 {
@@ -71,10 +73,10 @@
 }
 
 .btn {
-    width: 100px;
+    width: 150px;
     margin: 1rem;
-    border-radius: 15px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 .bottomViewProfilePageContainer3 {
@@ -87,6 +89,7 @@
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     border-bottom-left-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 /* vizualizare pentru telefon */

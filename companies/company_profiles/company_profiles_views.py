@@ -33,8 +33,8 @@ def report_company(request, company_name):
             reason = report_form.cleaned_data['reason']
             description = report_form.cleaned_data['description']
             #send email to admin
-            mail_subject= f"Firma {company_report.company_name} a fost raportata de {request.user.username}"
-            body= f"Firma: {company_report.company_name} a fost raportata de {request.user.username} pentru urmatorul:\nMotiv: {reason}.\nDescriere: {description}."
+            mail_subject= f"Firma {company_report.company_name} este raportata de {request.user.username}"
+            body= f"Firma: {company_report.company_name} este raportata de {request.user.username} pentru urmatoarele:\nMotiv: {reason}.\nDescriere: {description}."
             email = EmailMessage(mail_subject, body, reply_to=[request.user.email,company_report.company_email], to=[settings.EMAIL_HOST_USER])
             if email.send():
                 messages.error(request, f'Multumim pentru raport. Vom investiga problema și vom lua măsurile corespunzătoare.')

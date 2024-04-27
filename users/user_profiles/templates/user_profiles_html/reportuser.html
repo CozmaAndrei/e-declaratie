@@ -9,7 +9,7 @@
 {% block content %}
     <div class="viewReportPage">
         <div class="reportTitle mb-3">
-            <h1>Report User</h1>
+            <h1>Raporteaza user</h1>
         </div>
         <div class="d-flex justify-content-center p-2">
             <div class="col-6"> 
@@ -17,7 +17,7 @@
                     {% csrf_token %}
                     {{ report_form.as_p }}
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-danger">Report</button>
+                        <button type="submit" class="btn btn-danger">Raporteaza</button>
                     </div>
                 </form>
             </div>

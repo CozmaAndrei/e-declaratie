@@ -6,9 +6,8 @@ from django.core.mail import EmailMessage
 from .user_profiles_forms import ReportUserForm
 from django.contrib import messages
 
-
+'''Return the user view profile in viewprofilepage.html for all the users and the current user profile in viewprofilepage.html for the current user'''
 def user_view_profile(request, username):
-    '''Return the user view profile in viewprofilepage.html for all the users and the current user profile in viewprofilepage.html for the current user'''
     view_user = User.objects.get(username=username) #used in viewprofilepage.html
     extra_view_user_info = ExtraUserInformations.objects.get(user=view_user) #request in ExtraUserInformations model for table fields
     current_user_profile = request.user.extrauserinformations
@@ -27,8 +26,8 @@ def user_view_profile(request, username):
     }
     return render(request, 'user_profiles_html/viewprofilepage.html', context)
 
+'''Report a user, send an email to the admin and return the reportuser.html page'''
 def report_user(request, username):
-    '''Report a user, send an email to the admin and return the reportuser.html page'''
     report_user = User.objects.get(username=username)
     if request.method == "POST":
         report_form = ReportUserForm(request.POST)
@@ -36,11 +35,11 @@ def report_user(request, username):
             reason = report_form.cleaned_data['reason']
             description = report_form.cleaned_data['description']
             #send email to admin
-            mail_subject= f"User {report_user.username} has been reported by {request.user.username}"
-            body= f"User: {report_user.username} ({report_user.first_name} {report_user.last_name}) has been reported by {request.user.username} ({request.user.first_name} {request.user.last_name}) for the following:\nReason: {reason}.\nDescription: {description}."
+            mail_subject= f"Userul {report_user.username} este raportat de {request.user.username}"
+            body= f"Userul: {report_user.username} ({report_user.first_name} {report_user.last_name}) este raportat de {request.user.username} ({request.user.first_name} {request.user.last_name}) pentru următoarele:\nMotivul: {reason}.\nDescriere: {description}."
             email = EmailMessage(mail_subject, body, reply_to=[request.user.email], to=[settings.EMAIL_HOST_USER])
             if email.send():
-                messages.error(request, f'Thank you for reporting. We will investigate the issue and take appropriate action.')
+                messages.error(request, f'Multumim pentru raport. Vom investiga problema și vom lua măsurile corespunzătoare.')
                 return redirect('user_view_profile', username=username)
     else:
         report_form = ReportUserForm()
