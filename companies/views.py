@@ -7,8 +7,7 @@ from users.models import ExtraUserInformations
 
 '''Return all users asociated to company in companypage.html and the company name in URL'''
 def company_profile(request, company_name):
-    
-    get_company_name = Company.objects.get(company_name=company_name) #used for companypage.html
+    get_company_name = Company.objects.get(company_name=company_name)
     
     context = {
        "get_company_name": get_company_name,

@@ -11,19 +11,19 @@
         <nav>
             <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-all_companies-tab" data-bs-toggle="tab" data-bs-target="#nav-all_companies" type="button" role="tab" aria-controls="nav-all_companies" aria-selected="true">
-                    All companies
+                    Toate firmele <!--All companies-->
                 </button>
                 <button class="nav-link" id="nav-favorite_companies-tab" data-bs-toggle="tab" data-bs-target="#nav-favorite_companies" type="button" role="tab" aria-controls="nav-favorite_companies" aria-selected="true">
-                    Favorite companies
+                    Firmele favorite <!--Favorite companies-->
                 </button>
                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
-                    Online companies
+                    Firmele online <!--Online companies-->
                 </button>
                 <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
-                    Offline companies
+                    Firmele offline <!--Offline companies-->
                 </button>
                 <button class="nav-link" id="nav-search_company-tab" data-bs-toggle="tab" data-bs-target="#nav-search_company" type="button" role="tab" aria-controls="nav-search_company" aria-selected="false">
-                    Search company
+                    Cauta firma <!--Search company-->
                 </button>
             </div>
         </nav>
@@ -45,7 +45,7 @@
                                     <div class="card-body">
                                         <span>{{ company.company_name }}</span>
                                         <a class="btn btn-sm btn-outline-light" href="{% url 'company_view_profile' company.company_name %}">
-                                            View profile
+                                            Profilul firmei <!--View profile-->
                                         </a>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                     <div class="card-body">
                                         <span>{{ company.company_name }}</span>
                                         <a class="btn btn-sm btn-outline-light" href="{% url 'company_view_profile' company.company_name %}">
-                                            View profile
+                                            Profilul firmei <!--View profile-->
                                         </a>
                                     </div>
                                 </div>
@@ -80,21 +80,22 @@
 
                 <!--Online companies-->
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                    page under maintenance
+                    Pagina in constructie <!--page under maintenance-->
                 </div>
                 <!--Offline companies-->
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-                    page under maintenance
+                    Pagina in constructie <!--page under maintenance-->
                 </div>
                 <!--Search company tab-->
                 <div class="tab-pane fade" id="nav-search_company" role="tabpanel" aria-labelledby="nav-search_company-tab" tabindex="0">
                     <div class="container-fluid">
-                        <div class="d-flex">
+                        Pagina in constructie <!--page under maintenance-->
+                        {% comment %} <div class="d-flex">
                             <form class="d-flex col-4" role="search" method="GET" action="#">
-                                <input class="form-control me-2" type="search" name="companyname" placeholder="Search company" aria-label="Search">
-                                <button class="btn" type="submit">Search</button>
+                                <input class="form-control me-2" type="search" name="companyname" placeholder="Cauta firma" aria-label="Search">
+                                <button class="btn" type="submit">Cauta</button>
                             </form>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                 </div>
             </div>

@@ -24,27 +24,27 @@
         <div class="bottomViewCompanyPageContainer1">
             <!--company from def company_view_profile-->
             {% if company.managers.count == 1 %}
-                <span><strong>The manager of this company is:</strong>
+                <span><strong>Managerul acestei firme este:</strong>
                     <ul>
                         {% for manager in company.managers.all %}
                         <li>
-                            <a href="{% url 'user_view_profile' manager.username%}">{{manager.username}}</a>
+                            <a style="color: rgba(0, 118, 141)" href="{% url 'user_view_profile' manager.username%}">{{manager.username}}</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </span>
             {% elif company.managers.count > 1 %}
-                <span><strong>The managers of this company are:</strong>
+                <span><strong>Managerii acestei firme sunt:</strong>
                     <ul>
                         {% for manager in company.managers.all %}
                         <li>
-                            <a href="{% url 'user_view_profile' manager.username%}">{{manager.username}}</a>
+                            <a style="color: rgba(0, 118, 141)" href="{% url 'user_view_profile' manager.username%}">{{manager.username}}</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </span>
             {% else %}
-                <span><strong>No company to manage</strong>
+                <span><strong>Nici un manager asociat acestei firme</strong>
             {% endif %} 
         </div>
         <!--message-->
@@ -77,18 +77,18 @@
                 </form>
             </div>
             <div class="rightbtn">
-                <span><a class="btn btn-sm btn-danger" href="{% url 'report_company' company.company_name %}">Report</a></span>
+                <span><a class="btn btn-sm btn-danger" href="{% url 'report_company' company.company_name %}">Raporteaza</a></span>
             </div>
         </div>
         <div class="bottomViewCompanyPageContainer3">
-            <h3><strong>User Info</strong></h3>
+            <h3><strong>Informatii utilizator:</strong></h3>
             <ul>
-                <li><span><strong>Name:</strong> {{company.company_name}}</span></li>
+                <li><span><strong>Nume:</strong> {{company.company_name}}</span></li>
                 <li><span><strong>Email:</strong> {{company.company_email}}</span></li>
                 <li><span><strong>CUI:</strong> {{company.company_cui}}</span></li>
-                <li><span><strong>Register number:</strong> {{company.company_register_number}}</span></li>
-                <li><span><strong>Address:</strong> {{company.company_address}}</span></li>
-                <li><span><strong>City:</strong> {{company.company_city}}</span></li>
+                <li><span><strong>Numar registru:</strong> {{company.company_register_number}}</span></li>
+                <li><span><strong>Adresa:</strong> {{company.company_address}}</span></li>
+                <li><span><strong>Oras:</strong> {{company.company_city}}</span></li>
                 {% if company.contact_person_phone %}
                     <li><span><strong>Contact:</strong> {{company.contact_person_phone}}</span></li>
                 {% endif %}
