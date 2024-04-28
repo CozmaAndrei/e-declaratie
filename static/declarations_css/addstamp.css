@@ -1,13 +1,13 @@
 .mainCompanyPage {
-    min-width: 60%;
-    min-height: 100%;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    background-color: rgb(255, 255, 255, 0.95);
+    min-width: 50%;
+    min-height: 75%;
+    /* border-radius: 10px; */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: rgb(255, 255, 255);
 }
 
 .card-header {
-    background-color: rgb(220, 220, 220, 0.7);
+    background-color: rgba(0, 118, 141);
 }
 
 .card-body {
@@ -29,13 +29,21 @@
 }
 
 .btn {
-    background-color: rgba(1, 156, 187, 1);
-    border-radius: 15px;
+    background-color: rgba(0, 118, 141);
+    border-radius: 5px;
     color:white;
-    box-shadow: 0 0 5px rgba(1, 156, 187, 1);
+    box-shadow: 0 0 5px rgba(0, 118, 141);
 }
 
 .nav-item .nav-link.active {
-    background-color: rgb(255, 255, 255, 0.8);
-    border-color:rgb(220, 220, 220, 1);
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.card-header-tabs .nav-link.active {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
 }
