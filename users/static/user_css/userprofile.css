@@ -1,6 +1,6 @@
 .mainUserProfile {
     min-width: 75%;
-    min-height: 75%;
+    min-height: 80%;
 }
 
 .card-header {
@@ -19,7 +19,7 @@
 .rounded-circle {
     width: 13em;
     height: 13em;
-    box-shadow: 0 0 10px rgba(0, 118, 141);
+    box-shadow: 0 0 5px rgba(0, 118, 141);
     margin: auto;
     object-fit:cover;
     object-position:center;
@@ -62,8 +62,8 @@
     display: flex;
     flex: 1;
     flex-direction: row;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 118, 141);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 118, 141);
     padding: 1rem;
     margin: 0.5rem;
     box-sizing: border-box;
@@ -85,7 +85,7 @@
 }
 
 .rightUserEdit {
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
     flex: 1;
     padding: 1rem;
 }
@@ -96,8 +96,8 @@ h5 {
 
 .userFullName {
     padding: 0.5rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 118, 141);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 118, 141);
 }
 
 .nav-item .nav-link.active {

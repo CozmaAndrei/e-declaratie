@@ -96,8 +96,8 @@
         </div>
         <div class="card-footer d-flex justify-content-between">
             <div>
-                <a type="submit" class="btn btn btn-sm" href="{% url 'update_user_info' request.user.username %}">Editeaza cont</a>
-                <a type="submit" class="btn btn btn-sm" href="{% url 'change_pass' request.user.username %}">Schimba parola</a>
+                <a type="submit" class="btn btn-sm" href="{% url 'update_user_info' request.user.username %}">Editeaza cont</a>
+                <a type="submit" class="btn btn-sm" href="{% url 'change_pass' request.user.username %}">Schimba parola</a>
             </div>
             <div>
                 <a type="submit" class="btn btn-sm delete" href="{% url 'delete_user_account' request.user.id %}" >Sterge cont</a>

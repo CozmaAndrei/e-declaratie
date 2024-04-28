@@ -9,7 +9,7 @@ class EditUserInfoForm(forms.ModelForm):
     '''The user profile editing form'''
     user_widget_form = {'class': 'form-control', 
                         'size': '30', 
-                        'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                        'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);', 
                         'onfocus': 'this.style.borderColor="#019cbb";', 
                         'onfocusout': 'this.style.borderColor="";'
                     }
@@ -50,9 +50,9 @@ class ChangeUserPassForm(PasswordChangeForm):
         self.fields['new_password1'].widget.attrs['size'] = '30'
         self.fields['new_password2'].widget.attrs['size'] = '30'
         
-        self.fields['old_password'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
-        self.fields['new_password1'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
-        self.fields['new_password2'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
+        self.fields['old_password'].widget.attrs['style'] = 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);'
+        self.fields['new_password1'].widget.attrs['style'] = 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);'
+        self.fields['new_password2'].widget.attrs['style'] = 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);'
         
         self.fields['old_password'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['old_password'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
@@ -64,8 +64,15 @@ class ChangeUserPassForm(PasswordChangeForm):
 class UserPicForm(forms.ModelForm):
     '''The user profile picture form using the ImageField from the forms module. 
         We use the FileInput widget to style the field.'''  
-        
-    user_pic = forms.ImageField(label='Poza profil', required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
+    
+    user_widget_form = {'class': 'form-control', 
+                    'size': '30', 
+                    'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
+                    'onfocus': 'this.style.borderColor="#019cbb";', 
+                    'onfocusout': 'this.style.borderColor="";',
+                }
+    
+    user_pic = forms.ImageField(label='Poza profil', required=False, widget=forms.FileInput(attrs=user_widget_form))
     class Meta:
          model = ExtraUserInformations
          fields = ['user_pic']
@@ -74,7 +81,7 @@ class DeleteUserForm(forms.Form):
     '''The form used to delete a user account. We use the EmailField to confirm the user's email.'''
     delete_user_widget_form = {'class': 'form-control', 
                         'size': '30', 
-                        'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                        'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
                         'onfocus': 'this.style.borderColor="#019cbb";', 
                         'onfocusout': 'this.style.borderColor="";'
                     }

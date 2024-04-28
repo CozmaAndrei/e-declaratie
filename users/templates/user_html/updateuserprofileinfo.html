@@ -16,8 +16,8 @@
             {{ form.as_p }}
             {{ user_pic_form.as_p}}
             <div class="text-center">
-                <a class="btn" href={% url 'user_profile' request.user.username %}>Inapoi</a> 
-                <button type="submit" class="btn">Salveaza</button>
+                <a class="btn btn-sm" href={% url 'user_profile' request.user.username %}>Inapoi</a> 
+                <button type="submit" class="btn btn-sm">Salveaza</button>
             </div>
         </form>
     </div>
