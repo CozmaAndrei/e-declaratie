@@ -23,13 +23,21 @@
     background-color: rgba(0, 118, 141);
     border-radius: 5px;
     color:white;
-    box-shadow: 0 0 5px rgba(0, 118, 141);
     margin: 1rem;
+}
+
+.btn:hover {
+    background-color: rgb(0, 170, 204);
+    color:white;
 }
 
 .delete {
     background-color: #ff0000;
     border-radius: 5px;
     color:white;
-    box-shadow: 0 0 5px #ff0000;
+}
+
+.delete:hover {
+    background-color: #ff7373;
+    color:white;
 }

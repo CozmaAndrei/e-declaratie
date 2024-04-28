@@ -10,6 +10,7 @@
 
 {% block content %}
     <div class="card mainUserProfile">
+        <!--header-->
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
@@ -35,10 +36,23 @@
                 {% endfor %}
             {% endif %}
         </div>
+        <!--body-->
         <div class="card-body userProfile">
+            <!--left side-->
             <div class="leftSideUserPage">
+                <!--Profile picture-->
+                <div class="imgContainer">
+                    {% if extra_info.user_pic %}
+                        <img class="rounded-circle img-fluid" src="{{ extra_info.user_pic.url }}" loading="lazy">
+                    {% else %}
+                        <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}" loading="lazy">
+                    {% endif %}
+                </div>
+                <br>
+                <!--User full name-->
                 <h4 class="userFullName">{{ the_user_name.first_name }} {{ the_user_name.last_name}}</h4>
                 <br>
+                <!--User companies-->
                 <!--the_user_name from def user_profile-->
                 {% if the_user_name.companies.exists %}
                     {% if the_user_name.companies.count == 1 %}
@@ -60,40 +74,30 @@
                     {% endif %}
                 {% else %}
                 {% endif %}
-                <br>
-                <div class="imgContainer">
-                    {% if extra_info.user_pic %}
-                        <img class="rounded-circle img-fluid" src="{{ extra_info.user_pic.url }}" loading="lazy">
-                    {% else %}
-                        <img class="rounded-circle img-fluid" src="{% static 'images/defaultprofilepic.jpg' %}" loading="lazy">
-                    {% endif %}
-                </div>
-                <br>
-                <div class="editBtnsImage">
-                    <form method="POST" enctype="multipart/form-data">
-                    
-                        {% csrf_token %}
-                        {{ photo_form.as_p }}
-                    
-                    </form>
-                </div>
             </div>
+            <!--right side-->
             <div class="rightSideUserPage">
                 <div class="leftUserEdit">
-                    <h5>Utilizator:</h5>
-                        <span>{{ the_user_name.username }}<span>
-                    <br><br>
-                    <h5>Nume:</h5>
+                    <div class="mb-3">
+                    <h5 class="mb-0">Utilizator:</h5>
+                        <span >{{ the_user_name.username }}<span>
+                    </div>
+                    <div class="mb-3">
+                    <h5 class="mb-0">Nume:</h5>
                         <span>{{ the_user_name.first_name }}<span>
-                    <br><br>
-                    <h5>Prenume:</h5>
+                    </div>
+                    <div class="mb-3">
+                    <h5 class="mb-0">Prenume:</h5>
                         <span>{{ the_user_name.last_name }}</span>
-                    <br><br>
-                    <h5>Email:</h5>
+                    </div>
+                    <div>
+                    <h5 class="mb-0">Email:</h5>
                         <span>{{ the_user_name.email }}</span>
+                    </div>
                 </div>
             </div>
         </div>
+        <!--footer-->
         <div class="card-footer d-flex justify-content-between">
             <div>
                 <a type="submit" class="btn btn-sm" href="{% url 'update_user_info' request.user.username %}">Editeaza cont</a>
@@ -104,8 +108,7 @@
             </div>
         </div>
     </div>
+
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    
-    
 {% endblock %}
