@@ -9,7 +9,7 @@ class UserRegisterForm(UserCreationForm):
     #user_widget_register_form using for style in all collumns"
     user_widget_register_form = {'class': 'form-control', 
                                 'size': '30', 
-                                'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                                'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
                                 'onfocus': 'this.style.borderColor="#019cbb";', 
                                 'onfocusout': 'this.style.borderColor="";'}
     
@@ -36,9 +36,9 @@ class UserRegisterForm(UserCreationForm):
         self.fields['password1'].widget.attrs['size'] = '30'
         self.fields['password2'].widget.attrs['size'] = '30'
         
-        self.fields['username'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
-        self.fields['password1'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
-        self.fields['password2'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
+        self.fields['username'].widget.attrs['style'] = 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);'
+        self.fields['password1'].widget.attrs['style'] = 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);'
+        self.fields['password2'].widget.attrs['style'] = 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);'
         
         self.fields['username'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['username'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
@@ -55,11 +55,14 @@ class CustomAuthenticationForm(AuthenticationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password'].widget.attrs['class'] = 'form-control'
         
+        self.fields['username'].label = 'Utilizator'
+        self.fields['password'].label = 'Parola'
+        
         self.fields['username'].widget.attrs['size'] = '30'
         self.fields['password'].widget.attrs['size'] = '30'
         
-        self.fields['username'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
-        self.fields['password'].widget.attrs['style'] = 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);'
+        self.fields['username'].widget.attrs['style'] = 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);'
+        self.fields['password'].widget.attrs['style'] = 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);'
         
         self.fields['username'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['username'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
@@ -71,7 +74,7 @@ class CompanyRegisterForm(forms.ModelForm):
     #register_widget_form using for style in all collumns"
     register_widget_form = {'class': 'form-control', 
                             'size': '30', 
-                            'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                            'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
                             'onfocus': 'this.style.borderColor="#019cbb";', 
                             'onfocusout': 'this.style.borderColor="";'}
     
@@ -85,7 +88,4 @@ class CompanyRegisterForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ['company_name', 'company_email', 'company_cui', 'company_register_number', 'company_address', 'company_city', 'contact_person_phone']
-        
-                
-        
-        
+
