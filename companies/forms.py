@@ -8,7 +8,7 @@ class EditCompanyInfoForm(forms.ModelForm):
     #company_widget_form style all the fields
     company_widget_form = {'class': 'form-control', 
                             'size': '30', 
-                            'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                            'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
                             'onfocus': 'this.style.borderColor="#019cbb";', 
                             'onfocusout': 'this.style.borderColor="";'}
     
@@ -27,7 +27,7 @@ class EditCompanyInfoForm(forms.ModelForm):
 class AddNewManagerForm(forms.Form):
     manager = forms.ModelChoiceField(label="Selecteaza manager",queryset=User.objects.exclude(username='admin'),
                                      widget=forms.Select(attrs={'class': 'form-control',
-                                                                'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                                                                'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
                                                                 'onfocus': 'this.style.borderColor="#019cbb";', 
                                                                 'onfocusout': 'this.style.borderColor="";'}))
 
@@ -41,7 +41,7 @@ class DeleteManagerForm(forms.Form):
 
     delete_managers = forms.ModelChoiceField(label="Selecteaza manager", queryset=User.objects.none(),
                                       widget=forms.Select(attrs={'class': 'form-control',
-                                                                 'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                                                                 'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
                                                                  'onfocus': 'this.style.borderColor="#019cbb";', 
                                                                  'onfocusout': 'this.style.borderColor="";'}))
    
@@ -56,7 +56,7 @@ class CompanyLogoForm(forms.ModelForm):
 class DeleteCompanyForm(forms.Form):
     delete_company_widget_form = {'class': 'form-control', 
                         'size': '30', 
-                        'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);', 
+                        'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
                         'onfocus': 'this.style.borderColor="#019cbb";', 
                         'onfocusout': 'this.style.borderColor="";'
                     }

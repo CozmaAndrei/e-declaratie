@@ -7,17 +7,20 @@
 {% endblock %}
 
 {% block content %}
+    <!--updateCompanyInfo from def update_company_info-->
     <div class="updateCompanyInfo">
+        <!--title-->
         <div class="titleEdit mb-3 text-center">    
             <h2>Editeaza datele firmei</h2>
         </div>
+        <!--form-->
         <form method="POST" action="{% url 'update_company_info' the_company.company_name %}" enctype="multipart/form-data"> <!--the_company from update_company_info-->
             {% csrf_token %}
             {{ company_form.as_p }}
             {{ company_logo_form.as_p }}
             <div class="text-center">
-                <button type="button" class="btn" onclick="history.back()">Inapoi</button>
-                <button type="submit" class="btn">Salveaza</button>
+                <button type="button" class="btn btn-sm" onclick="history.back()">Inapoi</button>
+                <button type="submit" class="btn btn-sm">Salveaza</button>
             </div>
         </form>
     </div>
