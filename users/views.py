@@ -22,30 +22,20 @@ def user_profile(request, username): #used for userprofile.html
     }
     return render(request, 'user_html/userprofile.html', context)
 
+'''Update the user info like username, first name, last name, etc with conditions and return the user profile in updateuserprofileinfo.html'''
 def update_user_info(request, username):
-    '''Update the user info like username, first name, last name, etc with conditions and return the user profile in updateuserprofileinfo.html'''
     user = User.objects.get(username=username)
     extra_info = ExtraUserInformations.objects.get(user=user)
     if request.method == "POST":
         form = EditUserInfoForm(request.POST, instance=user)
         user_pic_form = UserPicForm(request.POST, request.FILES, instance=extra_info)
         if form.is_valid() and user_pic_form.is_valid():
-            if form.cleaned_data['username'] != request.user.username:
-                form.save()
-                # extra_info.date_of_birth = form.cleaned_data['date_of_birth']
-                extra_info.save()
-                user_pic_form.save()
-                user.save()
-                logout(request)
-                return redirect ('login_user')
-            else:
-                form.save()
-                # extra_info.date_of_birth = form.cleaned_data['date_of_birth']
-                extra_info.save()
-                user_pic_form.save()
-                user.save()
-                messages.success(request, "Your profile was edited with success!")
-                return redirect ('user_profile', user.username)
+            form.save()
+            extra_info.save()
+            user_pic_form.save()
+            user.save()
+            messages.success(request, "Profilul tau a fost editat cu succes!")
+            return redirect ('user_profile', user.username)
     else:
         form = EditUserInfoForm(instance=user)
         user_pic_form = UserPicForm(instance=extra_info)

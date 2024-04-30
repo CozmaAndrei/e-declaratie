@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Anta&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Rhodium+Libre&family=Spinnaker&family=Sunflower:wght@300&display=swap');
 
 .wrapper {
     display: flex;
     overflow-y: auto;
     overflow-x: auto;
-    /* background-image: url(../images/mainwebpage1.jpg); */
     background-color:lightgray;
     background-position: center;
     background-size: cover;
@@ -23,7 +23,7 @@ a {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Rhodium Libre', sans-serif;
     overflow: auto;
 }
 
@@ -40,18 +40,28 @@ hr {
     transition: all 0.5s ease-in-out; /* face tranzitia cand trecem cu cursorul peste acel buton */
     background-color:rgba(0, 118, 141);
     flex-direction: column;
+    z-index: 100;
+}
+
+.sidebar-name>a {
+    color:white;
+    font-family: "Rhodium Libre";
 }
 
 .sidebar-logo {
-    margin: auto; 
-    padding: 1.5rem;
+    margin-right: 5px; 
+    padding: 0.3rem;
+    background-color: white;
+    border-radius: 100%;
 }
 
-.sidebar-logo span {
-    white-space: nowrap;
-    color: white;
+.logo{
+    margin:1rem;
 }
 
+.sidebar-logo img {
+    max-height: 30px;
+}
 .sidebar-nav {
     padding: 1rem 0; /* space between buttons */
 }
@@ -91,7 +101,10 @@ a.sidebar-link:hover {
 }
 
 .mainPage {
-    background-color: whitesmoke;
+    background: url("../images/5588665.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -99,5 +112,15 @@ a.sidebar-link:hover {
     width: 100%;
     min-height: 100vh;
     flex-wrap: wrap;
+}
+
+.mainPage:before {
+    content: "";
+    background: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 

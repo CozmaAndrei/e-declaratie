@@ -16,6 +16,13 @@
     padding: 1rem;
 }
 
+h4 {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
 .rounded-circle {
     width: 13em;
     height: 13em;

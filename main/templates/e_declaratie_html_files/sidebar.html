@@ -1,11 +1,14 @@
 {% load static %}
 
 <aside class="sidebar">
-    <div class="d-flex">
+    <div class="d-flex logo justify-content-center align-items-center">
         <div class="sidebar-logo">
             <a href="{% url 'home' %}">                       
-                <span>e-Declaration</span>
+                <img src="{% static 'images/eDec-logo.png' %}" alt="" class="img-fluid">
             </a>
+        </div>
+        <div class="sidebar-name">
+            <a href="{% url 'home' %}">eDeclarație</a>
         </div>
     </div>
     <!-- if user is authenticated -->
