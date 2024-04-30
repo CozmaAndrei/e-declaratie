@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Anta&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Rhodium+Libre&family=Spinnaker&family=Sunflower:wght@300&display=swap');
 
 .wrapper {
     display: flex;
@@ -23,7 +22,7 @@ a {
 }
 
 body {
-    font-family: 'Rhodium Libre', sans-serif;
+    font-family: 'Poppins', sans-serif;
     overflow: auto;
 }
 
@@ -45,7 +44,7 @@ hr {
 
 .sidebar-name>a {
     color:white;
-    font-family: "Rhodium Libre";
+    font-family: "Poppins";
 }
 
 .sidebar-logo {

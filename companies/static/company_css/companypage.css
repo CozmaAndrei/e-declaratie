@@ -1,6 +1,7 @@
 .mainCompanyPage {
     min-width: 75%;
     min-height: 80%;
+    z-index: 1;
 }
 
 .card-header {
