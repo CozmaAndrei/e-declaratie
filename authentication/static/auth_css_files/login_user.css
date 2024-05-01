@@ -1,7 +1,3 @@
-body {
-    background-color:whitesmoke;
-}
-
 h2 {
     margin-bottom: 0;
     padding: 1rem;
@@ -11,11 +7,24 @@ h2 {
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color:transparent;
     width: 100%;
     min-height: 100vh;
     padding: 1rem;
     flex-wrap: wrap;
+    background: url("../images/5588665.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mainPage:before {
+    content: "";
+    background: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .loginUserForm {
@@ -30,6 +39,7 @@ h2 {
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 .titleEdit {
