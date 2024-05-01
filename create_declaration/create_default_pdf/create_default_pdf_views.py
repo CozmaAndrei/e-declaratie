@@ -15,15 +15,15 @@ from django.contrib.staticfiles import finders
 #pdf imports
 
 
+'''This function is used to create a default text for the declaration of conformity. It will be used in the preview_default_pdf function.'''
 def default_content(request, default_text, company_id, username, invoice_number, invoice_date):
-    '''This function is used to create a default text for the declaration of conformity. It will be used in the preview_default_pdf function.'''
     user = User.objects.get(username=username)
     company = Company.objects.get(id=company_id)
     default_text = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {user.first_name.upper()} {user.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
     return default_text
 
+'''This function is used to create a default pdf for the declaration of conformity.'''
 def preview_default_pdf(request, company_id, username):
-    '''This function is used to create a default pdf for the declaration of conformity.'''
     user = User.objects.get(username=username)
     company = Company.objects.get(id=company_id)
     stamp = ExtendCompanyModel.objects.get(extend_company_info=company_id)
@@ -36,7 +36,7 @@ def preview_default_pdf(request, company_id, username):
             new_format = datetime.strptime(invoice_date, '%Y-%m-%d')
             new_formatted_invoice_date = new_format.strftime('%d-%m-%Y')
         else:
-            messages.warning(request, "You should choose an invoice number and date first!")
+            messages.warning(request, "Alege un numar de factura si o data!")
             return redirect('create_declaration', company_id=company_id)
         
     # Create a BytesIO buffer
@@ -123,19 +123,16 @@ def preview_default_pdf(request, company_id, username):
     buffer.seek(0)
     return FileResponse(buffer, filename=f'Declaratie de conformitate {company.company_name}.pdf')
 
-def client_input_op1(request, company_id, username):
-    '''This function is used to send the pdf to the client.'''
-    user = User.objects.get(username=username)
-    company = Company.objects.get(id=company_id)
-    
+'''This function is used to send the pdf to the client.'''
+def client_input_op1(request, company_name):
+    company = Company.objects.get(company_name=company_name)
     context= {
         'company': company,
-        'user': user,
     }
     return render (request, 'create_default_pdf_html/clientURL1.html', context)
 
+'''This function is used to create a default pdf for the declaration of conformity and send it to the client.'''
 def pdf_to_client_op1(request, company_id, username):
-    '''This function is used to create a default pdf for the declaration of conformity and send it to the client.'''
     user = User.objects.get(username=username)
     company = Company.objects.get(id=company_id)
     stamp = ExtendCompanyModel.objects.get(extend_company_info=company_id)
@@ -148,7 +145,7 @@ def pdf_to_client_op1(request, company_id, username):
             new_format = datetime.strptime(invoice_date, '%Y-%m-%d')
             new_formatted_invoice_date = new_format.strftime('%d-%m-%Y')
         else:
-            messages.warning(request, "You should choose an invoice number and date first!")
+            messages.warning(request, "Alege un numar de factura si o data!")
             return redirect('client_input_op1', company_id=company_id, username=username)
     
     # Create a BytesIO buffer

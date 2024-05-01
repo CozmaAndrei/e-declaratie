@@ -15,8 +15,8 @@ from reportlab.lib.pagesizes import A4
 from django.contrib.staticfiles import finders
 #pdf imports stop
 
+'''Edit the declaration content for a company. If the declaration content is not set, it will be set to a default value. If the form is submitted, the new content will be saved in the database.'''
 def edit_declaration(request, company_id):
-    '''Edit the declaration content for a company. If the declaration content is not set, it will be set to a default value. If the form is submitted, the new content will be saved in the database.'''
     company = Company.objects.get(id=company_id)
     user = User.objects.get(username=request.user)
     extended_company = ExtendCompanyModel.objects.get(extend_company_info=company_id)
@@ -44,8 +44,8 @@ def edit_declaration(request, company_id):
         }
     return render(request, 'create_edit_pdf_html/editdeclaration.html', context)
 
+'''This functions is used to return the text from the ExtendedCompanyModel and replace the placeholders with the invoice number and date.'''
 def edited_text(edit_text, company_id, username, invoice_number, invoice_date):
-    '''This functions is used to return the text from the ExtendedCompanyModel and replace the placeholders with the invoice number and date.'''
     extended_company = ExtendCompanyModel.objects.get(extend_company_info=company_id)
     edit_text = extended_company.declaration_content
     if edit_text:
@@ -53,8 +53,8 @@ def edited_text(edit_text, company_id, username, invoice_number, invoice_date):
         edit_text = edit_text.replace("[invoice_date]", str(invoice_date))
     return edit_text
 
-def preview_edit_pdf(request, company_id, username):
-    '''This function is used to create a preview pdf for the edited declaration.'''
+'''This function is used to create a preview pdf for the edited declaration.'''
+def preview_edit_pdf(request, company_id, username):  
     user = User.objects.get(username=username)
     company = Company.objects.get(id=company_id)
     stamp = ExtendCompanyModel.objects.get(extend_company_info=company_id)   
@@ -67,7 +67,7 @@ def preview_edit_pdf(request, company_id, username):
             new_format = datetime.strptime(invoice_date, '%Y-%m-%d')
             new_formatted_invoice_date = new_format.strftime('%d-%m-%Y')
         else:
-            messages.warning(request, "You should choose an invoice number and date first!")
+            messages.warning(request, "Alege un numar de factura si o data!")
             return redirect('edit_declaration', company_id=company_id)
     
     # Create a BytesIO buffer
@@ -80,7 +80,7 @@ def preview_edit_pdf(request, company_id, username):
     c = canvas.Canvas(buffer, pagesize=A4)  
     
     # add the title of the pdf
-    c.setTitle(f'Preview Declaratie de conformitate pentru {company.company_name}')
+    c.setTitle(f'Declaratie de conformitate pentru {company.company_name}')
     
     # Add the company logo or default logo to the pdf in the left top corner
     if not company.company_logo:
@@ -156,19 +156,17 @@ def preview_edit_pdf(request, company_id, username):
     buffer.seek(0)
     return FileResponse(buffer, filename=f'Preview Declaratie de conformitate {company.company_name}.pdf')
 
-def client_input_op2(request, company_id, username):
-    '''This function is used to send the pdf to the client.'''
-    user = User.objects.get(username=username)
-    company = Company.objects.get(id=company_id)
+'''This function is used to send the pdf to the client.'''
+def client_input_op2(request, company_name):
+    company = Company.objects.get(company_name=company_name)
     
     context= {
         'company': company,
-        'user': user,
     }
     return render (request, 'create_edit_pdf_html/clientURL2.html', context)
 
+'''This function is used to create the pdf and send it to the client.'''
 def pdf_to_client_op2(request, company_id, username):
-    '''This function is used to create the pdf and send it to the client.'''
     user = User.objects.get(username=username)
     company = Company.objects.get(id=company_id)
     stamp = ExtendCompanyModel.objects.get(extend_company_info=company_id)   
@@ -181,7 +179,7 @@ def pdf_to_client_op2(request, company_id, username):
             new_format = datetime.strptime(invoice_date, '%Y-%m-%d')
             new_formatted_invoice_date = new_format.strftime('%d-%m-%Y')
         else:
-            messages.warning(request, "You should choose an invoice number and date first!")
+            messages.warning(request, "Alege un numar de factura si o data!")
             return redirect('client_input_op2', company_id=company_id, username=username)
     
     # Create a BytesIO buffer

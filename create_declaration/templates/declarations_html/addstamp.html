@@ -10,19 +10,13 @@
 {% block content %}
 
     <div class="card mainCompanyPage">
+        <!--header-->
         <div class="card-header">
-
-                <ul class="nav nav-tabs card-header-tabs d-flex justify-content-between">
-                    <li class="nav-item">
-                        <a href="{% url 'create_declaration' comp.id %}">
-                            <i style="font-size: 26px; color: white;" class="bi-arrow-left-circle"></i>
-                        </a>
-                    </li>
-
-                    <li class="nav-link active">
-                        <a aria-current="true">Adauga stampila pentru {{company.extend_company_info}}</a>
-                    </li>
-                </ul>
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-link active">
+                    <a aria-current="true">Adauga stampila pentru {{company.extend_company_info}}</a>
+                </li>
+            </ul>
         </div>
         <!--text messages-->
         <div class="text-center">
@@ -40,7 +34,7 @@
                 {% endfor %}
             {% endif %}
         </div>
-        
+        <!--body-->
         <div class="card-body">
             <div class="container-fluid mb-3">
                 <!--if company.company_stamp exists-->
@@ -52,14 +46,15 @@
             </div>
             
             <div class="form-group mb-3">
-                <!--add the stamp-->
+                <!--add the stamp form-->
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
                         <input class="form-control mb-4" type="file" name="company_stamp">
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn">Salveaza stampila</button>
+                        <a class="btn btn-sm" href="{% url 'create_declaration' comp.id %}">Inapoi</a>
+                        <button type="submit" class="btn btn-sm">Salveaza stampila</button>
                     </div>
                 </form>
             </div>

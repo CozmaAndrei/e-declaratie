@@ -34,8 +34,8 @@ hr {
 
 .sidebar {
     display: flex;
-    width: 220px; 
-    min-width: 220px; 
+    width: 200px; 
+    min-width: 200px; 
     transition: all 0.5s ease-in-out; /* face tranzitia cand trecem cu cursorul peste acel buton */
     background-color:rgba(0, 118, 141);
     flex-direction: column;

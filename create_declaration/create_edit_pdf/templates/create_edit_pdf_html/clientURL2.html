@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>e-Declaration</title>
+    <title>eDeclaratie</title>
     <!-- BootstrapIcons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Bootstrap link-->
@@ -32,13 +32,13 @@
                 {% endif %}
             </div>
             <div class="d-flex justify-content-center align-items-center flex-column">
-                <form method="POST"  action="{% url 'pdf_to_client_op2' company.id user.username %}"> 
+                <form method="POST"  action="{% url 'pdf_to_client_op2' company.id user.username %}" target="_blank"> <!--target="_blank" will open new tab-->
                     {% csrf_token %}
-                    <label for="invoice_number" class="form-label">Invoice number</label>
+                    <label for="invoice_number" class="form-label">Numar factura</label>
                     <input type="text" name="invoice_number" class="form-control mb-3">
-                    <label for="invoice_date" class="form-label">Invoice date</label>
+                    <label for="invoice_date" class="form-label">Data factura</label>
                     <input type="date" name="invoice_date" class="form-control mb-3">
-                    <button type="submit" class="btn mb-3">Preview PDF and download</button>
+                    <button type="submit" class="btn mb-3">Vezi PDF si descarca</button>
                 </form>
                 
             </div>
