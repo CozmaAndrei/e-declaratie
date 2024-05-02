@@ -15,7 +15,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link href="{% static 'css_files/index.css' %}" rel="stylesheet">
         
-        <!-- Vendor CSS Files -->
+        <!-- CSS Files -->
         <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
         <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
@@ -75,9 +75,9 @@
                 {% endif %}
             </div>
         </header>
-        <!--/Header-->
+        <!-- END ======= Header ======= -->
         
-        <!-- Hero Section -->
+        <!-- ======= Hero Section ======= -->
         <section id="hero" class="d-flex align-items-center">
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                 <div class="row justify-content-center">
@@ -88,32 +88,177 @@
                 </div>
                 <div class="row icon-boxes">
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon-box">
+                        <div class="icon-box" >
                             <div class="icon"><i class="bi-person-circle"></i></div>
-                            <h4 class="title"><a>Creare cont</a></h4>
+                            <h4 class="title"><a href="#about-create-account">Creare cont</a></h4>
                             <p class="description">Primul pas si cel mai usor este sa iti creezi un cont nou pe platforma noastra</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon-box">
                             <div class="icon"><i class="bi-briefcase"></i></div>
-                            <h4 class="title"><a>Inregistrare firma</a></h4>
+                            <h4 class="title"><a href="#about-register-company">Inregistrare firma</a></h4>
                             <p class="description">Pasul doi este sa iti introduci datele firmei tale completand formular de inregistrare</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
                         <div class="icon-box">
                             <div class="icon"><i class="bi-file-earmark-text"></i></div>
-                            <h4 class="title"><a>Creare eDec</a></h4>
+                            <h4 class="title"><a href="#">Creare eDec</a></h4>
                             <p class="description">Ultimul pas este crearea declaratiei de conformitate pe baza datelor introduse</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End Hero -->
+        <!-- END ======= End Hero ======= -->
         
-        <!-- Vendor JS Files -->
+        <!-- ======= About How to create an account ======= -->
+        <section id="about-create-account" class="about-create-account">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <!--Image-->
+                    <div class="col-lg-6 video-box align-self-baseline position-relative">
+                        <img src="{% static 'images/createUserAccountInstructions.png' %}" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                        <h3>Cum iti creezi un cont gratis</h3>
+                        <p class="fst-italic">
+                            Urmeaza pasii de mai jos pentru a-ti crea un cont nou pe platforma noastra
+                        </p>
+                        <ul>
+                            <li><i class="bx bx-check-double"></i> Deschide formularul apasand pe <a href="{% url 'register_user' %}">Creare cont</a></li>
+                            <li><i class="bx bx-check-double"></i> Completeaza datele in formular.</li>
+                            <li><i class="bx bx-check-double"></i> Activeaza contul accesand link-ul din emailul personal.</li>
+                            <li><i class="bx bx-check-double"></i> Conecteaza-te cu succes in contul tau.</li>
+                        </ul>
+                        <p>
+                            Dupa ce ai creat contul, poti sa iti adaugi o poza de profil, sa modifici datele personale, sa iti schimbi parola si sa iti stergi contul oricand doresti.
+                        </p>
+                        <p>
+                            Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END ======= About How to create an account ======= -->
+
+        <!-- ======= About How to register company ======= -->
+        <section id="about-register-company" class="about-register-company">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <!--content-->
+                    <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                        <h3>Cum inregistrezi o firma</h3>
+                        <p class="fst-italic">
+                            Dupa ce ai un cont personal activat, poti sa inregistrezi o firma noua pe platforma noastra urmand pasii de mai jos
+                        </p>
+                        <ul>
+                            <li><i class="bx bx-check-double"></i> Conecteaza-te in contul tau personal.</li>
+                            <li><i class="bx bx-check-double"></i> Deschide formularul apasand pe <a href="{% url 'register_company' %}">Adauga firma</a></li>
+                            <li><i class="bx bx-check-double"></i> Completeaza datele firmei in formular.</li>
+                        </ul>
+                        <p>
+                            Dupa inregistrarea firmei, ai posibilitatea sa adaugi logo-ul firmei, sa modifici datele firmei, sa adaugi un nou manager/sa elimini un manager actual sau sa stergi firma.
+                        </p>
+                        <p>
+                            Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
+                        </p>
+                    </div>
+                    <!--Image-->
+                    <div class="col-lg-6 video-box align-self-baseline position-relative">
+                        <img src="{% static 'images/createCompanyAccountInstructions.png' %}" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END ======= About How to register company ======= -->
+
+        <!-- ======= About How to create eDec ======= -->
+        {% comment %} <section id="about-create-eDec" class="about-create-eDec">
+            <div class="container" data-aos="fade-up">
+                <div class="row"> {% endcomment %}
+                    <!--Image-->
+                    {% comment %} <div class="col-lg-6 video-box align-self-baseline position-relative">
+                        <img src="#" class="img-fluid" alt="">
+                    </div> {% endcomment %}
+                    <!--content-->
+                    {% comment %} <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                        <h3>Cum sa generezi eDec</h3>
+                        <p class="fst-italic">
+                            <strong>eDec</strong> este declaratia de conformitate pe care o poti genera pe platforma noastra dupa ce ai inregistrat o firma
+                        </p>
+                        <ul>
+                            <li><i class="bx bx-check-double"></i> In pagina de profil apasa Creare eDec</li>    
+                            <li><i class="bx bx-check-double"></i> Completeaza datele firmei in formular.</li>
+                        </ul>
+                        <p>
+                            Dupa inregistrarea firmei, ai posibilitatea sa adaugi logo-ul firmei, sa modifici datele firmei, sa adaugi un nou manager/sa elimini un manager actual sau sa stergi firma.
+                        </p>
+                        <p>
+                            Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section> {% endcomment %}
+        <!-- END ======= About How to create eDec ======= -->
+
+        <!-- ======= Footer ======= -->
+        <footer id="footer" class="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h3>eDeclaratie</h3>
+                            <p><strong>Email:</strong> edeclaratie.contact@gmail.com<br></p>
+                        </div>
+                        <div class="col-lg-2 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#hero">Acasa</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li> 
+                        </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#about-create-account">Creare cont</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#about-register-company">Inregistrare firma</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Creare eDec</a></li>
+                        </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Join Our Newsletter</h4>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container d-md-flex py-4">
+                <!--Copyright-->
+                <div class="me-md-auto text-center text-md-start">
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>eDeclaratie</span></strong>. All Rights Reserved
+                    </div>
+                </div>
+                <!--Social icons links-->
+                <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                    <a href="https://www.twitter.com/" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a>
+                    <a href="https://www.facebook.com/" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+                    <a href="https://www.instagram.com/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+                    <a href="https://www.skype.com/" class="google-plus" target="_blank"><i class="bx bxl-skype"></i></a>
+                    <a href="https://www.linkedin.com/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+        <!-- END ======= Footer ======= -->
+
+        <!-- JS Files -->
         <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
         <script src="{% static 'assets/vendor/aos/aos.js'%}"></script>
         <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
@@ -122,7 +267,7 @@
         <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
         <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
         
-        <!-- Template Main JS File -->
+        <!-- Main JS File -->
         <script src="{% static 'assets/js/main.js'%}"></script>
         
         <!--Bootstrap JS-->

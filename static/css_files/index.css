@@ -13,7 +13,6 @@ a {
     font-family: "Rhodium Libre", sans-serif;
 }
 
-/* nu stiu ce face asta */
 a:hover {
     color: #469fdf;
     text-decoration: none;
@@ -53,7 +52,7 @@ p {
   
 #header .logo a {
     display: flex;
-    color: rgba(25,129,170,255);
+    color: rgba(25, 129, 170);
     text-decoration: none;
     align-items: center;
     font-family: 'Rhodium Libre', sans-serif;
@@ -93,7 +92,6 @@ p {
     text-align: center;
     align-items: center;
     justify-content: space-between;
-    /* padding: 8px; */
     font-size: 14px;
     color: #16507b;
     white-space: nowrap;
@@ -114,8 +112,10 @@ a.btn {
 }
 /* .navbar */
 
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
 
-/* Hero Section */
 #hero {
     width: 100%;
     height: 100vh;
@@ -123,9 +123,9 @@ a.btn {
     background: url("../images/5588665.jpg") center;
     background-size: cover;
     position: relative;
-  }
-  
-  #hero:before {
+}
+
+#hero:before {
     content: "";
     background: rgba(255, 255, 255, 0.7);
     position: absolute;
@@ -133,34 +133,36 @@ a.btn {
     top: 0;
     left: 0;
     right: 0;
-  }
-  
-  #hero .container {
-    padding-top: 80px;
-  }
-  
-  #hero h1 {
+}
+
+#hero .container {
+    padding-top: 50px;
+}
+
+#hero h1 {
     margin: 0;
     font-size: 56px;
     font-weight: 700;
     line-height: 72px;
-    color: rgba(25,129,170,255);
+    color: rgba(25, 129, 170);
     font-family: "Rhodium Libre", sans-serif;
-  }
-  
-  #hero h2 {
+    cursor:default;
+}
+
+#hero h2 {
     color: #5e5e5e;
     margin: 10px 0 0 0;
     font-size: 22px;
-  }
-  
-  #hero .icon-boxes {
+    cursor:default;
+}
+
+#hero .icon-boxes {
     margin-top: 100px;
     display: flex;
     justify-content: center;
-  }
-  
-  #hero .icon-box {
+}
+
+#hero .icon-box {
     padding: 50px 30px;
     position: relative;
     overflow: hidden;
@@ -169,27 +171,30 @@ a.btn {
     transition: all 0.3s ease-in-out;
     border-radius: 8px;
     z-index: 1;
-  }
-  
-  #hero .icon-box .title {
+}
+
+#hero .icon-box .title {
     font-weight: 700;
     margin-bottom: 15px;
     font-size: 18px;
-  }
-  
-  #hero .icon-box .title a {
-    color: rgba(25,129,170,255);
+
+}
+
+#hero .icon-box .title a {
+    color: rgba(25,129, 170);
     transition: 0.3s;
     text-decoration: none;
-  }
-  
-  #hero .icon-box .description {
+    cursor: pointer;
+}
+
+#hero .icon-box .description {
     font-size: 15px;
     line-height: 28px;
     margin-bottom: 0;
-  }
-  
-  #hero .icon-box .icon {
+    cursor:default;
+}
+
+#hero .icon-box .icon {
     margin-bottom: 20px;
     padding-top: 10px;
     display: inline-block;
@@ -197,74 +202,440 @@ a.btn {
     font-size: 36px;
     line-height: 1;
     color: #8f8f8f;
-    
-  }
-  
-  #hero .icon-box:hover {
+}
+
+#hero .icon-box:hover {
     transform: scale(1.08);
     color: #2487ce;
-  }
-  
-  #hero .icon-box:hover .title a {
+}
+
+#hero .icon-box:hover .title a {
     color: #2487ce;
-  }
-  
-  @media (min-width: 1024px) {
+}
+
+@media (min-width: 1024px) {
     #hero {
-      background-attachment: fixed;
+        background-attachment: fixed;
     }
-  }
-  
-  @media (max-height: 800px) {
+}
+
+@media (max-height: 800px) {
     #hero {
-      height: auto;
+        height: auto;
     }
-  }
-  
-  @media (max-width: 992px) {
+}
+
+@media (max-width: 992px) {
     #hero {
-      height: auto;
+        height: auto;
     }
-  
+
     #hero h1 {
-      font-size: 28px;
-      line-height: 36px;
+        font-size: 28px;
+        line-height: 36px;
     }
-  
+
     #hero h2 {
-      font-size: 18px;
-      line-height: 24px;
+        font-size: 18px;
+        line-height: 24px;
     }
-  }
+}
+/*--------------------------------------------------------------
+# close # Hero Section
+--------------------------------------------------------------*/
   
-  /*--------------------------------------------------------------
-  # Sections General
-  --------------------------------------------------------------*/
-  section {
-    padding: 80px 0;
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+
+section {
+    padding: 80px;
     overflow: hidden;
-  }
-  
-  .section-bg {
+}
+
+.section-bg {
     background-color: #f8fbfe;
-  }
-  
-  .section-title {
+}
+
+.section-title {
     text-align: center;
     padding-bottom: 30px;
-  }
-  
-  .section-title h2 {
+}
+
+.section-title h2 {
     font-size: 32px;
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 20px;
     padding-bottom: 0;
     color: #124265;
-  }
-  
-  .section-title p {
+}
+
+.section-title p {
     margin-bottom: 0;
     font-size: 14px;
     color: #919191;
-  }
+}
+
+/*--------------------------------------------------------------
+# close # Sections General
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# About How to create an account
+--------------------------------------------------------------*/
+
+section {
+    padding: 0;
+}
+
+.about-create-account .container {
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+}
+
+.about-create-account .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.about-create-account .content h3 {
+    font-weight: 700;
+    font-size: 24px;
+    color: rgba(25, 129, 170);
+}
+
+.about-create-account .content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-create-account .content ul li {
+    padding-bottom: 10px;
+    padding-left: 28px;
+    position: relative;
+}
+
+.about-create-account .content ul i {
+    font-size: 24px;
+    color: rgba(25, 129, 170);
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.about-create-account .content ul li a {
+    text-decoration: none;
+    color: rgba(25, 129, 170);
+}
+
+.about-create-account .content ul li a:hover {
+    color: #2ea0f1;
+}
+
+.about-create-account .content p strong {
+    color: rgba(25, 129, 170);
+}
+
+/*--------------------------------------------------------------
+# close # About How to create an account
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# About How to register company
+--------------------------------------------------------------*/
+
+section {
+    padding: 0;
+}
+
+.about-register-company .container {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.about-register-company .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.about-register-company .content h3 {
+  font-weight: 700;
+  font-size: 24px;
+  color: rgba(25, 129, 170);
+}
+
+.about-register-company .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-register-company .content ul li {
+  padding-bottom: 10px;
+  padding-left: 28px;
+  position: relative;
+}
+
+.about-register-company .content ul i {
+  font-size: 24px;
+  color: rgba(25, 129, 170);
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.about-register-company .content ul li a {
+  text-decoration: none;
+  color: rgba(25, 129, 170);
+}
+
+.about-register-company .content ul li a:hover {
+  color: #2ea0f1;
+}
+
+.about-register-company .content p strong {
+  color: rgba(25, 129, 170);
+}
+
+/*--------------------------------------------------------------
+# close # About How to register company
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# About How to create eDec
+--------------------------------------------------------------*/
+
+section {
+  padding: 0;
+}
+
+.about-create-eDec .container {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.about-create-eDec .content {
+display: flex;
+flex-direction: column;
+justify-content: center;
+font-size: 15px;
+}
+
+.about-create-eDec .content h3 {
+font-weight: 700;
+font-size: 24px;
+color: rgba(25, 129, 170);
+}
+
+.about-create-eDec .content ul {
+list-style: none;
+padding: 0;
+}
+
+.about-create-eDec .content ul li {
+padding-bottom: 10px;
+padding-left: 28px;
+position: relative;
+}
+
+.about-create-eDec .content ul i {
+font-size: 24px;
+color: rgba(25, 129, 170);
+position: absolute;
+left: 0;
+top: -2px;
+}
+
+.about-create-eDec .content ul li a {
+text-decoration: none;
+color: rgba(25, 129, 170);
+}
+
+.about-create-eDec .content ul li a:hover {
+color: #2ea0f1;
+}
+
+.about-create-eDec .content p strong {
+color: rgba(25, 129, 170);
+}
+
+/*--------------------------------------------------------------
+# close # About How to create eDec
+--------------------------------------------------------------*/
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  color: rgba(25, 129, 170);
+  font-size: 14px;
+  background: #f8fbfe;
+  box-shadow: 0px 2px 15px rgba(18, 66, 101, 0.08);
+  cursor:default;
+}
+
+#footer .footer-top {
+  padding: 60px 0 30px 0;
+  background: #fff;
+}
+
+#footer .footer-top .footer-contact {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-contact h3 {
+  font-size: 26px;
+  margin: 0 0 10px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 300;
+  cursor:default;
+}
+
+#footer .footer-top .footer-contact p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Rhodium Libre", sans-serif;
+  color: #5e5e5e;
+  cursor:default;
+}
+
+#footer .footer-top h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(25, 129, 170);
+  position: relative;
+  padding-bottom: 12px;
+  cursor:default;
+}
+
+#footer .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: rgba(25, 129, 170);
+  font-size: 18px;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-top .footer-links ul a {
+  color: #777777;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+  text-decoration: none;
+}
+
+#footer .footer-top .footer-links ul a:hover {
+  text-decoration: none;
+  color: rgba(25, 129, 170);
+}
+
+#footer .footer-newsletter {
+  font-size: 15px;
+}
+
+#footer .footer-newsletter h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(25, 129, 170);
+  position: relative;
+  padding-bottom: 12px;
+  cursor:default;
+}
+
+#footer .footer-newsletter form {
+  margin-top: 30px;
+  background: #fff;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 5px;
+  text-align: left;
+  border: 1px solid #cde5f6;
+}
+
+#footer .footer-newsletter form input[type=email] {
+  border: 0;
+  padding: 4px 8px;
+  width: calc(100% - 100px);
+}
+
+#footer .footer-newsletter form input[type=submit] {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  bottom: -1px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px 2px 20px;
+  background: rgba(25, 129, 170);
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+#footer .footer-newsletter form input[type=submit]:hover {
+  background: rgba(25, 129, 170);
+}
+
+#footer .credits {
+  padding-top: 5px;
+  font-size: 13px;
+  color: #444444;
+}
+
+#footer .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: rgba(25, 129, 170);
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 5px;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .social-links a:hover {
+  background: #3194db;
+  color: #fff;
+  text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# close # Footer
+--------------------------------------------------------------*/
