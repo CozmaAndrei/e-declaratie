@@ -30,7 +30,7 @@
         <header id="header" class="fixed-top">
             <div class="container d-flex align-items-center justify-content-between">
                 <h1 class="logo">
-                    <a href="{% url 'home' %}" class="logo"><img src="static/images/eDec-logo.png" alt="" class="img-fluid">eDeclarație</a>
+                    <a href="{% url 'home' %}" class="logo"><img src="static/images/eDec-logo.png" alt="eDeclaratie logo" class="img-fluid">eDeclarație</a>
                 </h1>
                 <!-- if user is authenticated -->
                 {% if user.is_authenticated %}
@@ -104,7 +104,7 @@
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
                         <div class="icon-box">
                             <div class="icon"><i class="bi-file-earmark-text"></i></div>
-                            <h4 class="title"><a href="#">Creare eDec</a></h4>
+                            <h4 class="title"><a href="#about-create-eDec">Creare eDec</a></h4>
                             <p class="description">Ultimul pas este crearea declaratiei de conformitate pe baza datelor introduse</p>
                         </div>
                     </div>
@@ -112,99 +112,104 @@
             </div>
         </section>
         <!-- END ======= End Hero ======= -->
-        
-        <!-- ======= About How to create an account ======= -->
-        <section id="about-create-account" class="about-create-account">
-            <div class="container" data-aos="fade-up">
-                <div class="row">
-                    <!--Image-->
-                    <div class="col-lg-6 video-box align-self-baseline position-relative">
-                        <img src="{% static 'images/createUserAccountInstructions.png' %}" class="img-fluid" alt="">
-                    </div>
 
-                    <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-                        <h3>Cum iti creezi un cont gratis</h3>
-                        <p class="fst-italic">
-                            Urmeaza pasii de mai jos pentru a-ti crea un cont nou pe platforma noastra
-                        </p>
-                        <ul>
-                            <li><i class="bx bx-check-double"></i> Deschide formularul apasand pe <a href="{% url 'register_user' %}">Creare cont</a></li>
-                            <li><i class="bx bx-check-double"></i> Completeaza datele in formular.</li>
-                            <li><i class="bx bx-check-double"></i> Activeaza contul accesand link-ul din emailul personal.</li>
-                            <li><i class="bx bx-check-double"></i> Conecteaza-te cu succes in contul tau.</li>
-                        </ul>
-                        <p>
-                            Dupa ce ai creat contul, poti sa iti adaugi o poza de profil, sa modifici datele personale, sa iti schimbi parola si sa iti stergi contul oricand doresti.
-                        </p>
-                        <p>
-                            Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
-                        </p>
+        <main id="main">
+
+            <!-- ======= About How to create an account ======= -->
+            <section id="about-create-account" class="about-create-account">
+                <div class="container" data-aos="fade-up">
+                    <div class="row">
+                        <!--Image-->
+                        <div class="col-lg-6 video-box align-self-baseline position-relative">
+                            <img src="{% static 'images/createUserAccountInstructions.png' %}" class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                            <h3>Cum iti creezi un cont gratis</h3>
+                            <p class="fst-italic">
+                                Urmeaza pasii de mai jos pentru a-ti crea un cont nou pe platforma noastra
+                            </p>
+                            <ul>
+                                <li><i class="bx bx-check-double"></i> Deschide formularul apasand pe <a href="{% url 'register_user' %}">Creare cont</a></li>
+                                <li><i class="bx bx-check-double"></i> Completeaza datele in formular.</li>
+                                <li><i class="bx bx-check-double"></i> Activeaza contul accesand link-ul din emailul personal.</li>
+                                <li><i class="bx bx-check-double"></i> Conecteaza-te cu succes in contul tau.</li>
+                            </ul>
+                            <p>
+                                Dupa ce ai creat contul, poti sa iti adaugi o poza de profil, sa modifici datele personale, sa iti schimbi parola si sa iti stergi contul oricand doresti.
+                            </p>
+                            <p>
+                                Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- END ======= About How to create an account ======= -->
+            </section>
+            <!-- END ======= About How to create an account ======= -->
 
-        <!-- ======= About How to register company ======= -->
-        <section id="about-register-company" class="about-register-company">
-            <div class="container" data-aos="fade-up">
-                <div class="row">
-                    <!--content-->
-                    <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-                        <h3>Cum inregistrezi o firma</h3>
-                        <p class="fst-italic">
-                            Dupa ce ai un cont personal activat, poti sa inregistrezi o firma noua pe platforma noastra urmand pasii de mai jos
-                        </p>
-                        <ul>
-                            <li><i class="bx bx-check-double"></i> Conecteaza-te in contul tau personal.</li>
-                            <li><i class="bx bx-check-double"></i> Deschide formularul apasand pe <a href="{% url 'register_company' %}">Adauga firma</a></li>
-                            <li><i class="bx bx-check-double"></i> Completeaza datele firmei in formular.</li>
-                        </ul>
-                        <p>
-                            Dupa inregistrarea firmei, ai posibilitatea sa adaugi logo-ul firmei, sa modifici datele firmei, sa adaugi un nou manager/sa elimini un manager actual sau sa stergi firma.
-                        </p>
-                        <p>
-                            Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
-                        </p>
-                    </div>
-                    <!--Image-->
-                    <div class="col-lg-6 video-box align-self-baseline position-relative">
-                        <img src="{% static 'images/createCompanyAccountInstructions.png' %}" class="img-fluid" alt="">
+            <!-- ======= About How to register company ======= -->
+            <section id="about-register-company" class="about-register-company">
+                <div class="container" data-aos="fade-up">
+                    <div class="row">
+                        <!--content-->
+                        <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                            <h3>Cum inregistrezi o firma</h3>
+                            <p class="fst-italic">
+                                Dupa ce ai un cont personal activat, poti sa inregistrezi o firma noua pe platforma noastra urmand pasii de mai jos
+                            </p>
+                            <ul>
+                                <li><i class="bx bx-check-double"></i> Conecteaza-te in contul tau personal.</li>
+                                <li><i class="bx bx-check-double"></i> Deschide formularul apasand pe <a href="{% url 'register_company' %}">Adauga firma</a></li>
+                                <li><i class="bx bx-check-double"></i> Completeaza datele firmei in formular.</li>
+                            </ul>
+                            <p>
+                                Dupa inregistrarea firmei, ai posibilitatea sa adaugi logo-ul firmei, sa modifici datele firmei, sa adaugi un nou manager/sa elimini un manager actual sau sa stergi firma.
+                            </p>
+                            <p>
+                                Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
+                            </p>
+                        </div>
+                        <!--Image-->
+                        <div class="col-lg-6 video-box align-self-baseline position-relative">
+                            <img src="{% static 'images/createCompanyAccountInstructions.png' %}" class="img-fluid" alt="">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- END ======= About How to register company ======= -->
+            </section>
+            <!-- END ======= About How to register company ======= -->
 
-        <!-- ======= About How to create eDec ======= -->
-        {% comment %} <section id="about-create-eDec" class="about-create-eDec">
-            <div class="container" data-aos="fade-up">
-                <div class="row"> {% endcomment %}
-                    <!--Image-->
-                    {% comment %} <div class="col-lg-6 video-box align-self-baseline position-relative">
-                        <img src="#" class="img-fluid" alt="">
-                    </div> {% endcomment %}
-                    <!--content-->
-                    {% comment %} <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-                        <h3>Cum sa generezi eDec</h3>
-                        <p class="fst-italic">
-                            <strong>eDec</strong> este declaratia de conformitate pe care o poti genera pe platforma noastra dupa ce ai inregistrat o firma
-                        </p>
-                        <ul>
-                            <li><i class="bx bx-check-double"></i> In pagina de profil apasa Creare eDec</li>    
-                            <li><i class="bx bx-check-double"></i> Completeaza datele firmei in formular.</li>
-                        </ul>
-                        <p>
-                            Dupa inregistrarea firmei, ai posibilitatea sa adaugi logo-ul firmei, sa modifici datele firmei, sa adaugi un nou manager/sa elimini un manager actual sau sa stergi firma.
-                        </p>
-                        <p>
-                            Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
-                        </p>
+            <!-- ======= About How to create eDec ======= -->
+            <section id="about-create-eDec" class="about-create-eDec">
+                <div class="container" data-aos="fade-up">
+                    <div class="row">
+                        <!--Image-->
+                        <div class="col-lg-6 video-box align-self-baseline position-relative">
+                            <img src="#" class="img-fluid" alt="">
+                        </div>
+                        <!--content-->
+                        <div class="col-lg-6 pt-3 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                            <h3>Cum sa generezi eDec</h3>
+                            <p class="fst-italic">
+                                <strong>eDec</strong> este declaratia de conformitate pe care o poti genera pe platforma noastra dupa ce ai inregistrat o firma
+                            </p>
+                            <ul>
+                                <li><i class="bx bx-check-double"></i> In pagina de profil apasa Creare eDec</li>    
+                                <li><i class="bx bx-check-double"></i> Completeaza datele firmei in formular.</li>
+                            </ul>
+                            <p>
+                                Dupa inregistrarea firmei, ai posibilitatea sa adaugi logo-ul firmei, sa modifici datele firmei, sa adaugi un nou manager/sa elimini un manager actual sau sa stergi firma.
+                            </p>
+                            <p>
+                                Daca ai intrebari sau nelamuriri, nu ezita sa ne contactezi la adresa de email <strong>edeclaratie.contact@gmail.com</strong>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section> {% endcomment %}
-        <!-- END ======= About How to create eDec ======= -->
+            </section>
+            <!-- END ======= About How to create eDec ======= -->
+            
+        </main>
+        <!-- End #main -->
 
         <!-- ======= Footer ======= -->
         <footer id="footer" class="footer">
@@ -226,7 +231,7 @@
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#about-create-account">Creare cont</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#about-register-company">Inregistrare firma</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Creare eDec</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#about-create-eDec">Creare eDec</a></li>
                         </ul>
                         </div>
                         <div class="col-lg-4 col-md-6 footer-newsletter">
