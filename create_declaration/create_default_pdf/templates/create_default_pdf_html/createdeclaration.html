@@ -45,7 +45,9 @@
             <button class="btn btnsendlink" onclick="copyLinkOp1()">Copie link-ul si trimite-l la client</button>
             <script>
                 function copyLinkOp1() {
-                    let copy_link = "http://edeclaratie.ro/op1/{{ company.company_name }}";
+                    let companyName = "{{ company.company_name }}";
+                    let encodedCompanyName = encodeURIComponent(companyName);
+                    let copy_link = `http://edeclaratie.ro/op1/${encodedCompanyName}/`;
                     navigator.clipboard.writeText(copy_link);
                 }
             </script>

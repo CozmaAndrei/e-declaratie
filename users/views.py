@@ -8,8 +8,8 @@ from django.contrib.auth import login, logout
 
 from django.http import Http404
 
+'''Return the user profile with his username in URL and user information in userprofile.html'''
 def user_profile(request, username): #used for userprofile.html
-    '''Return the user profile with his username in URL and user information in userprofile.html'''
     try:
         the_user_name = User.objects.get(username=username)
         extra_info = ExtraUserInformations.objects.get(user=the_user_name) #used to get informations from ExtraUserInformations model
@@ -48,8 +48,8 @@ def update_user_info(request, username):
     }
     return render(request, 'user_html/updateuserprofileinfo.html', context)
 
+'''Delete the user account with conditions and return the register_user.html page after the user account was deleted'''
 def delete_user_account(request, user_id):
-    '''Delete the user account with conditions and return the register_user.html page after the user account was deleted'''
     user = User.objects.get(pk=user_id)
     user_companies = Company.objects.filter(managers=user)
     
@@ -89,8 +89,8 @@ def delete_user_account(request, user_id):
     }
     return render(request, "user_html/deleteuseraccount.html", context)
 
+'''Change the user password and return to the login page after the password was changed with success!'''
 def change_pass(request,username):
-    '''Change the user password and return to the login page after the password was changed with success!'''
     user = User.objects.get(username=username)
     if request.method == 'POST':
         form = ChangeUserPassForm(request.user, request.POST)

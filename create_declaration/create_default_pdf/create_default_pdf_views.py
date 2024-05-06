@@ -14,7 +14,6 @@ from reportlab.lib.pagesizes import A4
 from django.contrib.staticfiles import finders
 #pdf imports
 
-
 '''This function is used to create a default text for the declaration of conformity. It will be used in the preview_default_pdf function.'''
 def default_content(request, default_text, company_id, username, invoice_number, invoice_date):
     user = User.objects.get(username=username)

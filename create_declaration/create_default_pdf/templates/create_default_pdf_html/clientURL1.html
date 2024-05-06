@@ -15,33 +15,41 @@
     <link rel="stylesheet" href="{% static 'create_default_pdf_css/clientURL1.css' %}">
 </head>
 <body>
-    <div class="container">
-        <!--messages-->
-        <div class="text-center mb-3">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-dismissible fade show m-0
-                                {% if message.tags == 'success' %} 
-                                    alert-success
-                                {% elif message.tags == 'warning' %}
-                                    alert-warning
-                                {% endif %}" alert-info role=" alert">
-                        <span>{{ message }}</span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
+    <div class="mainPage">
+        <div>
+            <a href="{% url 'home' %}" class="logo"><img src="{% static 'images/eDec-logo.png' %}" alt="eDeclaratie logo" class="img-fluid">eDeclarație</a>
+            <p>Daca nu ai cont</p>
         </div>
-        <!--form-->
-        <div class="d-flex justify-content-center align-items-center flex-column">
-            <form method="POST"  action="{% url 'pdf_to_client_op1' company.id user.username%}" target="_blank"> <!--target="_blank" will open new tab-->
-                {% csrf_token %}
-                <label for="invoice_number" class="form-label">Numar factura</label>
-                <input type="text" name="invoice_number" class="form-control mb-3">
-                <label for="invoice_date" class="form-label">Data factura</label>
-                <input type="date" name="invoice_date" class="form-control mb-3">
-                <button type="submit" class="btn mb-3">Vezi PDF si descarca</button>
-            </form>
+        <div class="container">
+            <!--messages-->
+            <div class="text-center mb-3">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-dismissible fade show m-0
+                                    {% if message.tags == 'success' %} 
+                                        alert-success
+                                    {% elif message.tags == 'warning' %}
+                                        alert-warning
+                                    {% endif %}" alert-info role=" alert">
+                            <span>{{ message }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <!--form-->
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <form method="POST"  action="{% url 'pdf_to_client_op1' company.id user.username%}" target="_blank"> <!--target="_blank" will open new tab-->
+                    {% csrf_token %}
+                    <label for="invoice_number" class="form-label">Numar factura</label>
+                    <input type="text" name="invoice_number" class="form-control mb-3">
+                    <label for="invoice_date" class="form-label">Data factura</label>
+                    <input type="date" name="invoice_date" class="form-control mb-5">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn mb-3">Vezi PDF si descarca</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
