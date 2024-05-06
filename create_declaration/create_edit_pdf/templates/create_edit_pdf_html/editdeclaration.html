@@ -56,10 +56,6 @@
             <!--right side-->
             <div class="container-right">
                 <div class="container mb-3">
-                    {% comment %} <p><span style="color:green"><strong>Important instructions:</strong></span> Don't forget to include the following in your edited text: <span style="color:red"><strong>[invoice_number]</strong></span>, <span style="color:red"><strong>[invoice_date]</strong></span></p>
-                    <p><span style="color:red"><strong>[invoice_number]</strong></span>- will be replaced with the invoice number you will enter below</p>
-                    <p><span style="color:red"><strong>[invoice_date]</strong></span>- will be replaced with the invoice date you will enter below</p> {% endcomment %}
-                    <!--form-->
                     <form method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -90,7 +86,7 @@
                         function copyLinkOp2() {
                             let companyName = "{{ company.company_name }}";
                             let encodedCompanyName = encodeURIComponent(companyName);
-                            let copy_link = `http://edeclaratie.ro/op2/${encodedCompanyName}/`;
+                            let copy_link = `http://127.0.0.1:8000/op2/${encodedCompanyName}/`;
                             navigator.clipboard.writeText(copy_link);
                         }
                     </script>
