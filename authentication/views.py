@@ -105,6 +105,7 @@ def register_company(request):
         if register_company_form.is_valid():
             company = register_company_form.save()
             company.managers.add(request.user)
+            company.company_manager = request.user
             company.save()
             extra_info, created = ExtraUserInformations.objects.get_or_create(user=request.user)
             extra_info.user_company.add(company)

@@ -14,7 +14,8 @@ def logo_directory_path(instance, filename):
 '''This model is used to store informations about the company, like his name, logo, email, etc.'''
 class Company(models.Model):
     managers = models.ManyToManyField(User, related_name='companies', blank=True) # the user that is associated with the company
-    company_name = models.CharField(max_length=100)
+    company_manager = models.ForeignKey(User, on_delete=models.CASCADE, related_name='company_manager', null=False)
+    company_name = models.CharField(max_length=100, unique=True)
     company_email = models.CharField(max_length=100, unique=True)
     company_cui = models.CharField(max_length=50, unique=True)
     company_register_number = models.CharField(max_length=50, unique=True)
