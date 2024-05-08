@@ -31,7 +31,7 @@
         <div class="card-body d-flex align-items-center justify-content-center flex-column">
             <div class="container d-flex justify-content-center align-items-center flex-column mb-5">
                 <!--PDF form-->
-                <form method="POST" action="{% url 'preview_default_pdf' company.id user.username %}" target="_blank"> <!--target="_blank" will open new tab-->
+                <form method="POST" action="{% url 'preview_default_pdf' company.company_name %}" target="_blank"> <!--target="_blank" will open new tab-->
                     {% csrf_token %}
                     <label for="invoice_number" class="form-label">Numar factura</label>
                     <input type="text" name="invoice_number" class="form-control mb-3">
@@ -53,8 +53,8 @@
             </script>
         </div>
         <div class="card-footer">
-            <a class="btn btn-sm" href="{% url 'add_stamp' company.id %}">Adauga stampila</a>
-            <a class="btn btn-sm" type="button" href="{% url 'edit_declaration' company.id %}">Modifica declaratia</a>
+            <a class="btn btn-sm" href="{% url 'add_stamp' company.company_name%}">Adauga stampila</a>
+            <a class="btn btn-sm" type="button" href="{% url 'edit_declaration' company.company_name %}">Modifica declaratia</a>
         </div>
     </div>
 

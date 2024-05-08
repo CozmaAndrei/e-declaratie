@@ -55,7 +55,7 @@
             </div>
             <!--right side-->
             <div class="container-right">
-                <div class="container mb-3">
+                <div class="containerUp mb-3">
                     <form method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -68,19 +68,20 @@
                         </div>
                     </form>
                 </div>
-
-                <div class="container d-flex justify-content-center align-items-center flex-column">
-                    {% comment %} <p style="color:red">You should save text before previewing the PDF or send link to the customer</p> {% endcomment %}
-                    <form method="POST" action="{% url 'preview_edit_pdf' company.id user.username %}" target="_blank"> <!--target="_blank" will open new tab-->
-                        {% csrf_token %}
-                        <label for="invoice_number" class="form-label">Numar factura</label>
-                        <input type="text" name="invoice_number" class="form-control mb-3">
-                        <label for="invoice_date" class="form-label">Data factura</label>
-                        <input type="date" name="invoice_date" class="form-control mb-3">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <button type="submit" class="btn mb-3">Vezi PDF si descarca</button>
-                        </div>
-                    </form>
+                <div class="containerDown">
+                    <div class="containerform d-flex justify-content-center align-items-center flex-column mb-5">
+                        {% comment %} <p style="color:red">You should save text before previewing the PDF or send link to the customer</p> {% endcomment %}
+                        <form method="POST" action="{% url 'preview_edit_pdf' company.company_name %}" target="_blank"> <!--target="_blank" will open new tab-->
+                            {% csrf_token %}
+                            <label for="invoice_number" class="form-label">Numar factura</label>
+                            <input type="text" name="invoice_number" class="form-control mb-3">
+                            <label for="invoice_date" class="form-label">Data factura</label>
+                            <input type="date" name="invoice_date" class="form-control mb-3">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn">Vezi PDF si descarca</button>
+                            </div>
+                        </form>
+                    </div>
                     <button class="btn btnsendlink" onclick="copyLinkOp2()">Copie link-ul si trimite-l la client</button>
                     <script>
                         function copyLinkOp2() {
@@ -96,7 +97,7 @@
         <!--footer-->
         <div class="card-footer">
             <div class="">
-                <a href="{% url 'create_declaration' company.id %}" class="btn btn-sm">Inapoi</a>
+                <a href="{% url 'create_declaration' company.company_name %}" class="btn btn-sm">Inapoi</a>
             </div>
         </div>
     </div>

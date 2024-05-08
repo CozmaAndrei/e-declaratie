@@ -16,18 +16,18 @@ from reportlab.lib.pagesizes import A4
 from django.contrib.staticfiles import finders
 #pdf imports
 
-'''This function is used to create a default text for the declaration of conformity. It will be used in the preview_default_pdf function.'''
-def default_content(request, default_text, company_id, username, invoice_number, invoice_date):
-    user = User.objects.get(username=username)
-    company = Company.objects.get(id=company_id)
-    default_text = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {user.first_name.upper()} {user.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
-    return default_text
+# '''This function is used to create a default text for the declaration of conformity. It will be used in the preview_default_pdf function.'''
+# def default_content(request, default_text, company_id, username, invoice_number, invoice_date):
+#     user = User.objects.get(username=username)
+#     company = Company.objects.get(id=company_id)
+#     default_text = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {user.first_name.upper()} {user.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
+#     return default_text
 
 '''This function is used to create a default pdf for the declaration of conformity.'''
-def preview_default_pdf(request, company_id, username):
-    user = User.objects.get(username=username)
-    company = Company.objects.get(id=company_id)
-    stamp = ExtendCompanyModel.objects.get(extend_company_info=company_id)
+def preview_default_pdf(request, company_name):
+    # user = User.objects.get(username=username)
+    company = Company.objects.get(company_name=company_name)
+    stamp = ExtendCompanyModel.objects.get(extend_company_info=company)
     
     # Get the text input and date input from the form
     if request.method == "POST":
@@ -38,7 +38,7 @@ def preview_default_pdf(request, company_id, username):
             new_formatted_invoice_date = new_format.strftime('%d-%m-%Y')
         else:
             messages.warning(request, "Alege un numar de factura si o data!")
-            return redirect('create_declaration', company_id=company_id)
+            return redirect('create_declaration', company_name=company_name)
         
     # Create a BytesIO buffer
     buffer = io.BytesIO()
@@ -86,11 +86,10 @@ def preview_default_pdf(request, company_id, username):
     # The content of the declaration
     axa_x = 45
     axa_y = 540
-    text_lines = ""  # Define the variable "text_lines"
     max_text_width = 85  # Maximum chars of the text
 
     # Write the text
-    content = default_content(request, text_lines, company_id, username, invoice_number, new_formatted_invoice_date)
+    content = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
     c.setFont("Helvetica", 12)
     # Wrap text to fit within max width
     wrapped_lines = textwrap.fill(content, width=max_text_width, break_long_words=True, break_on_hyphens=True).split('\n')
@@ -104,7 +103,7 @@ def preview_default_pdf(request, company_id, username):
         axa_y -= 20
         c.drawString(45, axa_y - 60, f'{company.company_name.upper()}')
         axa_y -= 60
-        c.drawString(45, axa_y - 20, f'prin reprezentatul legal {user.first_name.upper()} {user.last_name.upper()}')
+        c.drawString(45, axa_y - 20, f'prin reprezentatul legal {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}')
         axa_y -= 160
         # Add the company stamp to the pdf
         if not stamp.company_stamp:
@@ -133,9 +132,10 @@ def client_input_op1(request, company_name):
     return render (request, 'create_default_pdf_html/clientURL1.html', context)
 
 '''This function is used to create a default pdf for the declaration of conformity and send it to the client.'''
-def pdf_to_client_op1(request, company_id):
-    company = Company.objects.get(id=company_id)
-    stamp = ExtendCompanyModel.objects.get(extend_company_info=company_id)  
+def pdf_to_client_op1(request, company_name):
+    company = Company.objects.get(company_name=company_name)
+    stamp = ExtendCompanyModel.objects.get(extend_company_info=company)  
+    
     # Get the text input and date input from the form
     if request.method == "POST":
         invoice_number = request.POST.get('invoice_number')
@@ -193,13 +193,12 @@ def pdf_to_client_op1(request, company_id):
     # The content of the declaration
     axa_x = 45
     axa_y = 540
-    text_lines = ""  # Define the variable "text_lines"
     max_text_width = 85  # Maximum chars of the text
 
     # Write the text
-    #content = default_content(request, text_lines, company_id, username, invoice_number, new_formatted_invoice_date)
     content = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
     c.setFont("Helvetica", 12)
+    
     # Wrap text to fit within max width
     wrapped_lines = textwrap.fill(content, width=max_text_width, break_long_words=True, break_on_hyphens=True).split('\n')
     
@@ -212,10 +211,7 @@ def pdf_to_client_op1(request, company_id):
         axa_y -= 20
         c.drawString(45, axa_y - 60, f'{company.company_name.upper()}')
         axa_y -= 60
-        if company.company_manager and company.company_manager.first_name and company.company_manager.last_name:
-            c.drawString(45, axa_y - 20, f'prin reprezentatul legal {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}')
-        else:
-            c.drawString(45, axa_y - 20, 'prin reprezentatul legal: N/A')
+        c.drawString(45, axa_y - 20, f'prin reprezentatul legal {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}')
         axa_y -= 160
         # Add the company stamp to the pdf
         if not stamp.company_stamp:
