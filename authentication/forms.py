@@ -3,11 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from companies.models import Company
+from django.core.exceptions import ValidationError
 
 '''This form is used for user registration'''
 class UserRegisterForm(UserCreationForm):
     #user_widget_register_form using for style in all collumns"
-    user_widget_register_form = {'class': 'form-control', 
+    user_widget_register_form = {'class': 'form-control',
                                 'size': '30', 
                                 'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
                                 'onfocus': 'this.style.borderColor="#019cbb";', 
@@ -47,7 +48,13 @@ class UserRegisterForm(UserCreationForm):
         self.fields['password2'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['password2'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
 
-'''THis form is used for custom Authentication(added style)'''
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("Acest email exista deja in baza de date")
+        return email
+    
+'''This form is used for custom Authentication(added style)'''
 class CustomAuthenticationForm(AuthenticationForm):
     
     def __init__(self, *args, **kwargs):
