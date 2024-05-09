@@ -66,13 +66,17 @@ def delete_company_account(request, company_name):
         if delete_company_form.is_valid():
             company_email = delete_company_form.cleaned_data['company_email']
             if company_email == company.company_email:
-                if len(company_managers) == 1: #if you are the only one manager, then can delete the company
-                    company.delete()
-                    messages.success(request, "Contul firmei a fost sters cu succes!")
-                    return redirect('user_profile', request.user.username)
-                elif len(company_managers) > 1: #if the company has more than one manager, you can't delete the company. You must delete all the managers first!.
-                    messages.warning(request, "Pentru a sterge acesta firma, trebuie sa renunti la managerii atribuiti!")
-                    return redirect('company_profile', company.company_name)
+                if request.user != company.company_manager: #if you are not the manager of the company, you can't delete the company
+                    messages.error(request, "Nu esti administratorul acestei firme, deci nu ai permisiunea de a sterge acest cont de firma")
+                    return redirect ('company_profile', company.company_name)
+                else:
+                    if len(company_managers) == 1: #if you are the only one manager, then can delete the company
+                        company.delete()
+                        messages.success(request, "Contul firmei a fost sters cu succes!")
+                        return redirect('user_profile', request.user.username)
+                    elif len(company_managers) > 1: #if the company has more than one manager, you can't delete the company. You must delete all the managers first!.
+                        messages.warning(request, "Pentru a sterge acesta firma, trebuie sa renunti la managerii atribuiti!")
+                        return redirect('company_profile', company.company_name)
             else:
                 messages.error(request, "Acest email nu este al firmei dumneavoastra!")
                 return redirect ('delete_company_account', company.company_name)
