@@ -5,8 +5,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
 
-from django.core.exceptions import ObjectDoesNotExist
-
 #pdf imports
 from django.http import FileResponse
 import io
@@ -15,13 +13,6 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from django.contrib.staticfiles import finders
 #pdf imports
-
-# '''This function is used to create a default text for the declaration of conformity. It will be used in the preview_default_pdf function.'''
-# def default_content(request, default_text, company_id, username, invoice_number, invoice_date):
-#     user = User.objects.get(username=username)
-#     company = Company.objects.get(id=company_id)
-#     default_text = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {user.first_name.upper()} {user.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
-#     return default_text
 
 '''This function is used to create a default pdf for the declaration of conformity.'''
 def preview_default_pdf(request, company_name):
@@ -89,7 +80,8 @@ def preview_default_pdf(request, company_name):
     max_text_width = 85  # Maximum chars of the text
 
     # Write the text
-    content = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
+    if company.company_manager:
+        content = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
     c.setFont("Helvetica", 12)
     # Wrap text to fit within max width
     wrapped_lines = textwrap.fill(content, width=max_text_width, break_long_words=True, break_on_hyphens=True).split('\n')
@@ -103,7 +95,10 @@ def preview_default_pdf(request, company_name):
         axa_y -= 20
         c.drawString(45, axa_y - 60, f'{company.company_name.upper()}')
         axa_y -= 60
-        c.drawString(45, axa_y - 20, f'prin reprezentatul legal {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}')
+        if company.company_manager:
+            c.drawString(45, axa_y - 20, f'prin reprezentatul legal {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}')
+        else:
+            c.drawString(45, axa_y - 20, 'prin reprezentantul legal')
         axa_y -= 160
         # Add the company stamp to the pdf
         if not stamp.company_stamp:
@@ -196,7 +191,8 @@ def pdf_to_client_op1(request, company_name):
     max_text_width = 85  # Maximum chars of the text
 
     # Write the text
-    content = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
+    if company.company_manager:
+        content = f'{company.company_name.upper()} avand sediu social in localitatea {company.company_city.upper()}, adresa {company.company_address.upper()}, inregistrata cu nr. {company.company_register_number.upper()} la Registrul Comertului, CUI {company.company_cui.upper()}, reprezentata de {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}, in calitate de Administrator, declaram pe propria raspundere, cunoscand prevederile art.292 Cod Penal cu privire la falsul in declaratii si preverile art. 5 din HG nr.1022/2002 cu privire la regimul produselor si serviciilor care pot pune in pericol viata, sanatatea, securitatea muncii si protectia mediului, faptul ca produsele din factura cu nr {invoice_number} din data de {invoice_date} care fac obiectul acestei declaratii de conformitate nu pune in pericol viata, sanatatea si securitatea muncii, nu produce impact negativ asupra mediului si este in conformitate cu normele Uniunii Europene.'
     c.setFont("Helvetica", 12)
     
     # Wrap text to fit within max width
@@ -211,7 +207,8 @@ def pdf_to_client_op1(request, company_name):
         axa_y -= 20
         c.drawString(45, axa_y - 60, f'{company.company_name.upper()}')
         axa_y -= 60
-        c.drawString(45, axa_y - 20, f'prin reprezentatul legal {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}')
+        if company.company_manager:
+            c.drawString(45, axa_y - 20, f'prin reprezentatul legal {company.company_manager.first_name.upper()} {company.company_manager.last_name.upper()}')
         axa_y -= 160
         # Add the company stamp to the pdf
         if not stamp.company_stamp:

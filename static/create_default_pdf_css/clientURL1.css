@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Anta&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Rhodium+Libre&family=Spinnaker&family=Sunflower:wght@300&display=swap');
+
+
 .mainPage {
     display:flex;
     justify-content: center;
@@ -12,6 +15,22 @@
     flex-direction: column;
 }
 
+.logoAndName {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.logoAndName a {
+    text-decoration: none;
+    font-family: "Rhodium Libre", sans-serif;
+    color: rgba(25, 129, 170);
+    font-size: 28px;
+}
+
 .mainPage::before {
     content: "";
     position: absolute;
@@ -23,12 +42,28 @@
 }
 
 .logo img {
-    max-height: 40px;
-    margin-right: 15px;
+    max-height: 50px;
+    margin-right: 5px;
 }
 
-a.logo {
+.text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.text a {
     text-decoration: none;
+    font-size: 20px;
+    font-family: "Rhodium Libre", sans-serif;
+    color: rgb(117, 117, 117);
+}
+
+.text a:hover {
+    color: rgba(0, 170, 204);
+    cursor: pointer;
 }
 
 .container {
