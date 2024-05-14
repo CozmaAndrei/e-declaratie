@@ -1,3 +1,4 @@
+from django.forms import ValidationError
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -21,10 +22,10 @@ def login_user(request):
     if request.method == "POST":
         login_form = CustomAuthenticationForm(request, request.POST)
         if login_form.is_valid():
-            username = login_form.cleaned_data['username']
-            password = login_form.cleaned_data['password']
+            username = login_form.cleaned_data.get('username')
+            password = login_form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
-        
+            
             if user is not None:
                 login(request, user)
                 return redirect ('user_profile', username=username)
