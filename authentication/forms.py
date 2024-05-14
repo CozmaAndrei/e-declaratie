@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from companies.models import Company
 from django.core.exceptions import ValidationError
+from django.contrib.auth import authenticate
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 '''This form is used for user registration'''
 class UserRegisterForm(UserCreationForm):
@@ -56,13 +59,32 @@ class UserRegisterForm(UserCreationForm):
     
 '''This form is used for custom Authentication(added style)'''
 class CustomAuthenticationForm(AuthenticationForm):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            return username
+        if User.objects.filter(email=username).exists():
+            return User.objects.get(email=username).get_username()
+        raise ValidationError("Utilizator / Email sau parola incorecta")
+    
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        if username and password:
+            user = authenticate(username=username, password=password)
+            if user is None:
+                raise ValidationError("Utilizator / Email sau parola incorecta")
+        return self.cleaned_data
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password'].widget.attrs['class'] = 'form-control'
         
-        self.fields['username'].label = 'Utilizator'
+        self.fields['username'].label = 'Utilizator / Email'
         self.fields['password'].label = 'Parola'
         
         self.fields['username'].widget.attrs['size'] = '30'
@@ -75,7 +97,7 @@ class CustomAuthenticationForm(AuthenticationForm):
         self.fields['username'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
         self.fields['password'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['password'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
-
+    
 '''This form is used for company registration'''
 class CompanyRegisterForm(forms.ModelForm):
     #register_widget_form using for style in all collumns"
