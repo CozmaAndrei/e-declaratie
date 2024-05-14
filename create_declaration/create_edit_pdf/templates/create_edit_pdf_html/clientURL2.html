@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="{% static 'create_edit_pdf_css/clientURL2.css' %}">
 </head>
 <body>
-    <div class="mainPage">
-        <div>
-            <a href="{% url 'home' %}" class="logo"><img src="{% static 'images/eDec-logo.png' %}" alt="eDeclaratie logo" class="img-fluid">eDeclarație</a>
-            <p>Daca nu ai cont</p>
+    <div class="mainPage container-fluid">
+        <div class="logoAndName container-fluid mb-2">
+            <a href="{% url 'home' %}" class="logo mb-2" target="_blank"><img src="{% static 'images/eDec-logo.png' %}" alt="eDeclaratie logo" class="img-fluid"></a>
+            <a href="{% url 'home' %}" target="_blank">eDeclaratie</a>
+        </div>
+        <div class="text container-fluid mb-2">
+            <a href="{% url 'home' %}" target="_blank">Vino si tu sa faci parte din comunitatea noastra!</a>
         </div>
         <div class="container">
             <!--messages-->
@@ -44,7 +47,7 @@
                     <label for="invoice_number" class="form-label">Numar factura</label>
                     <input type="text" name="invoice_number" class="form-control mb-3">
                     <label for="invoice_date" class="form-label">Data factura</label>
-                    <input type="date" name="invoice_date" class="form-control mb-3">
+                    <input type="date" name="invoice_date" class="form-control mb-5">
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn mb-3">Vezi PDF si descarca</button>
                     </div>
