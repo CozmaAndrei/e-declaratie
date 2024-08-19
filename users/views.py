@@ -5,17 +5,24 @@ from companies.models import Company
 from .forms import EditUserInfoForm, ChangeUserPassForm, UserPicForm, DeleteUserForm
 from .models import ExtraUserInformations
 from django.contrib.auth import login, logout
-
 from django.http import Http404
+
+def error404(request, exception):
+    context = {
+        'message': str(exception),
+    }
+    return render(request, 'error404.html', context, status=404)
 
 '''Return the user profile with his username in URL and user information in userprofile.html'''
 def user_profile(request, username): #used for userprofile.html
     try:
         the_user_name = User.objects.get(username=username)
-        extra_info = ExtraUserInformations.objects.get(user=the_user_name) #used to get informations from ExtraUserInformations model
+        try:
+            extra_info = ExtraUserInformations.objects.get(user=the_user_name) #used to get informations from ExtraUserInformations model
+        except ExtraUserInformations.DoesNotExist:
+            raise Http404("Extra user informations does not exist")
     except User.DoesNotExist:
-        raise Http404("User does not exist") #used to get informations from ExtraUserInformations model
-    
+        raise Http404("User does not exist")
     context = {
         "the_user_name": the_user_name,
         "extra_info": extra_info

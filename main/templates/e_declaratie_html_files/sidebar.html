@@ -66,12 +66,12 @@
                     </div>
                 </li>
                 <!--Client want to hide those functions-->
-                <li class="sidebar-item">
+                {% comment %} <li class="sidebar-item">
                     <a href="{% url 'company_lists' %}" class="sidebar-link">
                         <i class="bi-card-list"></i>
                         <span>Lista companii</span>
                     </a>
-                </li>
+                </li> {% endcomment %}
                 
             {% else %}
                 <!-- if user has no companies -->
@@ -82,12 +82,14 @@
                     </a>
                 </li>
             {% endif %}
-            <li class="sidebar-item">
+            <!--Client want to hide those functions-->
+            {% comment %} <li class="sidebar-item">
                 <a href="{% url 'user_lists' %}" class="sidebar-link">
                     <i class="bi-people"></i>
                     <span>Lista useri</span>
                 </a>
-            </li>
+            </li> {% endcomment %}
+
         </ul>
     {% endif %}
     <hr>
@@ -121,14 +123,6 @@
         {% endif %}
     </ul>
     <hr>
-    {% comment %} <ul class="sidebar-nav">
-        <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
-                <i class="bi-book"></i>
-                <span>Despre noi</span>
-            </a>
-        </li>
-    </ul> {% endcomment %}
     <ul class="sidebar-nav">
         <li class="sidebar-item">
             <a href="{% url 'contact_us' %}" class="sidebar-link">

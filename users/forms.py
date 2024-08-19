@@ -4,9 +4,8 @@ from datetime import datetime
 from .models import ExtraUserInformations
 from django.contrib.auth.forms import PasswordChangeForm
         
-
+'''The user profile editing form'''
 class EditUserInfoForm(forms.ModelForm):
-    '''The user profile editing form'''
     user_widget_form = {'class': 'form-control', 
                         'size': '30', 
                         'style': 'box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);', 
@@ -22,8 +21,8 @@ class EditUserInfoForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'email']
 
+'''The change password form using the PasswordChangeForm imported from django.contrib.auth.forms'''
 class ChangeUserPassForm(PasswordChangeForm):
-    '''The change password form using the PasswordChangeForm imported from django.contrib.auth.forms'''
     class Meta:
         model = User
         fields = ['old_password', 'new_password1', 'new_password2']
@@ -60,11 +59,10 @@ class ChangeUserPassForm(PasswordChangeForm):
         self.fields['new_password1'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
         self.fields['new_password2'].widget.attrs['onfocus'] = 'this.style.borderColor="#019cbb";'
         self.fields['new_password2'].widget.attrs['onfocusout'] = 'this.style.borderColor="";'
-    
+
+'''The user profile picture form using the ImageField from the forms module. 
+        We use the FileInput widget to style the field.'''
 class UserPicForm(forms.ModelForm):
-    '''The user profile picture form using the ImageField from the forms module. 
-        We use the FileInput widget to style the field.'''  
-    
     user_widget_form = {'class': 'form-control', 
                     'size': '30', 
                     'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
@@ -76,9 +74,9 @@ class UserPicForm(forms.ModelForm):
     class Meta:
          model = ExtraUserInformations
          fields = ['user_pic']
-    
+
+'''The form used to delete a user account. We use the EmailField to confirm the user's email.'''
 class DeleteUserForm(forms.Form):
-    '''The form used to delete a user account. We use the EmailField to confirm the user's email.'''
     delete_user_widget_form = {'class': 'form-control', 
                         'size': '30', 
                         'style': 'box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);', 
