@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Anta&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Rhodium+Libre&family=Spinnaker&family=Sunflower:wght@300&display=swap');
 
-
 .mainPage {
     display:flex;
     justify-content: center;
@@ -13,6 +12,16 @@
     padding: 1rem;
     flex-wrap: wrap;
     flex-direction: column;
+}
+
+.mainPage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .logoAndName {
@@ -29,16 +38,6 @@
     font-family: "Rhodium Libre", sans-serif;
     color: rgba(25, 129, 170);
     font-size: 28px;
-}
-
-.mainPage::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .logo img {
