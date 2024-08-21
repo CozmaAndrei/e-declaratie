@@ -5,8 +5,10 @@ from users.models import ExtraUserInformations
 from django.core.mail import EmailMessage
 from .user_profiles_forms import ReportUserForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 '''Return the user view profile in viewprofilepage.html for all the users and the current user profile in viewprofilepage.html for the current user'''
+@login_required(login_url='/login_user/')
 def user_view_profile(request, username):
     view_user = User.objects.get(username=username) #used in viewprofilepage.html
     extra_view_user_info = ExtraUserInformations.objects.get(user=view_user) #request in ExtraUserInformations model for table fields
@@ -27,6 +29,7 @@ def user_view_profile(request, username):
     return render(request, 'user_profiles_html/viewprofilepage.html', context)
 
 '''Report a user, send an email to the admin and return the reportuser.html page'''
+@login_required(login_url='/login_user/')
 def report_user(request, username):
     report_user = User.objects.get(username=username)
     if request.method == "POST":

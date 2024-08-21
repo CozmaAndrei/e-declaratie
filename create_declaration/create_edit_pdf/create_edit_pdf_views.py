@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
 from create_declaration.forms import MyForm
+from django.contrib.auth.decorators import login_required
 
 #pdf imports start
 from django.http import FileResponse
@@ -16,6 +17,7 @@ from django.contrib.staticfiles import finders
 #pdf imports stop
 
 '''Edit the declaration content for a company. If the declaration content is not set, it will be set to a default value. If the form is submitted, the new content will be saved in the database.'''
+@login_required(login_url='/login_user/')
 def edit_declaration(request, company_name):
     company = Company.objects.get(company_name=company_name)
     extended_company = ExtendCompanyModel.objects.get(extend_company_info=company)
@@ -54,6 +56,7 @@ def edited_text(edit_text, company_name, invoice_number, invoice_date):
     return edit_text
 
 '''This function is used to create a preview pdf for the edited declaration.'''
+@login_required(login_url='/login_user/')
 def preview_edit_pdf(request, company_name):  
     company = Company.objects.get(company_name=company_name)
     stamp = ExtendCompanyModel.objects.get(extend_company_info=company)   
@@ -156,6 +159,7 @@ def preview_edit_pdf(request, company_name):
     return FileResponse(buffer, filename=f'Preview Declaratie de conformitate {company.company_name}.pdf')
 
 '''This function is used to send the pdf to the client.'''
+@login_required(login_url='/login_user/')
 def client_input_op2(request, company_name):
     company = Company.objects.get(company_name=company_name)
     
@@ -165,6 +169,7 @@ def client_input_op2(request, company_name):
     return render (request, 'create_edit_pdf_html/clientURL2.html', context)
 
 '''This function is used to create the pdf and send it to the client.'''
+@login_required(login_url='/login_user/')
 def pdf_to_client_op2(request, company_name):
     company = Company.objects.get(company_name=company_name)
     stamp = ExtendCompanyModel.objects.get(extend_company_info=company)   

@@ -4,6 +4,7 @@ from companies.models import ExtendCompanyModel
 from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 #pdf imports
 from django.http import FileResponse
@@ -15,6 +16,7 @@ from django.contrib.staticfiles import finders
 #pdf imports
 
 '''This function is used to create a default pdf for the declaration of conformity.'''
+@login_required(login_url='/login_user/')
 def preview_default_pdf(request, company_name):
     # user = User.objects.get(username=username)
     company = Company.objects.get(company_name=company_name)
@@ -119,6 +121,7 @@ def preview_default_pdf(request, company_name):
     return FileResponse(buffer, filename=f'Declaratie de conformitate {company.company_name}.pdf')
 
 '''This function is used to send the pdf to the client.'''
+@login_required(login_url='/login_user/')
 def client_input_op1(request, company_name):
     company = Company.objects.get(company_name=company_name)
     context= {
@@ -127,6 +130,7 @@ def client_input_op1(request, company_name):
     return render (request, 'create_default_pdf_html/clientURL1.html', context)
 
 '''This function is used to create a default pdf for the declaration of conformity and send it to the client.'''
+@login_required(login_url='/login_user/')
 def pdf_to_client_op1(request, company_name):
     company = Company.objects.get(company_name=company_name)
     stamp = ExtendCompanyModel.objects.get(extend_company_info=company)  

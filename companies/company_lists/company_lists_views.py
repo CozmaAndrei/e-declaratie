@@ -4,8 +4,6 @@ from companies.models import Company
 from users.models import ExtraUserInformations
 from django.contrib.auth.decorators import login_required
 
-
-
 '''Return all the companies without the current user company in companieslistpage.html'''
 @login_required(login_url='/login/')
 def company_lists(request):
