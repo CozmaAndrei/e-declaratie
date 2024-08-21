@@ -6,6 +6,7 @@ from .forms import EditUserInfoForm, ChangeUserPassForm, UserPicForm, DeleteUser
 from .models import ExtraUserInformations
 from django.contrib.auth import login, logout
 from django.http import Http404
+from django.contrib.auth.decorators import login_required
 
 def error404(request, exception):
     context = {
@@ -14,6 +15,7 @@ def error404(request, exception):
     return render(request, 'error404.html', context, status=404)
 
 '''Return the user profile with his username in URL and user information in userprofile.html'''
+@login_required(login_url='/login_user/')
 def user_profile(request, username): #used for userprofile.html
     try:
         the_user_name = User.objects.get(username=username)
@@ -30,6 +32,7 @@ def user_profile(request, username): #used for userprofile.html
     return render(request, 'user_html/userprofile.html', context)
 
 '''Update the user info like username, first name, last name, etc with conditions and return the user profile in updateuserprofileinfo.html'''
+@login_required(login_url='/login_user/')
 def update_user_info(request, username):
     user = User.objects.get(username=username)
     extra_info = ExtraUserInformations.objects.get(user=user)
@@ -56,6 +59,7 @@ def update_user_info(request, username):
     return render(request, 'user_html/updateuserprofileinfo.html', context)
 
 '''Delete the user account with conditions and return the register_user.html page after the user account was deleted'''
+@login_required(login_url='/login_user/')
 def delete_user_account(request, user_id):
     user = User.objects.get(pk=user_id)
     user_companies = Company.objects.filter(managers=user)
@@ -97,6 +101,7 @@ def delete_user_account(request, user_id):
     return render(request, "user_html/deleteuseraccount.html", context)
 
 '''Change the user password and return to the login page after the password was changed with success!'''
+@login_required(login_url='/login_user/')
 def change_pass(request,username):
     user = User.objects.get(username=username)
     if request.method == 'POST':

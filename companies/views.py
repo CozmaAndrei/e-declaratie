@@ -3,9 +3,10 @@ from django.contrib import messages
 from .models import Company
 from .forms import AddNewManagerForm, DeleteManagerForm, EditCompanyInfoForm, CompanyLogoForm, DeleteCompanyForm
 from users.models import ExtraUserInformations
-
+from django.contrib.auth.decorators import login_required
 
 '''Return all users asociated to company in companypage.html and the company name in URL'''
+@login_required(login_url='/login_user/')
 def company_profile(request, company_name):
     get_company_name = Company.objects.get(company_name=company_name)
     
@@ -15,6 +16,7 @@ def company_profile(request, company_name):
     return render(request, 'company_html/companypage.html', context)
 
 '''Update the company info, like name, email, logo, etc'''
+@login_required(login_url='/login_user/')
 def update_company_info(request, company_name):
     the_company = Company.objects.get(company_name=company_name) #used in updatecompanyprofileinfo.html
     if request.method == "POST":
@@ -37,6 +39,7 @@ def update_company_info(request, company_name):
     return render(request, 'company_html/updatecompanyprofileinfo.html', context)
 
 '''This function checked if the AddNewManagerForm is POST, take the input value and add to the managers field from Company table and return to the company page'''
+@login_required(login_url='/login_user/')
 def add_manager(request, company_name):
     get_company_name = Company.objects.get(company_name=company_name) #used in addmanagerpage.html
     if request.method == 'POST':
@@ -58,6 +61,7 @@ def add_manager(request, company_name):
     return render(request, 'company_html/addmanagerpage.html', context)
 
 '''Delete the company account with conditions'''
+@login_required(login_url='/login_user/')
 def delete_company_account(request, company_name):
     company = Company.objects.get(company_name=company_name)
     company_managers = company.managers.all()
@@ -90,6 +94,7 @@ def delete_company_account(request, company_name):
     return render(request, 'company_html/deletecompany.html', context)
 
 '''This function checked if the DeleteManagerForm is POST, take the input value and remove from the managers field from Company table and return to the company page'''
+@login_required(login_url='/login_user/')
 def delete_manager(request, company_name):
     get_company_name = Company.objects.get(company_name=company_name)
     if request.method == 'POST':
