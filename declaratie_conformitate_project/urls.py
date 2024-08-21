@@ -6,7 +6,7 @@ from authentication.reset_password.reset_password_forms import CustomResetPasswo
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('edeclaratieadmin/', admin.site.urls),
     path('', include('main.urls')),
     path('', include('users.urls')),
     path('', include('companies.urls')),
